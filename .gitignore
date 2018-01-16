@@ -3,6 +3,7 @@ node_modules
 # JetBrains
 .idea
 
-#dev db
+#dev files
 dev.db
+api_key.js
 
