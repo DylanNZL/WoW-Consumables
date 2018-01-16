@@ -1,0 +1,8 @@
+# node
+node_modules
+# JetBrains
+.idea
+
+#dev db
+dev.db
+
