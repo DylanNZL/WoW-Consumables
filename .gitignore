@@ -6,4 +6,4 @@ node_modules
 #dev files
 dev.db
 api_key.js
-
+package-lock.json
