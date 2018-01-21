@@ -7,6 +7,7 @@
     "test": "mocha"
   },
   "dependencies": {
+    "better-queue": "^3.8.6",
     "body-parser": "~1.16.0",
     "bookshelf": "^0.10.3",
     "cookie-parser": "~1.4.3",
@@ -20,7 +21,7 @@
     "prequest": "^1.0.0",
     "recon-ws": "^1.0.0",
     "serve-favicon": "~2.3.2",
-    "sqlite3": "^3.1.8",
+    "sqlite3": "^3.1.13",
     "ws": "^2.1.0"
   },
   "devDependencies": {

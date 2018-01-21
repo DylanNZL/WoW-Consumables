@@ -3,6 +3,7 @@ const API_KEY = require("./api_key.js");
 const wowServer = "amanthul"; // lowest pop oce realm for testing
 const mAuction = require("./models/auction.js");
 const bookshelf = require("./knexfile.js");
+const queue = require("./queue.js");
 
 const prequest = require('prequest');
 
@@ -16,7 +17,7 @@ async function foodAHData() {
 async function callBlizzardAH() {
     return new Promise ((resolve, reject) => {
         const url = "https://us.api.battle.net/wow/auction/data/" + wowServer + "?locale=en_US&apikey="+ API_KEY.key;
-        console.log("Initial URL: " + url);
+        console.log(Date.now() + " Initial URL: " + url);
         prequest(url).then(function (data) {
             if (data === undefined) {
                 console.error(Date.now() + " ERROR " + data);
@@ -26,11 +27,11 @@ async function callBlizzardAH() {
                 resolve(0);
             } else {
                 const url2 = data.files[0].url;
-                console.log("AH DATA URL: " + url2);
+                console.log(Date.now() + " AH DATA URL: " + url2);
 
                 // Gets the current auctions for the servers Auction House
                 prequest(url2).then(function (dat) {
-                    console.log("url2 returned: ");
+                    console.log(Date.now() + " url2 returned: ");
                     if (dat === undefined) {
                         console.error(Date.now() + " ERROR returned undefined " + data);
                         resolve(0);
@@ -39,7 +40,7 @@ async function callBlizzardAH() {
                         resolve(0);
                     } else {
                         const length = dat.auctions.length;
-                        console.log("Amount of auctions: " + length);
+                        console.log(Date.now() + " Amount of auctions: " + length);
                         saveAHData(dat.auctions);
                         resolve (1);
                     }
@@ -59,8 +60,6 @@ async function callBlizzardAH() {
 // {"auc":1591238360,"item":124437,"owner":"NAME","ownerRealm":"Frostmourne","bid":6650000,"buyout":7000000,"quantity":200,"timeLeft":"LONG","rand":0,"seed":0,"context":0},
 
 function saveAHData(data) {
-    console.log(Date.now() + " Parsing AH data");
-    let auctions = [];
     data.forEach(function (d) {
         // console.log(d.auc);
         let obj = {
@@ -73,17 +72,8 @@ function saveAHData(data) {
             quantity: d.quantity,
             timeLeft: d.timeLeft,
         };
-        auctions.push(obj);
+        queue.q.push(obj);
     });
-
-        // bookshelf.knex.batchInsert("auctions", auctions)
-        //     .then(function () {
-        //         console.log(message + ' ' + (new Date() - timestamp) + 'ms');
-        //     })
-        //     .catch(function (err) {
-        //         console.error(Date.now() + " ERROR SAVING TO DB");
-        //         console.error(err);
-        //     });
 }
 
 const itemIds = [
