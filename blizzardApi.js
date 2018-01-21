@@ -1,18 +1,22 @@
 const API_KEY = require("./api_key.js");
-const wowServer = "frostmourne"; // Change to any NA server
+// const wowServer = "frostmourne"; // Change to any NA server
+const wowServer = "amanthul"; // lowest pop oce realm for testing
+const mAuction = require("./models/auction.js");
+const bookshelf = require("./knexfile.js");
 
 const prequest = require('prequest');
+
 
 async function foodAHData() {
     let data = await callBlizzardAH();
     // TODO: save
-    console.log(data);
+    // console.log(data);
 }
 // sends a request to blizzard api for intial request for AH data for the specified server
-async function callBlizzardAH(){
+async function callBlizzardAH() {
     return new Promise ((resolve, reject) => {
-        const url = "https://us.api.battle.net/wow/auction/data/frostmourne?locale=en_US&apikey="+ API_KEY.key;
-
+        const url = "https://us.api.battle.net/wow/auction/data/" + wowServer + "?locale=en_US&apikey="+ API_KEY.key;
+        console.log("Initial URL: " + url);
         prequest(url).then(function (data) {
             if (data === undefined) {
                 console.error(Date.now() + " ERROR " + data);
@@ -26,17 +30,23 @@ async function callBlizzardAH(){
 
                 // Gets the current auctions for the servers Auction House
                 prequest(url2).then(function (dat) {
-                    console.log("url2 returned: " + dat);
+                    console.log("url2 returned: ");
                     if (dat === undefined) {
-                        console.error(Date.now() + " ERROR " + data);
+                        console.error(Date.now() + " ERROR returned undefined " + data);
                         resolve(0);
                     } else if (dat.auctions.length === 0) {
-                        console.error(Date.now() + " ERROR " + data);
+                        console.error(Date.now() + " ERROR no auctions data" + data);
                         resolve(0);
                     } else {
-                        console.log("Amount of auctions: " + dat.auctions.length);
-                        resolve (parseAHData(data.auctions));
+                        const length = dat.auctions.length;
+                        console.log("Amount of auctions: " + length);
+                        saveAHData(dat.auctions);
+                        resolve (1);
                     }
+                }).catch(function (err) {
+                    console.error(Date.now() + " ERROR with second url: ");
+                    console.error(err);
+                    resolve(0);
                 });
             }
         }).catch(function (err) {
@@ -46,24 +56,35 @@ async function callBlizzardAH(){
         });
     })
 }
-
-
-// gets the data we want from the auction house data
 // {"auc":1591238360,"item":124437,"owner":"NAME","ownerRealm":"Frostmourne","bid":6650000,"buyout":7000000,"quantity":200,"timeLeft":"LONG","rand":0,"seed":0,"context":0},
-function parseAHData(data) {
-    let auctions = [];
-    let dat = data.filter(f => itemIds.includes(f.item));
-    console.log(dat);
-}
 
-/**
- * var arr = [{id: 1, name: ""},{id: 2, name:""},{id: 3, name:""},{id: 4, name:""},
- {id: 4, name:""},{id: 4, name:""},{id: 2, name:""},{id: 1, name:""},
- {id: 3, name:""},{id: 4, name:""},{id: 2, name:""}],
- brr = [4,2],
- res = arr.filter(f => brr.includes(f.id));
- console.log(res);
- */
+function saveAHData(data) {
+    console.log(Date.now() + " Parsing AH data");
+    let auctions = [];
+    data.forEach(function (d) {
+        // console.log(d.auc);
+        let obj = {
+            auc: d.auc,
+            item: d.item,
+            owner: d.owner,
+            ownerRealm: d.ownerRealm,
+            bid: d.bid,
+            buyout: d.buyout,
+            quantity: d.quantity,
+            timeLeft: d.timeLeft,
+        };
+        auctions.push(obj);
+    });
+
+        // bookshelf.knex.batchInsert("auctions", auctions)
+        //     .then(function () {
+        //         console.log(message + ' ' + (new Date() - timestamp) + 'ms');
+        //     })
+        //     .catch(function (err) {
+        //         console.error(Date.now() + " ERROR SAVING TO DB");
+        //         console.error(err);
+        //     });
+}
 
 const itemIds = [
     133579,
