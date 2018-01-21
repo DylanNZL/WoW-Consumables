@@ -1,8 +1,6 @@
 const API_KEY = require("./api_key.js");
 // const wowServer = "frostmourne"; // Change to any NA server
 const wowServer = "amanthul"; // lowest pop oce realm for testing
-const mAuction = require("./models/auction.js");
-const bookshelf = require("./knexfile.js");
 const queue = require("./queue.js");
 
 const prequest = require('prequest');
@@ -10,8 +8,6 @@ const prequest = require('prequest');
 
 async function foodAHData() {
     let data = await callBlizzardAH();
-    // TODO: save
-    // console.log(data);
 }
 // sends a request to blizzard api for intial request for AH data for the specified server
 async function callBlizzardAH() {
