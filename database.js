@@ -12,14 +12,14 @@ function insertOrUpdateAuction(auction) {
     }
 }
 
-async function retrieveItem(itemID) {
-    const query = "SELECT * FROM auctions WHERE item =" + itemID;
+async function retrieveItem(itemID, excludeQuantity) {
+    const query = "SELECT * FROM auctions WHERE item =" + itemID + " AND quantity > " + excludeQuantity;
     return new Promise ((resolve, reject) => {
         bookshelf.knex.raw(query).then(function (data) {
             //console.log(data.rows);
             resolve(data.rows);
         }).catch(function (err) {
-            console.error("getOutfitLeaderboardDefenses " + err);
+            console.error(Date.now() + " retrieveItem " + err);
             resolve(0);
         })
     })

@@ -43,9 +43,9 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+  console.error(Date.now() + err);
 });
 
-
-blizzardApi.foodAHData();
+// blizzardApi.getAHData(); // uncomment to refresh auction house
 
 module.exports = app;

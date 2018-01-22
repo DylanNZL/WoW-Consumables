@@ -6,7 +6,7 @@ const queue = require("./queue.js");
 const prequest = require('prequest');
 
 
-async function foodAHData() {
+async function getAHData() {
     let data = await callBlizzardAH();
 }
 // sends a request to blizzard api for intial request for AH data for the specified server
@@ -128,4 +128,4 @@ function loadItemsDB() {
 
 }
 
-exports.foodAHData = foodAHData;
+exports.getAHData = getAHData;

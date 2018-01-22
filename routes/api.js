@@ -19,8 +19,14 @@ router.get('/', async (req, res, next) => {
 // Retrieves the requested items auctions from the database
 async function retrieveItem(req, res, next) {
     let itemID = 0;
-    if (req.query.itemID !== undefined && req.query.itemID > 0) { itemID = req.query.itemID; }
-    let data = await database.retrieveItem(itemID);
+    if (req.query.itemID !== undefined && req.query.itemID > 0) {
+        itemID = req.query.itemID;
+    }
+    let excludeQuantity = 0;
+    if (req.query.excludeQuantity > 0) {
+        excludeQuantity = req.query.excludeQuantity;
+    }
+    let data = await database.retrieveItem(itemID, excludeQuantity);
 
     let json = {};
     if (data === 0) {
