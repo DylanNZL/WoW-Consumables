@@ -43,112 +43,165 @@
             <!-- Ranks for each item involved in creating the feast -->
 
             <!-- Lavish Suramar Feast -->
-            <div id="suramarRank">
-                <div class="form-check form-check-inline">
-                    <p>Lavish Suramar Feast Rank: </p>
+            <div id="feastRanks">
+                <div class="form-group" v-if="current.ranks.feast === 1">
+                    <label for="feastRank">Lavish Suramar Feast Rank: </label>
+                    <select class="form-control-inline" id="feastRank">
+                        <option selected>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input v-if="current.ranks.feast === 1" class="form-check-input" type="radio" name="suramarRank" id="suramarRank1" value="rank1">
-                    <input class="form-check-input" type="radio" name="suramarRank" id="suramarRank1" value="rank1">
-                    <label class="form-check-label" for="suramarRank1">1</label>
+                <div class="form-group" v-if="current.ranks.feast === 2">
+                    <label for="feastRank">Lavish Suramar Feast Rank: </label>
+                    <select class="form-control-inline" id="feastRank">
+                        <option>1</option>
+                        <option selected>2</option>
+                        <option>3</option>
+                    </select>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="suramarRank" id="suramarRank2" value="rank2">
-                    <label class="form-check-label" for="suramarRank2">2</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="suramarRank" id="suramarRank3" value="rank3" checked>
-                    <label class="form-check-label" for="suramarRank3">3</label>
+                <div class="form-group" v-if="current.ranks.feast === 3">
+                    <label for="feastRank">Lavish Suramar Feast Rank: </label>
+                    <select class="form-control-inline" id="feastRank">
+                        <option>1</option>
+                        <option>2</option>
+                        <option selected>3</option>
+                    </select>
                 </div>
             </div>
             <!-- Leybeque Ribs -->
-            <div id="leybequeRank">
-                <div class="form-check form-check-inline">
-                    <p>Leybeque Ribs Rank: </p>
+            <div id="leybequeRanks">
+                <div class="form-group" v-if="current.ranks.ribs === 1">
+                    <label for="leybequeRank">Leybeque Ribs Rank: </label>
+                    <select class="form-control-inline" id="leybequeRank">
+                        <option selected>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="leybequeRank" id="leybequeRank1" value="rank1">
-                    <label class="form-check-label" for="leybequeRank1">1</label>
+                <div class="form-group" v-if="current.ranks.ribs === 2">
+                    <label for="leybequeRank">Leybeque Ribs Rank: </label>
+                    <select class="form-control-inline" id="leybequeRank">
+                        <option>1</option>
+                        <option selected>2</option>
+                        <option>3</option>
+                    </select>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="leybequeRank" id="leybequeRank2" value="rank2">
-                    <label class="form-check-label" for="leybequeRank2">2</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="leybequeRank" id="leybequeRank3" value="rank3" checked>
-                    <label class="form-check-label" for="leybequeRank3">3</label>
+                <div class="form-group" v-if="current.ranks.ribs === 3">
+                    <label for="leybequeRank">Leybeque Ribs Rank: </label>
+                    <select class="form-control-inline" id="leybequeRank">
+                        <option>1</option>
+                        <option>2</option>
+                        <option selected>3</option>
+                    </select>
                 </div>
             </div>
             <!-- Suramar Surf and Turf -->
-            <div id="surfTurfRank">
-                <div class="form-check form-check-inline">
-                    <p>Suramar Surf and Turf Rank: </p>
+            <div id="surfTurfRanks">
+                <div class="form-group" v-if="current.ranks.surfTurf === 1">
+                    <label for="surfTurfRank">Suramar Surf and Turd Rank: </label>
+                    <select class="form-control-inline" id="surfTurfRank">
+                        <option selected>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="surfTurfRank" id="surfTurfRank1" value="rank1">
-                    <label class="form-check-label" for="surfTurfRank1">1</label>
+                <div class="form-group" v-if="current.ranks.surfTurf === 2">
+                    <label for="surfTurfRank">Suramar Surf and Turd Rank: </label>
+                    <select class="form-control-inline" id="surfTurfRank">
+                        <option>1</option>
+                        <option selected>2</option>
+                        <option>3</option>
+                    </select>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="surfTurfRank" id="surfTurfRank2" value="rank2">
-                    <label class="form-check-label" for="surfTurfRank2">2</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="surfTurfRank" id="surfTurfRank3" value="rank3" checked>
-                    <label class="form-check-label" for="surfTurfRank3">3</label>
+                <div class="form-group" v-if="current.ranks.surfTurf === 3">
+                    <label for="surfTurfRank">Suramar Surf and Turd Rank: </label>
+                    <select class="form-control-inline" id="surfTurfRank">
+                        <option>1</option>
+                        <option>2</option>
+                        <option selected>3</option>
+                    </select>
                 </div>
             </div>
             <!-- Barracuda Mrglgagh -->
-            <div id="barracudaRank">
-                <div class="form-check form-check-inline">
-                    <p>Barracuda Mrglgagh Rank: </p>
+            <div id="barracudaRanks">
+                <div class="form-group" v-if="current.ranks.barracuda === 1">
+                    <label for="barracudaRank">Barracuda Mrglgagh Rank: </label>
+                    <select class="form-control-inline" id="barracudaRank">
+                        <option selected>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="barracudaRank" id="barracudaRank1" value="rank1">
-                    <label class="form-check-label" for="barracudaRank1">1</label>
+                <div class="form-group" v-if="current.ranks.barracuda === 2">
+                    <label for="barracudaRank">Barracuda Mrglgagh Rank: </label>
+                    <select class="form-control-inline" id="barracudaRank">
+                        <option>1</option>
+                        <option selected>2</option>
+                        <option>3</option>
+                    </select>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="barracudaRank" id="barracudaRank2" value="rank2">
-                    <label class="form-check-label" for="barracudaRank2">2</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="barracudaRank" id="barracudaRank3" value="rank3" checked>
-                    <label class="form-check-label" for="barracudaRank3">3</label>
+                <div class="form-group" v-if="current.ranks.barracuda === 3">
+                    <label for="barracudaRank">Barracuda Mrglgagh Rank: </label>
+                    <select class="form-control-inline" id="barracudaRank">
+                        <option>1</option>
+                        <option>2</option>
+                        <option selected>3</option>
+                    </select>
                 </div>
             </div>
             <!-- Koi-Scented Stormray -->
-            <div id="stormrayRank">
-                <div class="form-check form-check-inline">
-                    <p>Koi-Scented Stormray Rank: </p>
+            <div id="stormrayRanks">
+                <div class="form-group" v-if="current.ranks.stormray === 1">
+                    <label for="stormrayRank">Koi-Scented Stormray Rank: </label>
+                    <select class="form-control-inline" id="stormrayRank">
+                        <option selected>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="stormrayRank" id="stormrayRank1" value="rank1">
-                    <label class="form-check-label" for="stormrayRank1">1</label>
+                <div class="form-group" v-if="current.ranks.stormray === 2">
+                    <label for="stormrayRank">Koi-Scented Stormray Rank: </label>
+                    <select class="form-control-inline" id="stormrayRank">
+                        <option>1</option>
+                        <option selected>2</option>
+                        <option>3</option>
+                    </select>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="stormrayRank" id="stormrayRank2" value="rank2">
-                    <label class="form-check-label" for="stormrayRank2">2</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="stormrayRank" id="stormrayRank3" value="rank3" checked>
-                    <label class="form-check-label" for="stormrayRank3">3</label>
+                <div class="form-group" v-if="current.ranks.stormray === 3">
+                    <label for="stormrayRank">Koi-Scented Stormray Rank: </label>
+                    <select class="form-control-inline" id="stormrayRank">
+                        <option>1</option>
+                        <option>2</option>
+                        <option selected>3</option>
+                    </select>
                 </div>
             </div>
             <!-- Drogbar Style Salmon -->
-            <div id="drogbarRank">
-                <div class="form-check form-check-inline">
-                    <p>Drogbar Style Salmon Rank: </p>
+            <div id="drogbarRanks">
+                <div class="form-group" v-if="current.ranks.salmon === 1">
+                    <label for="drogbarRank">Drogbar Style Salmon Rank: </label>
+                    <select class="form-control-inline" id="drogbarRank">
+                        <option selected>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="drogbarRank" id="drogbarRank1" value="rank1">
-                    <label class="form-check-label" for="drogbarRank1">1</label>
+                <div class="form-group" v-if="current.ranks.salmon === 2">
+                    <label for="drogbarRank">Drogbar Style Salmon Rank: </label>
+                    <select class="form-control-inline" id="drogbarRank">
+                        <option>1</option>
+                        <option selected>2</option>
+                        <option>3</option>
+                    </select>
                 </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="drogbarRank" id="drogbarRank2" value="rank2">
-                    <label class="form-check-label" for="drogbarRank2">2</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="drogbarRank" id="drogbarRank3" value="rank3" checked>
-                    <label class="form-check-label" for="drogbarRank3">3</label>
+                <div class="form-group" v-if="current.ranks.salmon === 3">
+                    <label for="drogbarRank">Drogbar Style Salmon Rank: </label>
+                    <select class="form-control-inline" id="drogbarRank">
+                        <option>1</option>
+                        <option>2</option>
+                        <option selected>3</option>
+                    </select>
                 </div>
             </div>
         </div>

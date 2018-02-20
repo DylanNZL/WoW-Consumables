@@ -43,8 +43,7 @@ new Vue({
                 dataType: "jsonp",
                 url: url
             }).done(function (data) {
-                console.log(data);
-                console.log("asdlnadsflkjn");
+                // console.log(data);
                 vthis.suramar.data = data;
                 vthis.suramar.data.items.forEach(function(item) {
                     item.averageBuyout = averageBuyout(item.auctions);
@@ -58,7 +57,7 @@ new Vue({
                 dataType: "jsonp",
                 url: url
             }).done(function (data) {
-                console.log(data);
+                // console.log(data);
                 vthis.hearty.data = data;
                 vthis.hearty.data.items.forEach(function(item) {
                     item.averageBuyout = averageBuyout(item.auctions);
@@ -90,6 +89,7 @@ new Vue({
     mounted: function() {
         this.loadSuramarPrices();
         this.loadHeartyPrices();
+        console.log(this.suramar);
     }
 });
 
