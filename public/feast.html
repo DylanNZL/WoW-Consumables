@@ -24,179 +24,23 @@
             <h3>Recipe Ranks</h3>
 
             <!-- Ranks for each item involved in creating the feast -->
-
-            <!-- Lavish Suramar Feast -->
-            <div id="feastRanks">
-                <div class="form-group" v-if="suramar.ranks.feast === 1">
-                    <label for="feastRank">Lavish Suramar Feast Rank: </label>
-                    <select v-model="feastRankChange" v-on:change="feastRank(feastRankChange)" class="form-control-inline" id="feastRank">
-                        <option value="1" selected>1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-                <div class="form-group" v-if="suramar.ranks.feast === 2">
-                    <label for="feastRank">Lavish Suramar Feast Rank: </label>
-                    <select v-model="feastRankChange" v-on:change="feastRank(feastRankChange)" class="form-control-inline" id="feastRank">
-                        <option value="1">1</option>
-                        <option value="2" selected>2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-                <div class="form-group" v-if="suramar.ranks.feast === 3">
-                    <label for="feastRank">Lavish Suramar Feast Rank: </label>
-                    <select v-model="feastRankChange" v-on:change="feastRank(feastRankChange)" class="form-control-inline" id="feastRank">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3" selected>3</option>
-                    </select>
-                </div>
-            </div>
-            <!-- Leybeque Ribs -->
-            <div id="leybequeRanks">
-                <div class="form-group" v-if="suramar.ranks.ribs === 1">
-                    <label for="leybequeRank">Leybeque Ribs Rank: </label>
-                    <select v-model="ribsRankChange" v-on:change="ribsRank(ribsRankChange)" class="form-control-inline" id="leybequeRank">
-                        <option value="1" selected>1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-                <div class="form-group" v-if="suramar.ranks.ribs === 2">
-                    <label for="leybequeRank">Leybeque Ribs Rank: </label>
-                    <select v-model="ribsRankChange" v-on:change="ribsRank(ribsRankChange)" class="form-control-inline" id="leybequeRank">
-                        <option value="1">1</option>
-                        <option value="2" selected>2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-                <div class="form-group" v-if="suramar.ranks.ribs === 3">
-                    <label for="leybequeRank">Leybeque Ribs Rank: </label>
-                    <select v-model="ribsRankChange" v-on:change="ribsRank(ribsRankChange)" class="form-control-inline" id="leybequeRank">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3" selected>3</option>
-                    </select>
-                </div>
-            </div>
-            <!-- Suramar Surf and Turf -->
-            <div id="surfTurfRanks">
-                <div class="form-group" v-if="suramar.ranks.surfTurf === 1">
-                    <label for="surfTurfRank">Suramar Surf and Turd Rank: </label>
-                    <select class="form-control-inline" id="surfTurfRank">
-                        <option value="1" selected>1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-                <div class="form-group" v-if="suramar.ranks.surfTurf === 2">
-                    <label for="surfTurfRank">Suramar Surf and Turd Rank: </label>
-                    <select class="form-control-inline" id="surfTurfRank">
-                        <option value="1">1</option>
-                        <option value="2" selected>2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-                <div class="form-group" v-if="suramar.ranks.surfTurf === 3">
-                    <label for="surfTurfRank">Suramar Surf and Turd Rank: </label>
-                    <select class="form-control-inline" id="surfTurfRank">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3" selected>3</option>
-                    </select>
-                </div>
-            </div>
-            <!-- Barracuda Mrglgagh -->
-            <div id="barracudaRanks">
-                <div class="form-group" v-if="suramar.ranks.barracuda === 1">
-                    <label for="barracudaRank">Barracuda Mrglgagh Rank: </label>
-                    <select class="form-control-inline" id="barracudaRank">
-                        <option value="1" selected>1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-                <div class="form-group" v-if="suramar.ranks.barracuda === 2">
-                    <label for="barracudaRank">Barracuda Mrglgagh Rank: </label>
-                    <select class="form-control-inline" id="barracudaRank">
-                        <option value="1">1</option>
-                        <option value="2" selected>2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-                <div class="form-group" v-if="suramar.ranks.barracuda === 3">
-                    <label for="barracudaRank">Barracuda Mrglgagh Rank: </label>
-                    <select class="form-control-inline" id="barracudaRank">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3" selected>3</option>
-                    </select>
-                </div>
-            </div>
-            <!-- Koi-Scented Stormray -->
-            <div id="stormrayRanks">
-                <div class="form-group" v-if="suramar.ranks.stormray === 1">
-                    <label for="stormrayRank">Koi-Scented Stormray Rank: </label>
-                    <select class="form-control-inline" id="stormrayRank">
-                        <option value="1" selected>1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-                <div class="form-group" v-if="suramar.ranks.stormray === 2">
-                    <label for="stormrayRank">Koi-Scented Stormray Rank: </label>
-                    <select class="form-control-inline" id="stormrayRank">
-                        <option value="1">1</option>
-                        <option value="2" selected>2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-                <div class="form-group" v-if="suramar.ranks.stormray === 3">
-                    <label for="stormrayRank">Koi-Scented Stormray Rank: </label>
-                    <select class="form-control-inline" id="stormrayRank">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3" selected>3</option>
-                    </select>
-                </div>
-            </div>
-            <!-- Drogbar Style Salmon -->
-            <div id="drogbarRanks">
-                <div class="form-group" v-if="suramar.ranks.salmon === 1">
-                    <label for="drogbarRank">Drogbar Style Salmon Rank: </label>
-                    <select class="form-control-inline" id="drogbarRank">
-                        <option value="1" selected>1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-                <div class="form-group" v-if="suramar.ranks.salmon === 2">
-                    <label for="drogbarRank">Drogbar Style Salmon Rank: </label>
-                    <select class="form-control-inline" id="drogbarRank">
-                        <option value="1">1</option>
-                        <option value="2" selected>2</option>
-                        <option value="3">3</option>
-                    </select>
-                </div>
-                <div class="form-group" v-if="suramar.ranks.salmon === 3">
-                    <label for="drogbarRank">Drogbar Style Salmon Rank: </label>
-                    <select class="form-control-inline" id="drogbarRank">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3" selected>3</option>
-                    </select>
-                </div>
-            </div>
+            <!--<p>{{suramar.recipeRank.feast}}</p>-->
+            <recipe-rank :data="suramar.recipeRank.feast"></recipe-rank>
+            <recipe-rank :data="suramar.recipeRank.ribs"></recipe-rank>
+            <recipe-rank :data="suramar.recipeRank.surfTurf"></recipe-rank>
+            <recipe-rank :data="suramar.recipeRank.barracuda"></recipe-rank>
+            <recipe-rank :data="suramar.recipeRank.stormray"></recipe-rank>
+            <recipe-rank :data="suramar.recipeRank.salmon"></recipe-rank>
         </div>
 
         <div id="suramarFeastCosts" class="col-md-6 inline">
             <h3>Costs</h3>
 
-            <p>Buying the feast off the Auction House: $</p>
+            <p>Buying the feast off the Auction House: $ {{ suramar.costs.buyFeast }}</p>
 
-            <p>Buying food and crafting just the feast: $</p>
+            <p>Buying food and crafting just the feast: $ {{ suramar.costs.buyFeast }}</p>
 
-            <p>Buying ingredients to craft all: $</p>
+            <p>Buying ingredients to craft all: $ {{ suramar.costs.buyFeast }}</p>
 
             <p>Cheapest option: $</p>
 
@@ -216,18 +60,33 @@
 </footer>
 
 <!-- Vue.js Templates -->
-<template id="suramar-template">
+
+<template id="rrank-template">
     <div>
-        <label for="drogbarRank">Drogbar Style Salmon Rank: </label>
-        <select class="form-control-inline" id="drogbarRank">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3" selected>3</option>
+        <!--<p>{{data}}</p>-->
+        <label>{{ data.label }}:</label>
+        <select v-model="data.selected" class="form-control-inline">
+            <option v-for="option in data.options" :value="option.value">
+                {{ option.text }}
+            </option>
         </select>
     </div>
 </template>
 
+<script id="rank-template" type="x-template">
+    <div>
+        <!--<p>{{data}}</p>-->
+        <label>{{ data.label }}:</label>
+        <select v-model="data.selected" class="form-control-inline">
+            <option v-for="option in data.options" :value="option.value">
+                {{ option.text }}
+            </option>
+        </select>
+    </div>
+</script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
+<script src="https://unpkg.com/vue-select@latest"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="/js/feast.js"></script>

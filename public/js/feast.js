@@ -1,16 +1,78 @@
+Vue.component('recipe-rank', {
+    template: "#rrank-template",
+    props: ["data"],
+    // data: function() {
+    //     return {
+    //         data: {
+    //             selected: 1,
+    //             options:[],
+    //             label: "Default"
+    //         }
+    //     }
+    // }
+});
+
 let eventHub = new Vue();
 
 new Vue({
     el: '#app',
     data: {
         suramar : {
-            ranks: {
-                feast: 3,
-                ribs: 3,
-                surfTurf: 3,
-                barracuda: 3,
-                stormray: 3,
-                salmon: 3
+            recipeRank: {
+                feast: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ],
+                    label: "Lavish Suramar Feast"
+                },
+                ribs: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ],
+                    label: "Leybeque Ribs"
+                },
+                surfTurf: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ],
+                    label: "Suramar Surf and Turf"
+                },
+                barracuda:{
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ],
+                    label: "Barracuda Mrglgagh"
+                },
+                stormray:{
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ],
+                    label: "Koi-Scented Stormray"
+                },
+                salmon: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ],
+                    label: "Drogbar Style Salmon"
+                },
             },
             items: 0,
             costs: {
@@ -46,6 +108,7 @@ new Vue({
                 vthis.suramar.costs.buyFeast = vthis.suramar.items[0].buyout;
                 vthis.suramarBuyFood();
                 vthis.suramarBuyIngredients();
+                console.log(data);
             })
         },
         loadHeartyPrices: function () {
