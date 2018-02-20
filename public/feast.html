@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <title>WoW Feast Prices</title>
 
@@ -16,23 +16,6 @@
 <body>
 
 <div id="app">
-    <s-template v-on:getSuramarFeastData="getSuramarFeastData" :current="suramar">
-
-    </s-template>
-</div>
-
-
-<hr class="feature-divider">
-<footer>
-    <p class="pull-right"><a href="/api/">Stats API</a></p>
-    <p>Developed by Dylan Cross (DylanNZ) and Jared Hall (MonoNZ) ·
-        <a href="https://github.com/FCLM/BSNO">Code</a> ·
-        <a href="https://fifthcolumngaming.com">FCLM</a>
-    </p>
-</footer>
-
-<!-- Vue.js Templates -->
-<template id="suramar-template">
     <div id="suramarFeast" class="col-md-12">
         <!--<h1>{{ current }}</h1>-->
 
@@ -44,163 +27,163 @@
 
             <!-- Lavish Suramar Feast -->
             <div id="feastRanks">
-                <div class="form-group" v-if="current.ranks.feast === 1">
+                <div class="form-group" v-if="suramar.ranks.feast === 1">
                     <label for="feastRank">Lavish Suramar Feast Rank: </label>
-                    <select class="form-control-inline" id="feastRank">
-                        <option selected>1</option>
-                        <option>2</option>
-                        <option>3</option>
+                    <select v-model="feastRankChange" v-on:change="feastRank(feastRankChange)" class="form-control-inline" id="feastRank">
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
                 </div>
-                <div class="form-group" v-if="current.ranks.feast === 2">
+                <div class="form-group" v-if="suramar.ranks.feast === 2">
                     <label for="feastRank">Lavish Suramar Feast Rank: </label>
-                    <select class="form-control-inline" id="feastRank">
-                        <option>1</option>
-                        <option selected>2</option>
-                        <option>3</option>
+                    <select v-model="feastRankChange" v-on:change="feastRank(feastRankChange)" class="form-control-inline" id="feastRank">
+                        <option value="1">1</option>
+                        <option value="2" selected>2</option>
+                        <option value="3">3</option>
                     </select>
                 </div>
-                <div class="form-group" v-if="current.ranks.feast === 3">
+                <div class="form-group" v-if="suramar.ranks.feast === 3">
                     <label for="feastRank">Lavish Suramar Feast Rank: </label>
-                    <select class="form-control-inline" id="feastRank">
-                        <option>1</option>
-                        <option>2</option>
-                        <option selected>3</option>
+                    <select v-model="feastRankChange" v-on:change="feastRank(feastRankChange)" class="form-control-inline" id="feastRank">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" selected>3</option>
                     </select>
                 </div>
             </div>
             <!-- Leybeque Ribs -->
             <div id="leybequeRanks">
-                <div class="form-group" v-if="current.ranks.ribs === 1">
+                <div class="form-group" v-if="suramar.ranks.ribs === 1">
                     <label for="leybequeRank">Leybeque Ribs Rank: </label>
-                    <select class="form-control-inline" id="leybequeRank">
-                        <option selected>1</option>
-                        <option>2</option>
-                        <option>3</option>
+                    <select v-model="ribsRankChange" v-on:change="ribsRank(ribsRankChange)" class="form-control-inline" id="leybequeRank">
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
                 </div>
-                <div class="form-group" v-if="current.ranks.ribs === 2">
+                <div class="form-group" v-if="suramar.ranks.ribs === 2">
                     <label for="leybequeRank">Leybeque Ribs Rank: </label>
-                    <select class="form-control-inline" id="leybequeRank">
-                        <option>1</option>
-                        <option selected>2</option>
-                        <option>3</option>
+                    <select v-model="ribsRankChange" v-on:change="ribsRank(ribsRankChange)" class="form-control-inline" id="leybequeRank">
+                        <option value="1">1</option>
+                        <option value="2" selected>2</option>
+                        <option value="3">3</option>
                     </select>
                 </div>
-                <div class="form-group" v-if="current.ranks.ribs === 3">
+                <div class="form-group" v-if="suramar.ranks.ribs === 3">
                     <label for="leybequeRank">Leybeque Ribs Rank: </label>
-                    <select class="form-control-inline" id="leybequeRank">
-                        <option>1</option>
-                        <option>2</option>
-                        <option selected>3</option>
+                    <select v-model="ribsRankChange" v-on:change="ribsRank(ribsRankChange)" class="form-control-inline" id="leybequeRank">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" selected>3</option>
                     </select>
                 </div>
             </div>
             <!-- Suramar Surf and Turf -->
             <div id="surfTurfRanks">
-                <div class="form-group" v-if="current.ranks.surfTurf === 1">
+                <div class="form-group" v-if="suramar.ranks.surfTurf === 1">
                     <label for="surfTurfRank">Suramar Surf and Turd Rank: </label>
                     <select class="form-control-inline" id="surfTurfRank">
-                        <option selected>1</option>
-                        <option>2</option>
-                        <option>3</option>
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
                 </div>
-                <div class="form-group" v-if="current.ranks.surfTurf === 2">
+                <div class="form-group" v-if="suramar.ranks.surfTurf === 2">
                     <label for="surfTurfRank">Suramar Surf and Turd Rank: </label>
                     <select class="form-control-inline" id="surfTurfRank">
-                        <option>1</option>
-                        <option selected>2</option>
-                        <option>3</option>
+                        <option value="1">1</option>
+                        <option value="2" selected>2</option>
+                        <option value="3">3</option>
                     </select>
                 </div>
-                <div class="form-group" v-if="current.ranks.surfTurf === 3">
+                <div class="form-group" v-if="suramar.ranks.surfTurf === 3">
                     <label for="surfTurfRank">Suramar Surf and Turd Rank: </label>
                     <select class="form-control-inline" id="surfTurfRank">
-                        <option>1</option>
-                        <option>2</option>
-                        <option selected>3</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" selected>3</option>
                     </select>
                 </div>
             </div>
             <!-- Barracuda Mrglgagh -->
             <div id="barracudaRanks">
-                <div class="form-group" v-if="current.ranks.barracuda === 1">
+                <div class="form-group" v-if="suramar.ranks.barracuda === 1">
                     <label for="barracudaRank">Barracuda Mrglgagh Rank: </label>
                     <select class="form-control-inline" id="barracudaRank">
-                        <option selected>1</option>
-                        <option>2</option>
-                        <option>3</option>
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
                 </div>
-                <div class="form-group" v-if="current.ranks.barracuda === 2">
+                <div class="form-group" v-if="suramar.ranks.barracuda === 2">
                     <label for="barracudaRank">Barracuda Mrglgagh Rank: </label>
                     <select class="form-control-inline" id="barracudaRank">
-                        <option>1</option>
-                        <option selected>2</option>
-                        <option>3</option>
+                        <option value="1">1</option>
+                        <option value="2" selected>2</option>
+                        <option value="3">3</option>
                     </select>
                 </div>
-                <div class="form-group" v-if="current.ranks.barracuda === 3">
+                <div class="form-group" v-if="suramar.ranks.barracuda === 3">
                     <label for="barracudaRank">Barracuda Mrglgagh Rank: </label>
                     <select class="form-control-inline" id="barracudaRank">
-                        <option>1</option>
-                        <option>2</option>
-                        <option selected>3</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" selected>3</option>
                     </select>
                 </div>
             </div>
             <!-- Koi-Scented Stormray -->
             <div id="stormrayRanks">
-                <div class="form-group" v-if="current.ranks.stormray === 1">
+                <div class="form-group" v-if="suramar.ranks.stormray === 1">
                     <label for="stormrayRank">Koi-Scented Stormray Rank: </label>
                     <select class="form-control-inline" id="stormrayRank">
-                        <option selected>1</option>
-                        <option>2</option>
-                        <option>3</option>
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
                 </div>
-                <div class="form-group" v-if="current.ranks.stormray === 2">
+                <div class="form-group" v-if="suramar.ranks.stormray === 2">
                     <label for="stormrayRank">Koi-Scented Stormray Rank: </label>
                     <select class="form-control-inline" id="stormrayRank">
-                        <option>1</option>
-                        <option selected>2</option>
-                        <option>3</option>
+                        <option value="1">1</option>
+                        <option value="2" selected>2</option>
+                        <option value="3">3</option>
                     </select>
                 </div>
-                <div class="form-group" v-if="current.ranks.stormray === 3">
+                <div class="form-group" v-if="suramar.ranks.stormray === 3">
                     <label for="stormrayRank">Koi-Scented Stormray Rank: </label>
                     <select class="form-control-inline" id="stormrayRank">
-                        <option>1</option>
-                        <option>2</option>
-                        <option selected>3</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" selected>3</option>
                     </select>
                 </div>
             </div>
             <!-- Drogbar Style Salmon -->
             <div id="drogbarRanks">
-                <div class="form-group" v-if="current.ranks.salmon === 1">
+                <div class="form-group" v-if="suramar.ranks.salmon === 1">
                     <label for="drogbarRank">Drogbar Style Salmon Rank: </label>
                     <select class="form-control-inline" id="drogbarRank">
-                        <option selected>1</option>
-                        <option>2</option>
-                        <option>3</option>
+                        <option value="1" selected>1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
                     </select>
                 </div>
-                <div class="form-group" v-if="current.ranks.salmon === 2">
+                <div class="form-group" v-if="suramar.ranks.salmon === 2">
                     <label for="drogbarRank">Drogbar Style Salmon Rank: </label>
                     <select class="form-control-inline" id="drogbarRank">
-                        <option>1</option>
-                        <option selected>2</option>
-                        <option>3</option>
+                        <option value="1">1</option>
+                        <option value="2" selected>2</option>
+                        <option value="3">3</option>
                     </select>
                 </div>
-                <div class="form-group" v-if="current.ranks.salmon === 3">
+                <div class="form-group" v-if="suramar.ranks.salmon === 3">
                     <label for="drogbarRank">Drogbar Style Salmon Rank: </label>
                     <select class="form-control-inline" id="drogbarRank">
-                        <option>1</option>
-                        <option>2</option>
-                        <option selected>3</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" selected>3</option>
                     </select>
                 </div>
             </div>
@@ -219,6 +202,28 @@
 
             <p>Note: all prices are based on the average buyout for each item, meaning you might be able to find a cheaper option</p>
         </div>
+    </div>
+</div>
+
+
+<hr class="feature-divider">
+<footer>
+    <p class="pull-right"><a href="/api/">Stats API</a></p>
+    <p>Developed by Dylan Cross (DylanNZ) and Jared Hall (MonoNZ) ·
+        <a href="https://github.com/FCLM/BSNO">Code</a> ·
+        <a href="https://fifthcolumngaming.com">FCLM</a>
+    </p>
+</footer>
+
+<!-- Vue.js Templates -->
+<template id="suramar-template">
+    <div>
+        <label for="drogbarRank">Drogbar Style Salmon Rank: </label>
+        <select class="form-control-inline" id="drogbarRank">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3" selected>3</option>
+        </select>
     </div>
 </template>
 

@@ -117,7 +117,6 @@ const lavishSuramarFeastItems = [
     { "id" : 124110, "name" : "Stormray" },
     { "id" : 133569, "name" : "Drogbar Style Salmon" },
     { "id" : 124109, "name" : "Highmountain Salmon" },
-    { "id" : 133592, "name" : "Stonedark Snail" },
     { "id" : 133680, "name" : "Slice of Bacon" }
 ];
 
