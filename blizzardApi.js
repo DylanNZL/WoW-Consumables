@@ -1,10 +1,20 @@
+/**
+ * This page does all the work with the blizzard API
+ * It sends a request to get the url of the current Auction House (AH) data and the gets the file from the provided url
+ * This can take a long time because there is a lot of auctions (Frostmourne has roughly 90k)
+ *
+ * TODO:
+ *      Refresh the auction house data every so often (~2 hours):
+ *      Need to remove auctions that weren't updated in the update (timeLeft: short for longer than short is equal to)
+ */
+
+
 const API_KEY = require("./api_key.js");
 // const wowServer = "frostmourne"; // Change to any NA server
 const wowServer = "amanthul"; // lowest pop oce realm for testing
 const queue = require("./queue.js");
 
 const prequest = require('prequest');
-
 
 async function getAHData() {
     let data = await callBlizzardAH();
@@ -123,9 +133,5 @@ const itemsArray = [
     { "id" : 124121, "name" : "Wildfowl Egg" },
     { "id" : 133564, "name" : "Spiced Rib Roast" }
 ];
-
-function loadItemsDB() {
-
-}
 
 exports.getAHData = getAHData;

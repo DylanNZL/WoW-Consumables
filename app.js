@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/api*', api);
+app.use('/feast', (req, res) => { res.sendFile(path.join(__dirname + '/public/feast.html')) })
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -43,7 +44,7 @@ app.use(function(err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-  console.error(Date.now() + err);
+  console.error(Date.now() + " App Error: " + err);
 });
 
 // blizzardApi.getAHData(); // uncomment to refresh auction house
