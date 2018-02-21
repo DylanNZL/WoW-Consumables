@@ -184,9 +184,9 @@ new Vue({
                 // console.log(data);
                 vthis.suramar.items = data.items;
                 vthis.suramar.items.forEach(function(item) {
-                    item.averageBuyout = averageBuyout(item.auctions);
+                    item.buyoutData = buyoutData(item.auctions);
                 });
-                vthis.suramar.costs.buyFeast = vthis.suramar.items[0].averageBuyout;
+                vthis.suramar.costs.buyFeast = vthis.suramar.items[0].buyoutData.average;
                 vthis.suramarBuyFood();
                 vthis.suramarBuyIngredients();
 
@@ -205,9 +205,9 @@ new Vue({
                 // console.log(data);
                 vthis.hearty.items = data.items;
                 vthis.hearty.items.forEach(function(item) {
-                    item.averageBuyout = averageBuyout(item.auctions);
+                    item.buyoutData = buyoutData(item.auctions);
                 });
-                vthis.hearty.costs.buyFeast = vthis.hearty.items[0].averageBuyout;
+                vthis.hearty.costs.buyFeast = vthis.hearty.items[0].buyoutData.average;
                 vthis.heartyBuyFood();
                 vthis.heartyBuyIngredients();
                 vthis.hearty.costs.buyFeastItem = data.items[0];
@@ -217,33 +217,33 @@ new Vue({
         },
         // Works out the cost of buying the premade food to combine in to a suramar feast
         suramarBuyFood: function() {
-            if (this.suramar.items === undefined || this.suramar.recipeRank === undefined || this.suramar.items[0].averageBuyout === undefined) return 0.0;
+            if (this.suramar.items === undefined || this.suramar.recipeRank === undefined || this.suramar.items[0].buyoutData.average === undefined) return 0.0;
             const amount = 6 - this.suramar.recipeRank.feast.selected; // Rank 1 = 5 of each required, rank 2 = 4 required, rank 3 = 3 required
             let cost = 0.0;
 
             // Ribs
-            if (this.suramar.items[1].averageBuyout !== undefined) {
-                cost += this.suramar.items[1].averageBuyout * amount;
+            if (this.suramar.items[1].buyoutData.average !== undefined) {
+                cost += this.suramar.items[1].buyoutData.average * amount;
             }
             // Surf and Turf
-            if (this.suramar.items[4].averageBuyout !== undefined) {
-                cost += this.suramar.items[4].averageBuyout * amount;
+            if (this.suramar.items[4].buyoutData.average !== undefined) {
+                cost += this.suramar.items[4].buyoutData.average * amount;
             }
             // Barracuda
-            if (this.suramar.items[7].averageBuyout !== undefined) {
-                cost += this.suramar.items[7].averageBuyout * amount;
+            if (this.suramar.items[7].buyoutData.average !== undefined) {
+                cost += this.suramar.items[7].buyoutData.average * amount;
             }
             // Stormray
-            if (this.suramar.items[9].averageBuyout !== undefined) {
-                cost += this.suramar.items[9].averageBuyout * amount;
+            if (this.suramar.items[9].buyoutData.average !== undefined) {
+                cost += this.suramar.items[9].buyoutData.average * amount;
             }
             // Salmon
-            if (this.suramar.items[11].averageBuyout !== undefined) {
-                cost += this.suramar.items[11].averageBuyout * amount;
+            if (this.suramar.items[11].buyoutData.average !== undefined) {
+                cost += this.suramar.items[11].buyoutData.average * amount;
             }
             // Bacon
-            if (this.suramar.items[13].averageBuyout !== undefined) {
-                cost += this.suramar.items[13].averageBuyout * amount;
+            if (this.suramar.items[13].buyoutData.average !== undefined) {
+                cost += this.suramar.items[13].buyoutData.average * amount;
             }
 
             console.log("suramarBuyFood costs: " + cost);
@@ -257,28 +257,28 @@ new Vue({
             let cost = 0.0;
 
             // Shank
-            if (this.hearty.items[1].averageBuyout !== undefined) {
-                cost += this.hearty.items[1].averageBuyout * amount;
+            if (this.hearty.items[1].buyoutData.average !== undefined) {
+                cost += this.hearty.items[1].buyoutData.average * amount;
             }
             // Mossgill
-            if (this.hearty.items[3].averageBuyout !== undefined) {
-                cost += this.hearty.items[3].averageBuyout * amount;
+            if (this.hearty.items[3].buyoutData.average !== undefined) {
+                cost += this.hearty.items[3].buyoutData.average * amount;
             }
             // Stormray
-            if (this.hearty.items[5].averageBuyout !== undefined) {
-                cost += this.hearty.items[5].averageBuyout * amount;
+            if (this.hearty.items[5].buyoutData.average !== undefined) {
+                cost += this.hearty.items[5].buyoutData.average * amount;
             }
             // Fizz
-            if (this.hearty.items[7].averageBuyout !== undefined) {
-                cost += this.hearty.items[7].averageBuyout * amount;
+            if (this.hearty.items[7].buyoutData.average !== undefined) {
+                cost += this.hearty.items[7].buyoutData.average * amount;
             }
             // Ribs
-            if (this.hearty.items[9].averageBuyout !== undefined) {
-                cost += this.hearty.items[9].averageBuyout * amount;
+            if (this.hearty.items[9].buyoutData.average !== undefined) {
+                cost += this.hearty.items[9].buyoutData.average * amount;
             }
             // Bacon
-            if (this.hearty.items[11].averageBuyout !== undefined) {
-                cost += this.hearty.items[11].averageBuyout * amount;
+            if (this.hearty.items[11].buyoutData.average !== undefined) {
+                cost += this.hearty.items[11].buyoutData.average * amount;
             }
 
             console.log("heartyBuyFood costs: " + cost);
@@ -301,16 +301,16 @@ new Vue({
             // Ribs
             // items[2] = big gamy ribs, items[3] = leyblood
             let subCost = 0.0;
-            if (this.suramar.items[2].averageBuyout !== undefined && this.suramar.items[3].averageBuyout !== undefined) {
+            if (this.suramar.items[2].buyoutData.average !== undefined && this.suramar.items[3].buyoutData.average !== undefined) {
                 if (this.suramar.recipeRank.ribs.selected === 1) {
-                    subCost += this.suramar.items[2].averageBuyout;
-                    subCost += this.suramar.items[3].averageBuyout;
+                    subCost += this.suramar.items[2].buyoutData.average;
+                    subCost += this.suramar.items[3].buyoutData.average;
                 } else if (this.suramar.recipeRank.ribs.selected === 2) {
-                    subCost += (this.suramar.items[2].averageBuyout * 5) / 7;
-                    subCost += (this.suramar.items[3].averageBuyout * 5) / 7;
+                    subCost += (this.suramar.items[2].buyoutData.average * 5) / 7;
+                    subCost += (this.suramar.items[3].buyoutData.average * 5) / 7;
                 } else { // rank 3
-                    subCost += this.suramar.items[2].averageBuyout * 0.5;
-                    subCost += this.suramar.items[3].averageBuyout * 0.5;
+                    subCost += this.suramar.items[2].buyoutData.average * 0.5;
+                    subCost += this.suramar.items[3].buyoutData.average * 0.5;
                 }
                 cost += subCost * amount;
             }
@@ -318,16 +318,16 @@ new Vue({
             // Surf and Turf
             // items[6] = runescale koi, items[5] = lean shank
             subCost = 0.0;
-            if (this.suramar.items[6].averageBuyout !== undefined && this.suramar.items[5].averageBuyout !== undefined) {
+            if (this.suramar.items[6].buyoutData.average !== undefined && this.suramar.items[5].buyoutData.average !== undefined) {
                 if (this.suramar.recipeRank.surfTurf.selected === 1) {
-                    subCost += this.suramar.items[6].averageBuyout;
-                    subCost += this.suramar.items[5].averageBuyout;
+                    subCost += this.suramar.items[6].buyoutData.average;
+                    subCost += this.suramar.items[5].buyoutData.average;
                 } else if (this.suramar.recipeRank.surfTurf.selected === 2) {
-                    subCost += (this.suramar.items[6].averageBuyout * 5) / 7;
-                    subCost += (this.suramar.items[5].averageBuyout * 5) / 7;
+                    subCost += (this.suramar.items[6].buyoutData.average * 5) / 7;
+                    subCost += (this.suramar.items[5].buyoutData.average * 5) / 7;
                 } else { // rank 3
-                    subCost += this.suramar.items[6].averageBuyout * 0.5;
-                    subCost += this.suramar.items[5].averageBuyout * 0.5;
+                    subCost += this.suramar.items[6].buyoutData.average * 0.5;
+                    subCost += this.suramar.items[5].buyoutData.average * 0.5;
                 }
                 cost += subCost * amount;
             }
@@ -335,16 +335,16 @@ new Vue({
             // Barracuda
             // items[3] = leyblood, items[8] = black barracuda
             subCost = 0.0;
-            if (this.suramar.items[8].averageBuyout !== undefined && this.suramar.items[3].averageBuyout !== undefined) {
+            if (this.suramar.items[8].buyoutData.average !== undefined && this.suramar.items[3].buyoutData.average !== undefined) {
                 if (this.suramar.recipeRank.barracuda.selected === 1) {
-                    subCost += this.suramar.items[3].averageBuyout;
-                    subCost += this.suramar.items[8].averageBuyout;
+                    subCost += this.suramar.items[3].buyoutData.average;
+                    subCost += this.suramar.items[8].buyoutData.average;
                 } else if (this.suramar.recipeRank.barracuda.selected === 2) {
-                    subCost += (this.suramar.items[3].averageBuyout * 5) / 7;
-                    subCost += (this.suramar.items[8].averageBuyout * 5) / 7;
+                    subCost += (this.suramar.items[3].buyoutData.average * 5) / 7;
+                    subCost += (this.suramar.items[8].buyoutData.average * 5) / 7;
                 } else { // rank 3
-                    subCost += this.suramar.items[3].averageBuyout * 0.5;
-                    subCost += this.suramar.items[8].averageBuyout * 0.5;
+                    subCost += this.suramar.items[3].buyoutData.average * 0.5;
+                    subCost += this.suramar.items[8].buyoutData.average * 0.5;
                 }
                 cost += subCost * amount;
             }
@@ -352,16 +352,16 @@ new Vue({
             // Stormray
             // items[6] = runescale koi, items[10] = stormray
             subCost = 0.0;
-            if (this.suramar.items[6].averageBuyout !== undefined && this.suramar.items[10].averageBuyout !== undefined) {
+            if (this.suramar.items[6].buyoutData.average !== undefined && this.suramar.items[10].buyoutData.average !== undefined) {
                 if (this.suramar.recipeRank.stormray.selected === 1) {
-                    subCost += this.suramar.items[6].averageBuyout;
-                    subCost += this.suramar.items[10].averageBuyout;
+                    subCost += this.suramar.items[6].buyoutData.average;
+                    subCost += this.suramar.items[10].buyoutData.average;
                 } else if (this.suramar.recipeRank.stormray.selected === 2) {
-                    subCost += (this.suramar.items[6].averageBuyout * 5) / 7;
-                    subCost += (this.suramar.items[10].averageBuyout * 5) / 7;
+                    subCost += (this.suramar.items[6].buyoutData.average * 5) / 7;
+                    subCost += (this.suramar.items[10].buyoutData.average * 5) / 7;
                 } else { // rank 3
-                    subCost += this.suramar.items[6].averageBuyout * 0.5;
-                    subCost += this.suramar.items[10].averageBuyout * 0.5;
+                    subCost += this.suramar.items[6].buyoutData.average * 0.5;
+                    subCost += this.suramar.items[10].buyoutData.average * 0.5;
                 }
                 cost += subCost * amount;
             }
@@ -369,20 +369,20 @@ new Vue({
             // Salmon
             // items[12] = highmountain salmon
             subCost = 0.0;
-            if (this.suramar.items[12].averageBuyout !== undefined) {
+            if (this.suramar.items[12].buyoutData.average !== undefined) {
                 if (this.suramar.recipeRank.salmon.selected === 1) {
-                    subCost = this.suramar.items[12].averageBuyout;
+                    subCost = this.suramar.items[12].buyoutData.average;
                 } else if (this.suramar.recipeRank.salmon.selected === 2) {
-                    subCost = (this.suramar.items[12].averageBuyout * 5) / 7;
+                    subCost = (this.suramar.items[12].buyoutData.average * 5) / 7;
                 } else { // rank 3
-                    subCost = this.suramar.items[12].averageBuyout * 0.5;
+                    subCost = this.suramar.items[12].buyoutData.average * 0.5;
                 }
                 cost += subCost * amount;
             }
 
             // Bacon
-            if (this.suramar.items[13].averageBuyout !== undefined) {
-                cost += this.suramar.items[13].averageBuyout * amount;
+            if (this.suramar.items[13].buyoutData.average !== undefined) {
+                cost += this.suramar.items[13].buyoutData.average * amount;
             }
 
             console.log("suramarBuyIngredients Cost: " + cost);
@@ -404,13 +404,13 @@ new Vue({
             // Shank
             // items[2] = lean shank
             let subCost = 0.0;
-            if (this.hearty.items[2].averageBuyout !== undefined) {
+            if (this.hearty.items[2].buyoutData.average !== undefined) {
                 if (this.hearty.recipeRank.shank.selected === 1) {
-                    subCost += this.hearty.items[2].averageBuyout;
+                    subCost += this.hearty.items[2].buyoutData.average;
                 } else if (this.hearty.recipeRank.shank.selected === 2) {
-                    subCost += (this.hearty.items[2].averageBuyout * 5) / 7;
+                    subCost += (this.hearty.items[2].buyoutData.average * 5) / 7;
                 } else { // rank 3
-                    subCost += this.hearty.items[2].averageBuyout * 0.5;
+                    subCost += this.hearty.items[2].buyoutData.average * 0.5;
                 }
                 cost += subCost * amount;
             }
@@ -418,13 +418,13 @@ new Vue({
             // Mossgill
             // items[4] = mossgill perch
             subCost = 0.0;
-            if (this.hearty.items[4].averageBuyout !== undefined) {
+            if (this.hearty.items[4].buyoutData.average !== undefined) {
                 if (this.hearty.recipeRank.mossgill.selected === 1) {
-                    subCost += this.hearty.items[4].averageBuyout;
+                    subCost += this.hearty.items[4].buyoutData.average;
                 } else if (this.hearty.recipeRank.mossgill.selected === 2) {
-                    subCost += (this.hearty.items[4].averageBuyout * 5) / 7;
+                    subCost += (this.hearty.items[4].buyoutData.average * 5) / 7;
                 } else { // rank 3
-                    subCost += this.hearty.items[4].averageBuyout * 0.5;
+                    subCost += this.hearty.items[4].buyoutData.average * 0.5;
                 }
                 cost += subCost * amount;
             }
@@ -432,13 +432,13 @@ new Vue({
             // Stormray
             // items[6] = stormray
             subCost = 0.0;
-            if (this.hearty.items[6].averageBuyout !== undefined) {
+            if (this.hearty.items[6].buyoutData.average !== undefined) {
                 if (this.hearty.recipeRank.stormray.selected === 1) {
-                    subCost += this.hearty.items[6].averageBuyout;
+                    subCost += this.hearty.items[6].buyoutData.average;
                 } else if (this.hearty.recipeRank.stormray.selected === 2) {
-                    subCost += (this.hearty.items[6].averageBuyout * 5) / 7;
+                    subCost += (this.hearty.items[6].buyoutData.average * 5) / 7;
                 } else { // rank 3
-                    subCost += this.hearty.items[6].averageBuyout * 0.5;
+                    subCost += this.hearty.items[6].buyoutData.average * 0.5;
                 }
                 cost += subCost * amount;
             }
@@ -446,13 +446,13 @@ new Vue({
             // Fizz
             // items[8] = wildfowl egg
             subCost = 0.0;
-            if (this.hearty.items[8].averageBuyout !== undefined) {
+            if (this.hearty.items[8].buyoutData.average !== undefined) {
                 if (this.hearty.recipeRank.fizz.selected === 1) {
-                    subCost += this.hearty.items[8].averageBuyout;
+                    subCost += this.hearty.items[8].buyoutData.average;
                 } else if (this.hearty.recipeRank.fizz.selected === 2) {
-                    subCost += (this.hearty.items[8].averageBuyout * 5) / 7;
+                    subCost += (this.hearty.items[8].buyoutData.average * 5) / 7;
                 } else { // rank 3
-                    subCost += this.hearty.items[8].averageBuyout * 0.5;
+                    subCost += this.hearty.items[8].buyoutData.average * 0.5;
                 }
                 cost += subCost * amount;
             }
@@ -460,20 +460,20 @@ new Vue({
             // Ribs
             // items[10] = big gamy ribs
             subCost = 0.0;
-            if (this.hearty.items[10].averageBuyout !== undefined) {
+            if (this.hearty.items[10].buyoutData.average !== undefined) {
                 if (this.hearty.recipeRank.ribs.selected === 1) {
-                    subCost = this.hearty.items[10].averageBuyout;
+                    subCost = this.hearty.items[10].buyoutData.average;
                 } else if (this.hearty.recipeRank.ribs.selected === 2) {
-                    subCost = (this.hearty.items[10].averageBuyout * 5) / 7;
+                    subCost = (this.hearty.items[10].buyoutData.average * 5) / 7;
                 } else { // rank 3
-                    subCost = this.hearty.items[10].averageBuyout * 0.5;
+                    subCost = this.hearty.items[10].buyoutData.average * 0.5;
                 }
                 cost += subCost * amount;
             }
 
             // Bacon
-            if (this.hearty.items[11].averageBuyout !== undefined) {
-                cost += this.hearty.items[11].averageBuyout * amount;
+            if (this.hearty.items[11].buyoutData.average !== undefined) {
+                cost += this.hearty.items[11].buyoutData.average * amount;
             }
 
             console.log("heartyBuyIngredients Cost: " + cost);
@@ -482,11 +482,11 @@ new Vue({
         rankChange: function() {
             this.suramarBuyIngredients();
             this.suramarBuyFood();
-            this.suramar.costs.buyFeast = this.suramar.items[0].averageBuyout;
+            this.suramar.costs.buyFeast = this.suramar.items[0].buyoutData.average;
 
             this.heartyBuyIngredients();
             this.heartyBuyFood();
-            this.hearty.costs.buyFeast = this.hearty.items[0].averageBuyout;
+            this.hearty.costs.buyFeast = this.hearty.items[0].buyoutData.average;
         }
 
     },
@@ -502,19 +502,55 @@ new Vue({
     }
 });
 
-function averageBuyout(auctions) {
-    if (auctions.length === 0) return undefined;
+/**
+ * Function that analyses all the auctions of an item and returns an object containing the min,average, max buyouts and the number of auctions
+ * I only include auctions that include 20 or more items as smaller quantities will skew the price lower than what is correct for crafting large numbers
+ */
+function buyoutData(auctions) {
+    if (auctions.length === 0) {
+        return {
+            average : undefined,
+            min : undefined,
+            max : undefined,
+            count: undefined
+        }
+    }
     let count = 0;
+    let trueCount = 0;
     let average = 0.0;
+    let min = Number.MAX_SAFE_INTEGER; // Set high so any price will be lower
+    let max = 0.0;
 
     auctions.forEach(function (auction) {
-        count += auction.quantity;
-        average += auction.buyout;
+        if (auction.quantity > 19) {
+            count += auction.quantity;
+            average += auction.buyout;
+            let buyout = auction.buyout / auction.quantity;
+            if (min > buyout) { min = buyout; }
+            if (max < buyout) { max = buyout; }
+        }
+        trueCount += auction.quantity;
     });
 
-    average = average / count;
-    // divide by 10,000 to get the gold price, because blizzard store it as the copper price (100 copper = 1 silver, 100 silver = 1 gold)
-    return average / 10000;
+
+
+    if (count === 0) {
+        return {
+            average : undefined,
+            min : undefined,
+            max : undefined,
+            count: undefined
+        }
+    }
+
+    // Max, Min and average are divided by 10,000 to get the gold price, because blizzard store it as the copper price
+    // (100 copper = 1 silver, 100 silver = 1 gold)
+    return {
+        average : (average / count) / 10000,
+        min : min / 10000,
+        max : max / 10000,
+        count: trueCount
+    }
 }
 
 

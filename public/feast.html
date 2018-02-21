@@ -90,16 +90,24 @@
             <div class="table">
                 <table>
                     <thead>
-                    <th>Item</th>
-                    <th>Cost</th>
+                        <th>Item</th>
+                        <th>Cost</th>
+                        <th>Min Buyout</th>
+                        <th>Max Buyout</th>
+                        <th>Quantity Avail</th>
                     </thead>
                     <tbody>
                     <tr v-if="data.buyFeastItem !== undefined">
                         <td>{{ data.buyFeastItem.name }}</td>
-                        <td>{{ data.buyFeastItem.averageBuyout }}</td>
+                        <td>{{ data.buyFeastItem.buyoutData.average }}</td>
+                        <td>{{ data.buyFeastItem.buyoutData.min }}</td>
+                        <td>{{ data.buyFeastItem.buyoutData.max }}</td>
+                        <td>{{ data.buyFeastItem.buyoutData.count }}</td>
                     </tr>
                     </tbody>
                 </table>
+                <br>
+                <p>If an item doesn't show a cost, there are none being sold on the Auction House</p>
             </div>
         </div>
 
@@ -112,14 +120,22 @@
                     <thead>
                         <th>Item</th>
                         <th>Cost</th>
+                        <th>Min Buyout</th>
+                        <th>Max Buyout</th>
+                        <th>Quantity Avail</th>
                     </thead>
                     <tbody>
                         <tr v-for="item of data.buyFoodItems">
                             <td>{{ item.name }}</td>
-                            <td>{{ item.averageBuyout }}</td>
+                            <td>{{ item.buyoutData.average }}</td>
+                            <td>{{ item.buyoutData.min }}</td>
+                            <td>{{ item.buyoutData.max }}</td>
+                            <td>{{ item.buyoutData.count }}</td>
                         </tr>
                     </tbody>
                 </table>
+                <br>
+                <p>If an item doesn't show a cost, there are none being sold on the Auction House</p>
             </div>
         </div>
 
@@ -132,14 +148,22 @@
                     <thead>
                         <th>Item</th>
                         <th>Average Buyout</th>
+                        <th>Min Buyout</th>
+                        <th>Max Buyout</th>
+                        <th>Quantity Avail</th>
                     </thead>
                     <tbody>
                         <tr v-for="item of data.buyIngredientsItems">
                             <td>{{ item.name }}</td>
-                            <td>{{ item.averageBuyout }}</td>
+                            <td>{{ item.buyoutData.average }}</td>
+                            <td>{{ item.buyoutData.min }}</td>
+                            <td>{{ item.buyoutData.max }}</td>
+                            <td>{{ item.buyoutData.count }}</td>
                         </tr>
                     </tbody>
                 </table>
+                <br>
+                <p>If an item doesn't show a cost, there are none being sold on the Auction House</p>
             </div>
         </div>
 
