@@ -532,23 +532,24 @@ function buyoutData(auctions) {
         trueCount += auction.quantity;
     });
 
-
-
     if (count === 0) {
         return {
-            average : undefined,
-            min : undefined,
-            max : undefined,
+            average: undefined,
+            min: undefined,
+            max: undefined,
             count: undefined
         }
     }
 
     // Max, Min and average are divided by 10,000 to get the gold price, because blizzard store it as the copper price
     // (100 copper = 1 silver, 100 silver = 1 gold)
+    average = (average / count) / 10000;
+    min = min / 10000;
+    max = max / 10000;
     return {
-        average : (average / count) / 10000,
-        min : min / 10000,
-        max : max / 10000,
+        average : average.toFixed(2),
+        min : min.toFixed(2),
+        max : max.toFixed(2),
         count: trueCount
     }
 }
