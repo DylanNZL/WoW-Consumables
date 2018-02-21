@@ -83,11 +83,65 @@
     <div>
         <h5>Costs</h5>
 
-        <p>Buying the feast off the Auction House: $ {{ data.buyFeast }}</p>
+        <p>
+            <a v-on:click.prevent="data.show.buyFeast = !data.show.buyFeast" href="#">Buying the feast off the Auction House: $ {{ data.buyFeast }}</a>
+        </p>
+        <div  v-if="data.show.buyFeast">
+            <div class="table">
+                <table>
+                    <thead>
+                    <th>Item</th>
+                    <th>Cost</th>
+                    </thead>
+                    <tbody>
+                    <tr v-if="data.buyFeastItem !== undefined">
+                        <td>{{ data.buyFeastItem.name }}</td>
+                        <td>{{ data.buyFeastItem.averageBuyout }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-        <p>Buying food and crafting just the feast: $ {{ data.buyFood }}</p>
+        <p>
+            <a v-on:click.prevent="data.show.buyFood = !data.show.buyFood" href="#">Buying food and crafting just the feast: $ {{ data.buyFood }}</a>
+        </p>
+        <div v-if="data.show.buyFood">
+            <div class="table">
+                <table>
+                    <thead>
+                        <th>Item</th>
+                        <th>Cost</th>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item of data.buyFoodItems">
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.averageBuyout }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
-        <p>Buying ingredients to craft all: $ {{ data.buyIngredients }}</p>
+        <p>
+            <a v-on:click.prevent="data.show.buyIngredients = !data.show.buyIngredients" href="#">Buying ingredients to craft all: $ {{ data.buyIngredients }}</a>
+        </p>
+        <div  v-if="data.show.buyIngredients">
+            <div class="table">
+                <table>
+                    <thead>
+                        <th>Item</th>
+                        <th>Average Buyout</th>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item of data.buyIngredientsItems">
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.averageBuyout }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 
         <!-- determines which is the cheapest by checking each one to see if it has the lowest price -->
         <p v-if="data.buyFeast < data.buyFood && data.buyFeast < data.buyIngredients">Cheapest option: $ {{ data.buyFeast}}</p>
@@ -95,6 +149,8 @@
         <p v-if="data.buyIngredients < data.buyFeast && data.buyIngredients < data.buyFood">Cheapest option: $ {{ data.buyIngredients}}</p>
     </div>
 </template>
+
+<template></template>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
 <script src="https://unpkg.com/vue-select@latest"></script>

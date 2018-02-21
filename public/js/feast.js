@@ -85,11 +85,19 @@ new Vue({
                     label: "Drogbar Style Salmon"
                 },
             },
-            items: 0,
+            items: [],
             costs: {
                 buyFeast: 0,
                 buyFood: 0,
-                buyIngredients: 0
+                buyIngredients: 0,
+                buyFeastItem: {},
+                buyFoodItems: [],
+                buyIngredientsItems: [],
+                show: {
+                    buyFeast: false,
+                    buyFood: false,
+                    buyIngredients: false
+                }
             }
         },
         hearty : {
@@ -149,11 +157,19 @@ new Vue({
                     label: "Spiced Rib Roast"
                 }
             },
-            items: 0,
+            items: [],
             costs: {
                 buyFeast: 0,
                 buyFood: 0,
-                buyIngredients: 0
+                buyIngredients: 0,
+                buyFeastItem: {},
+                buyFoodItems: [],
+                buyIngredientsItems: [],
+                show: {
+                    buyFeast: false,
+                    buyFood: false,
+                    buyIngredients: false
+                }
             }
         }
     },
@@ -173,6 +189,10 @@ new Vue({
                 vthis.suramar.costs.buyFeast = vthis.suramar.items[0].averageBuyout;
                 vthis.suramarBuyFood();
                 vthis.suramarBuyIngredients();
+
+                vthis.suramar.costs.buyFeastItem = data.items[0];
+                vthis.suramar.costs.buyFoodItems = [data.items[1], data.items[4], data.items[7], data.items[9], data.items[11], data.items[13]];
+                vthis.suramar.costs.buyIngredientsItems = [data.items[2], data.items[3], data.items[5], data.items[6], data.items[8], data.items[10], data.items[12], data.items[13]];
             })
         },
         loadHeartyPrices: function () {
@@ -190,6 +210,9 @@ new Vue({
                 vthis.hearty.costs.buyFeast = vthis.hearty.items[0].averageBuyout;
                 vthis.heartyBuyFood();
                 vthis.heartyBuyIngredients();
+                vthis.hearty.costs.buyFeastItem = data.items[0];
+                vthis.hearty.costs.buyFoodItems = [data.items[1], data.items[3], data.items[5], data.items[7], data.items[9], data.items[11]];
+                vthis.hearty.costs.buyIngredientsItems = [data.items[2], data.items[4], data.items[6], data.items[8], data.items[10], data.items[11]];
             })
         },
         // Works out the cost of buying the premade food to combine in to a suramar feast
@@ -344,7 +367,7 @@ new Vue({
             }
 
             // Salmon
-            // items[6] = highmountain salmon
+            // items[12] = highmountain salmon
             subCost = 0.0;
             if (this.suramar.items[12].averageBuyout !== undefined) {
                 if (this.suramar.recipeRank.salmon.selected === 1) {
