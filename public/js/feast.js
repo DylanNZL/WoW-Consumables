@@ -8,6 +8,21 @@ Vue.component('recipe-rank', {
     }
 });
 
+Vue.component('costs', {
+    template: "#costs-template",
+    props: ["data"],
+    methods: {
+        // Gives the cheapest of the 3 options
+        cheapest: function(buyFeast, buyFood, buyIngredients) {
+            let min = buyIngredients;
+            if (buyFood < min) min = buyFood;
+            if (buyFeast < min) min = buyFeast;
+
+            return min
+        }
+    }
+});
+
 let eventHub = new Vue();
 
 new Vue({
@@ -478,4 +493,5 @@ function averageBuyout(auctions) {
     // divide by 10,000 to get the gold price, because blizzard store it as the copper price (100 copper = 1 silver, 100 silver = 1 gold)
     return average / 10000;
 }
+
 

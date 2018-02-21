@@ -32,15 +32,7 @@
             <recipe-rank :data="suramar.recipeRank.salmon"></recipe-rank>
         </div>
         <div id="suramarFeastCosts" class="">
-            <h5>Costs</h5>
-
-            <p>Buying the feast off the Auction House: $ {{ suramar.costs.buyFeast }}</p>
-
-            <p>Buying food and crafting just the feast: $ {{ suramar.costs.buyFood }}</p>
-
-            <p>Buying ingredients to craft all: $ {{ suramar.costs.buyIngredients }}</p>
-
-            <p>Cheapest option: $</p>
+            <costs :data="suramar.costs"></costs>
         </div>
     </div>
 
@@ -57,28 +49,20 @@
             <recipe-rank :data="hearty.recipeRank.ribs"></recipe-rank>
         </div>
         <div id="heartyFeastCosts" class="">
-            <h5>Costs</h5>
-
-            <p>Buying the feast off the Auction House: $ {{ hearty.costs.buyFeast }}</p>
-
-            <p>Buying food and crafting just the feast: $ {{ hearty.costs.buyFood }}</p>
-
-            <p>Buying ingredients to craft all: $ {{ hearty.costs.buyIngredients }}</p>
-
-            <p>Cheapest option: $</p>
+            <costs :data="hearty.costs"></costs>
         </div>
     </div>
-
-    <p>Note: all prices are based on the average buyout for each item, meaning you might be able to find a cheaper option</p>
+    <div class="col-md-12 title">
+        <p>Note: All prices are based on the average buyout for each item, you will probably be able to find a cheaper option depending on the number of auctions available</p>
+    </div>
 </div>
 
 
 <hr class="feature-divider">
 <footer>
-    <p class="pull-right"><a href="/api/">Stats API</a></p>
-    <p>Developed by Dylan Cross (DylanNZ) and Jared Hall (MonoNZ) ·
-        <a href="https://github.com/FCLM/BSNO">Code</a> ·
-        <a href="https://fifthcolumngaming.com">FCLM</a>
+    <p class="pull-right"><a href="/api/">Simple AH API</a></p>
+    <p>Developed by Dylan Cross (DylanNZ)  ·
+        <a href="https://github.com/DylanNZL/WowFood">Code</a>
     </p>
 </footer>
 
@@ -86,13 +70,29 @@
 
 <template id="rrank-template">
     <div>
-        <!--<p>{{data}}</p>-->
         <label>{{ data.label }}:</label>
         <select v-model="data.selected" class="form-control-inline" v-on:change="rankChanged">
             <option v-for="option in data.options" :value="option.value">
                 {{ option.text }}
             </option>
         </select>
+    </div>
+</template>
+
+<template id="costs-template">
+    <div>
+        <h5>Costs</h5>
+
+        <p>Buying the feast off the Auction House: $ {{ data.buyFeast }}</p>
+
+        <p>Buying food and crafting just the feast: $ {{ data.buyFood }}</p>
+
+        <p>Buying ingredients to craft all: $ {{ data.buyIngredients }}</p>
+
+        <!-- determines which is the cheapest by checking each one to see if it has the lowest price -->
+        <p v-if="data.buyFeast < data.buyFood && data.buyFeast < data.buyIngredients">Cheapest option: $ {{ data.buyFeast}}</p>
+        <p v-if="data.buyFood < data.buyFeast && data.buyFood < data.buyIngredients">Cheapest option: $ {{ data.buyFood}}</p>
+        <p v-if="data.buyIngredients < data.buyFeast && data.buyIngredients < data.buyFood">Cheapest option: $ {{ data.buyIngredients}}</p>
     </div>
 </template>
 
