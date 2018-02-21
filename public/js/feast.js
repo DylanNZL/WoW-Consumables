@@ -158,6 +158,10 @@ new Vue({
             if (this.suramar.items[11].averageBuyout !== undefined) {
                 cost += this.suramar.items[11].averageBuyout * amount;
             }
+            // Bacon
+            if (this.suramar.items[14].averageBuyout !== undefined) {
+                cost += this.suramar.items[14].averageBuyout * amount;
+            }
 
             console.log("BuyFood costs: " + cost);
 
@@ -192,7 +196,7 @@ new Vue({
                 }
                 cost += subCost * amount;
             }
-            console.log("Cost after ribs " + cost);
+
             // Surf and Turf
             // items[6] = runescale koi, items[5] = lean shank
             subCost = 0.0;
@@ -209,7 +213,7 @@ new Vue({
                 }
                 cost += subCost * amount;
             }
-            console.log("Cost after surf " + cost);
+
             // Barracuda
             // items[3] = leyblood, items[8] = black barracuda
             subCost = 0.0;
@@ -227,7 +231,7 @@ new Vue({
                 }
                 cost += subCost * amount;
             }
-            console.log("Cost after barracuda " + cost);
+
             // Stormray
             // items[6] = runescale koi, items[10] = stormray
             subCost = 0.0;
@@ -244,7 +248,7 @@ new Vue({
                 }
                 cost += subCost * amount;
             }
-            console.log("Cost after stormray " + cost);
+
             // Salmon
             // items[6] = highmountain salmon
             subCost = 0.0;
@@ -259,6 +263,11 @@ new Vue({
                 cost += subCost * amount;
             }
 
+            // Bacon
+            if (this.suramar.items[14].averageBuyout !== undefined) {
+                cost += this.suramar.items[14].averageBuyout * amount;
+            }
+
             console.log("BuyIngredients Cost: " + cost);
 
             this.suramar.costs.buyIngredients = cost;
@@ -267,7 +276,6 @@ new Vue({
             this.suramarBuyIngredients();
             this.suramarBuyFood();
             this.suramar.costs.buyFeast = this.suramar.items[0].averageBuyout;
-
         }
 
     },
