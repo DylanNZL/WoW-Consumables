@@ -24,7 +24,6 @@
             <h3>Recipe Ranks</h3>
 
             <!-- Ranks for each item involved in creating the feast -->
-            <!--<p>{{suramar.recipeRank.feast}}</p>-->
             <recipe-rank :data="suramar.recipeRank.feast"></recipe-rank>
             <recipe-rank :data="suramar.recipeRank.ribs"></recipe-rank>
             <recipe-rank :data="suramar.recipeRank.surfTurf"></recipe-rank>
@@ -38,9 +37,9 @@
 
             <p>Buying the feast off the Auction House: $ {{ suramar.costs.buyFeast }}</p>
 
-            <p>Buying food and crafting just the feast: $ {{ suramar.costs.buyFeast }}</p>
+            <p>Buying food and crafting just the feast: $ {{ suramar.costs.buyFood }}</p>
 
-            <p>Buying ingredients to craft all: $ {{ suramar.costs.buyFeast }}</p>
+            <p>Buying ingredients to craft all: $ {{ suramar.costs.buyIngredients }}</p>
 
             <p>Cheapest option: $</p>
 
@@ -65,25 +64,13 @@
     <div>
         <!--<p>{{data}}</p>-->
         <label>{{ data.label }}:</label>
-        <select v-model="data.selected" class="form-control-inline">
+        <select v-model="data.selected" class="form-control-inline" v-on:change="rankChanged">
             <option v-for="option in data.options" :value="option.value">
                 {{ option.text }}
             </option>
         </select>
     </div>
 </template>
-
-<script id="rank-template" type="x-template">
-    <div>
-        <!--<p>{{data}}</p>-->
-        <label>{{ data.label }}:</label>
-        <select v-model="data.selected" class="form-control-inline">
-            <option v-for="option in data.options" :value="option.value">
-                {{ option.text }}
-            </option>
-        </select>
-    </div>
-</script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
 <script src="https://unpkg.com/vue-select@latest"></script>
