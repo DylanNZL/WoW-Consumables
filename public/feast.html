@@ -15,14 +15,14 @@
 </head>
 <body>
 
-<div id="app">
-    <div id="suramarFeast" class="col-md-12">
-        <!--<h1>{{ current }}</h1>-->
-
-        <h1 class="title">Lavish Suramar Feast</h1>
-        <div id="suramarFeastRanks" class="col-md-6 inline">
-            <h3>Recipe Ranks</h3>
-
+<div id="app" class="row">
+    <div class="col-md-12">
+        <h1 class="title">Cheapest way to get feasts for Legion</h1>
+    </div>
+    <div id="suramarFeast" class="col-md-6">
+        <h3 class="title">Lavish Suramar Feast</h3>
+        <div id="suramarFeastRanks" class="">
+            <h5>Recipe Ranks</h5>
             <!-- Ranks for each item involved in creating the feast -->
             <recipe-rank :data="suramar.recipeRank.feast"></recipe-rank>
             <recipe-rank :data="suramar.recipeRank.ribs"></recipe-rank>
@@ -31,9 +31,8 @@
             <recipe-rank :data="suramar.recipeRank.stormray"></recipe-rank>
             <recipe-rank :data="suramar.recipeRank.salmon"></recipe-rank>
         </div>
-
-        <div id="suramarFeastCosts" class="col-md-6 inline">
-            <h3>Costs</h3>
+        <div id="suramarFeastCosts" class="">
+            <h5>Costs</h5>
 
             <p>Buying the feast off the Auction House: $ {{ suramar.costs.buyFeast }}</p>
 
@@ -42,10 +41,35 @@
             <p>Buying ingredients to craft all: $ {{ suramar.costs.buyIngredients }}</p>
 
             <p>Cheapest option: $</p>
-
-            <p>Note: all prices are based on the average buyout for each item, meaning you might be able to find a cheaper option</p>
         </div>
     </div>
+
+    <div id="heartyFeast" class="col-md-6">
+        <h3 class="title">Hearty Feast</h3>
+        <div id="heartyFeastRanks" class="">
+            <h5>Recipe Ranks</h5>
+            <!-- Ranks for each item involved in creating the feast -->
+            <recipe-rank :data="hearty.recipeRank.feast"></recipe-rank>
+            <recipe-rank :data="hearty.recipeRank.shank"></recipe-rank>
+            <recipe-rank :data="hearty.recipeRank.mossgill"></recipe-rank>
+            <recipe-rank :data="hearty.recipeRank.stormray"></recipe-rank>
+            <recipe-rank :data="hearty.recipeRank.fizz"></recipe-rank>
+            <recipe-rank :data="hearty.recipeRank.ribs"></recipe-rank>
+        </div>
+        <div id="heartyFeastCosts" class="">
+            <h5>Costs</h5>
+
+            <p>Buying the feast off the Auction House: $ {{ hearty.costs.buyFeast }}</p>
+
+            <p>Buying food and crafting just the feast: $ {{ hearty.costs.buyFood }}</p>
+
+            <p>Buying ingredients to craft all: $ {{ hearty.costs.buyIngredients }}</p>
+
+            <p>Cheapest option: $</p>
+        </div>
+    </div>
+
+    <p>Note: all prices are based on the average buyout for each item, meaning you might be able to find a cheaper option</p>
 </div>
 
 
