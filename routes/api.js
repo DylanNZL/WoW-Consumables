@@ -127,6 +127,7 @@ const heartyFeastItems = [
     { "id" : 133561, "name" : "Deep-Fried Mossgill" },
     { "id" : 124108, "name" : "Mossgill Perch" },
     { "id" : 133562, "name" : "Pickled Stormray" },
+    { "id" : 124110, "name" : "Stormray" },
     { "id" : 133563, "name" : "Faronaar Fizz" },
     { "id" : 124121, "name" : "Wildfowl Egg" },
     { "id" : 133564, "name" : "Spiced Rib Roast" },
