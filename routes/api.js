@@ -18,6 +18,9 @@ router.get('/', async (req, res, next) => {
         case "/api/alchemy": // Does a bunch of queries to reduce client <-> server communication overhead
             await alchemy(req,res,next);
             break;
+        case "/api/food": // Does a bunch of queries to reduce client <-> server communication overhead
+            await food(req,res,next);
+            break;
         default:
             res.render()
     }
@@ -58,6 +61,23 @@ async function retrieveItem(req, res, next) {
     res.status(200).jsonp(json);
 }
 
+const lavishSuramarFeastItems = [
+    { "id" : 133579, "name" : "Lavish Suramar Feast" },
+    { "id" : 133565, "name" : "Leybeque Ribs" },
+    { "id" : 124119, "name" : "Big Gamy Ribs" },
+    { "id" : 124120, "name" : "Leyblood" },
+    { "id" : 133566, "name" : "Suramar Surf and Turf" },
+    { "id" : 124117, "name" : "Lean Shank" },
+    { "id" : 124111, "name" : "Runescale Koi" },
+    { "id" : 133567, "name" : "Barracuda Mrglgagh" },
+    { "id" : 124112, "name" : "Black Barracuda" },
+    { "id" : 133568, "name" : "Koi-Scented Stormray" },
+    { "id" : 124110, "name" : "Stormray" },
+    { "id" : 133569, "name" : "Drogbar Style Salmon" },
+    { "id" : 124109, "name" : "Highmountain Salmon" },
+    { "id" : 133680, "name" : "Slice of Bacon" }
+];
+
 async function lavishSuramarFeast(req, res, next) {
     let result = {
         timestamp: Date.now(),
@@ -81,6 +101,21 @@ async function lavishSuramarFeast(req, res, next) {
 
     res.status(200).jsonp(result);
 }
+
+const heartyFeastItems = [
+    { "id" : 133578, "name" : "Hearty Feast" },
+    { "id" : 133557, "name" : "Salt and Pepper Shank" },
+    { "id" : 124117, "name" : "Lean Shank" },
+    { "id" : 133561, "name" : "Deep-Fried Mossgill" },
+    { "id" : 124108, "name" : "Mossgill Perch" },
+    { "id" : 133562, "name" : "Pickled Stormray" },
+    { "id" : 124110, "name" : "Stormray" },
+    { "id" : 133563, "name" : "Faronaar Fizz" },
+    { "id" : 124121, "name" : "Wildfowl Egg" },
+    { "id" : 133564, "name" : "Spiced Rib Roast" },
+    { "id" : 124119, "name" : "Big Gamy Ribs" },
+    { "id" : 133680, "name" : "Slice of Bacon" }
+];
 
 async function heartyFeast(req, res, next) {
     let result = {
@@ -106,6 +141,24 @@ async function heartyFeast(req, res, next) {
     res.status(200).jsonp(result);
 }
 
+const alchemyItems = [
+    // Flasks/Potions
+    { "id" : 127851, "name" : "Spirit Cauldron" }, // 5 of each flask
+    { "id" : 127847, "name" : "Flask of the Whispered Pact" }, // Fjarnskaggl, Dreamleaf
+    { "id" : 127848, "name" : "Flask of the Seventh Demon" }, // Fjarnskaggl, Foxflower
+    { "id" : 127849, "name" : "Flask of the Countless Armies" }, // Aethril, Foxflower
+    { "id" : 127850, "name" : "Flask of Ten Thousand Scars" }, // Aethril, Dreamleaf
+    { "id" : 127846, "name" : "Leytorrent Potion" }, // Aethril, Dreamleaf
+    { "id" : 127835, "name" : "Ancient Mana Potion" },
+    // Reagents
+    { "id" : 124105, "name" : "Starlight Rose" },
+    { "id" : 124101, "name" : "Aethril" },
+    { "id" : 124102, "name" : "Dreamleaf" },
+    { "id" : 124103, "name" : "FoxFlower" },
+    { "id" : 124104, "name" : "Fjarnskaggl" },
+    { "id" : 128304, "name" : "Yseralline Seed" }
+];
+
 async function alchemy(req,res,next) {
     let result = {
         timestamp: Date.now(),
@@ -130,54 +183,68 @@ async function alchemy(req,res,next) {
     res.status(200).jsonp(result);
 }
 
-const lavishSuramarFeastItems = [
-    { "id" : 133579, "name" : "Lavish Suramar Feast" },
-    { "id" : 133565, "name" : "Leybeque Ribs" },
-    { "id" : 124119, "name" : "Big Gamy Ribs" },
-    { "id" : 124120, "name" : "Leyblood" },
-    { "id" : 133566, "name" : "Suramar Surf and Turf" },
-    { "id" : 124117, "name" : "Lean Shank" },
-    { "id" : 124111, "name" : "Runescale Koi" },
-    { "id" : 133567, "name" : "Barracude Mrglgagh" },
-    { "id" : 124112, "name" : "Black Barracuda" },
-    { "id" : 133568, "name" : "Koi-Scented Stormray" },
-    { "id" : 124110, "name" : "Stormray" },
-    { "id" : 133569, "name" : "Drogbar Style Salmon" },
-    { "id" : 124109, "name" : "Highmountain Salmon" },
-    { "id" : 133680, "name" : "Slice of Bacon" }
-];
+const foodItems = [
+    // Crit
+    { "id" : 133557, "name" : "Salt and Pepper Shank" }, // 225
+    { "id" : 133565, "name" : "Leybeque Ribs" }, // 300
+    { "id" : 133565, "name" : "The Hungry Magister" }, // 375
+    // Haste
+    { "id" : 133561, "name" : "Deep-Fried Mossgill" }, // 225
+    { "id" : 133566, "name" : "Suramar Surf and Turf" }, // 300
+    { "id" : 133571, "name" : "Azshari Salad" }, // 375
+    // Vers
+    { "id" : 133563, "name" : "Faronaar Fizz" }, // 225
+    { "id" : 133568, "name" : "Koi-Scented Stormray" }, // 300
+    { "id" : 133568, "name" : "Seed-Battered Fish Plate" }, // 375
+    // Mastery
+    { "id" : 133562, "name" : "Pickled Stormray" }, // 225
+    { "id" : 133567, "name" : "Barracude Mrglgagh" }, // 300
+    { "id" : 133567, "name" : "Nightborne Delicacy Platter" }, // 375
 
-const heartyFeastItems = [
-    { "id" : 133578, "name" : "Hearty Feast" },
-    { "id" : 133557, "name" : "Salt and Pepper Shank" },
-    { "id" : 124117, "name" : "Lean Shank" },
-    { "id" : 133561, "name" : "Deep-Fried Mossgill" },
-    { "id" : 124108, "name" : "Mossgill Perch" },
-    { "id" : 133562, "name" : "Pickled Stormray" },
-    { "id" : 124110, "name" : "Stormray" },
-    { "id" : 133563, "name" : "Faronaar Fizz" },
-    { "id" : 124121, "name" : "Wildfowl Egg" },
-    { "id" : 133564, "name" : "Spiced Rib Roast" },
-    { "id" : 124119, "name" : "Big Gamy Ribs" },
-    { "id" : 133680, "name" : "Slice of Bacon" }
-];
-
-const alchemyItems = [
-    // Flasks/Potions
-    { "id" : 127851, "name" : "Spirit Cauldron" }, // 5 of each flask
-    { "id" : 127847, "name" : "Flask of the Whispered Pact" }, // Fjarnskaggl, Dreamleaf
-    { "id" : 127848, "name" : "Flask of the Seventh Demon" }, // Fjarnskaggl, Foxflower
-    { "id" : 127849, "name" : "Flask of the Countless Armies" }, // Aethril, Foxflower
-    { "id" : 127850, "name" : "Flask of Ten Thousand Scars" }, // Aethril, Dreamleaf
-    { "id" : 127846, "name" : "Leytorrent Potion" }, // Aethril, Dreamleaf
-    { "id" : 127835, "name" : "Ancient Mana Potion" },
     // Reagents
-    { "id" : 124105, "name" : "Starlight Rose" },
     { "id" : 124101, "name" : "Aethril" },
     { "id" : 124102, "name" : "Dreamleaf" },
     { "id" : 124103, "name" : "FoxFlower" },
     { "id" : 124104, "name" : "Fjarnskaggl" },
-    { "id" : 128304, "name" : "Yseralline Seed" }
+    { "id" : 124105, "name" : "Starlight Rose" },
+    { "id" : 124107, "name" : "Cursed Queenfish" },
+    { "id" : 124108, "name" : "Mossgill Perch" },
+    { "id" : 124109, "name" : "Highmountain Salmon" },
+    { "id" : 124110, "name" : "Stormray" },
+    { "id" : 124111, "name" : "Runescale Koi" },
+    { "id" : 124112, "name" : "Black Barracuda" },
+    { "id" : 124117, "name" : "Lean Shank" },
+    { "id" : 124118, "name" : "Fatty Bearsteak" },
+    { "id" : 124119, "name" : "Big Gamy Ribs" },
+    { "id" : 124120, "name" : "Leyblood" },
+    { "id" : 124121, "name" : "Wildfowl Egg" },
+    { "id" : 128304, "name" : "Yseralline Seed" },
+    { "id" : 129100, "name" : "Gem Chips" },
+    { "id" : 133607, "name" : "Silver Mackaeral" },
 ];
+
+async function food(req,res,next) {
+    let result = {
+        timestamp: Date.now(),
+        success: true,
+        items: foodItems
+    };
+
+    let promises = [];
+
+    result.items.forEach(function(item) {
+        promises.push(result.items.auctions = database.retrieveItem(item.id, 5));
+    });
+
+    let data = await Promise.all(promises);
+
+    let i = 0;
+    data.forEach(function (dat) {
+        result.items[i].auctions = dat;
+        i++;
+    });
+
+    res.status(200).jsonp(result);
+}
 
 module.exports = router;

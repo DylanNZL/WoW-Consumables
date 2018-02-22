@@ -28,6 +28,7 @@ app.use('/', index);
 app.use('/api*', api);
 app.use('/feast', (req, res) => { res.sendFile(path.join(__dirname + '/public/feast.html')) });
 app.use('/alchemy', (req, res) => { res.sendFile(path.join(__dirname + '/public/alchemy.html')) });
+app.use('/food', (req, res) => { res.sendFile(path.join(__dirname + '/public/food.html')) });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
