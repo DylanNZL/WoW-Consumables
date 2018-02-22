@@ -48,6 +48,6 @@ app.use(function(err, req, res, next) {
   console.error(Date.now() + " App Error: " + err);
 });
 
-blizzardApi.getAHData(); // uncomment to refresh auction house
+// blizzardApi.getAHData(); // uncomment to refresh auction house
 
 module.exports = app;
