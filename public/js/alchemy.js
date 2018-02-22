@@ -1,9 +1,24 @@
-Vue.component('recipe-rank', {
-    template: "#rrank-template",
-    props: ["data"],
+Vue.component('alch-template', {
+    template: "#alchemy-template",
+    props: ["info", "items"],
     methods: {
         rankChanged: function() {
             eventHub.$emit('rankChanged');
+        },
+        cost: function(mInfo, mItems) {
+            let cost = 0.0;
+            console.log(mInfo);
+            console.log(mItems);
+            if (mItems.length === 0) return 0.0;
+
+            mInfo.recipe.forEach(function(data) {
+                console.log(mItems[data.id]);
+
+                if (mItems[data.id].buyoutData === undefined) return 0.0;
+                cost += mItems[data.id].buyoutData.average * data.amount;
+            });
+
+            return cost;
         }
     }
 });
@@ -18,6 +33,7 @@ new Vue({
             cauldron: {
                 costs: {},
                 show: false,
+                id: 0,
                 rank: {
                     selected: 3,
                     options: [
@@ -37,6 +53,7 @@ new Vue({
             intFlask: {
                 costs: {},
                 show: false,
+                id: 1,
                 rank: {
                     selected: 3,
                     options: [
@@ -55,6 +72,7 @@ new Vue({
             agilityFlask: {
                 costs: {},
                 show: false,
+                id: 2,
                 rank: {
                     selected: 3,
                     options: [
@@ -73,6 +91,7 @@ new Vue({
             strengthFlask: {
                 costs: {},
                 show: false,
+                id: 3,
                 rank: {
                     selected: 3,
                     options: [
@@ -91,6 +110,7 @@ new Vue({
             stamFlask: {
                 costs: {},
                 show: false,
+                id: 4,
                 rank: {
                     selected: 3,
                     options: [
@@ -109,6 +129,7 @@ new Vue({
             leytorrent: {
                 costs: {},
                 show: false,
+                id: 5,
                 rank: {
                     selected: 3,
                     options: [
@@ -127,6 +148,7 @@ new Vue({
             manaPot: {
                 costs: {},
                 show: false,
+                id: 6,
                 rank: {
                     selected: 3,
                     options: [
@@ -144,6 +166,7 @@ new Vue({
     },
     methods: {
         loadAlchemyItems: function() {
+            console.log("loading");
             let url = "/api/alchemy";
             let vthis = this;
             $.ajax({
@@ -152,17 +175,21 @@ new Vue({
             }).done(function (data) {
                 console.log(data);
                 vthis.items = data.items;
+                vthis.items.forEach(function(item) {
+                    item.buyoutData = buyoutData(item.auctions);
+                });
             });
         }
     },
     created: function() {
         eventHub.$on('rankChanged', this.rankChange);
+        this.loadAlchemyItems();
     },
     beforeDestroy: function() {
         eventHub.$off('rankChanged');
     },
     mounted: function() {
-        this.loadAlchemyItems();
+
     }
 });
 
