@@ -177,7 +177,7 @@ const alchemyItems = [
     { "id" : 124102, "name" : "Dreamleaf" },
     { "id" : 124103, "name" : "FoxFlower" },
     { "id" : 124104, "name" : "Fjarnskaggl" },
-    { "id" : 124304, "name" : "Yseralline Seed" }
+    { "id" : 128304, "name" : "Yseralline Seed" }
 ];
 
 module.exports = router;
