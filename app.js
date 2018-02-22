@@ -26,7 +26,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/api*', api);
-app.use('/feast', (req, res) => { res.sendFile(path.join(__dirname + '/public/feast.html')) })
+app.use('/feast', (req, res) => { res.sendFile(path.join(__dirname + '/public/feast.html')) });
+app.use('/alchemy', (req, res) => { res.sendFile(path.join(__dirname + '/public/alchemy.html')) });
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -47,6 +48,6 @@ app.use(function(err, req, res, next) {
   console.error(Date.now() + " App Error: " + err);
 });
 
-// blizzardApi.getAHData(); // uncomment to refresh auction house
+blizzardApi.getAHData(); // uncomment to refresh auction house
 
 module.exports = app;

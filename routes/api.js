@@ -15,6 +15,9 @@ router.get('/', async (req, res, next) => {
         case "/api/heartyFeast": // Does a bunch of queries to reduce client <-> server communication overhead
             await heartyFeast(req,res,next);
             break;
+        case "/api/alchemy": // Does a bunch of queries to reduce client <-> server communication overhead
+            await alchemy(req,res,next);
+            break;
         default:
             res.render()
     }
@@ -103,6 +106,30 @@ async function heartyFeast(req, res, next) {
     res.status(200).jsonp(result);
 }
 
+async function alchemy(req,res,next) {
+    let result = {
+        timestamp: Date.now(),
+        success: true,
+        items: alchemyItems
+    };
+
+    let promises = [];
+
+    result.items.forEach(function(item) {
+        promises.push(result.items.auctions = database.retrieveItem(item.id, 5));
+    });
+
+    let data = await Promise.all(promises);
+
+    let i = 0;
+    data.forEach(function (dat) {
+        result.items[i].auctions = dat;
+        i++;
+    });
+
+    res.status(200).jsonp(result);
+}
+
 const lavishSuramarFeastItems = [
     { "id" : 133579, "name" : "Lavish Suramar Feast" },
     { "id" : 133565, "name" : "Leybeque Ribs" },
@@ -133,6 +160,24 @@ const heartyFeastItems = [
     { "id" : 133564, "name" : "Spiced Rib Roast" },
     { "id" : 124119, "name" : "Big Gamy Ribs" },
     { "id" : 133680, "name" : "Slice of Bacon" }
+];
+
+const alchemyItems = [
+    // Flasks/Potions
+    { "id" : 127851, "name" : "Spirit Cauldron" }, // 5 of each flask
+    { "id" : 127847, "name" : "Flask of the Whispered Pact" }, // Fjarnskaggl, Dreamleaf
+    { "id" : 127848, "name" : "Flask of the Seventh Demon" }, // Fjarnskaggl, Foxflower
+    { "id" : 127849, "name" : "Flask of the Countless Armies" }, // Aethril, Foxflower
+    { "id" : 127850, "name" : "Flask of Ten Thousand Scars" }, // Aethril, Dreamleaf
+    { "id" : 127846, "name" : "Leytorrent Potion" }, // Aethril, Dreamleaf
+    { "id" : 127835, "name" : "Ancient Mana Potion" },
+    // Reagents
+    { "id" : 124105, "name" : "Starlight Rose" },
+    { "id" : 124101, "name" : "Aethril" },
+    { "id" : 124102, "name" : "Dreamleaf" },
+    { "id" : 124103, "name" : "FoxFlower" },
+    { "id" : 124104, "name" : "Fjarnskaggl" },
+    { "id" : 124304, "name" : "Yseralline Seed" }
 ];
 
 module.exports = router;
