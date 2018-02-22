@@ -10,8 +10,8 @@
 
 
 const API_KEY = require("./api_key.js");
-// const wowServer = "frostmourne"; // Change to any NA server
-const wowServer = "amanthul"; // lowest pop oce realm for testing
+const wowServer = "frostmourne"; // Change to any NA server
+// const wowServer = "amanthul"; // lowest pop oce realm for testing
 const queue = require("./queue.js");
 
 const prequest = require('prequest');
