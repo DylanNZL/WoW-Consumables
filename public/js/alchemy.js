@@ -18,6 +18,28 @@ Vue.component('alch-template', {
                 cost += mItems[data.id].buyoutData.average * data.amount;
             });
 
+            if (mInfo.rank.selected === 3) {
+                cost = cost * mInfo.rankThreeModifier;
+            }
+            return cost;
+        },
+        minCost: function(mInfo, mItems) {
+            let cost = 0.0;
+            console.log(mInfo);
+            console.log(mItems);
+            if (mItems.length === 0) return 0.0;
+
+            mInfo.recipe.forEach(function(data) {
+                console.log(mItems[data.id]);
+
+                if (mItems[data.id].buyoutData === undefined) return 0.0;
+                cost += mItems[data.id].buyoutData.min * data.amount;
+            });
+
+            if (mInfo.rank.selected === 3) {
+                cost = cost * mInfo.rankThreeModifier;
+            }
+
             return cost;
         }
     }
@@ -34,6 +56,7 @@ new Vue({
                 costs: {},
                 show: false,
                 id: 0,
+                rankThreeModifier: 0.77, // basically at rank 3 you expect to get 1.3 * what you put in
                 rank: {
                     selected: 3,
                     options: [
@@ -54,6 +77,7 @@ new Vue({
                 costs: {},
                 show: false,
                 id: 1,
+                rankThreeModifier: 0.77, // basically at rank 3 you expect to get 1.3 * what you put in
                 rank: {
                     selected: 3,
                     options: [
@@ -73,6 +97,7 @@ new Vue({
                 costs: {},
                 show: false,
                 id: 2,
+                rankThreeModifier: 0.77, // basically at rank 3 you expect to get 1.3 * what you put in
                 rank: {
                     selected: 3,
                     options: [
@@ -92,6 +117,7 @@ new Vue({
                 costs: {},
                 show: false,
                 id: 3,
+                rankThreeModifier: 0.77, // basically at rank 3 you expect to get 1.3 * what you put in
                 rank: {
                     selected: 3,
                     options: [
@@ -111,6 +137,7 @@ new Vue({
                 costs: {},
                 show: false,
                 id: 4,
+                rankThreeModifier: 0.77, // basically at rank 3 you expect to get 1.3 * what you put in
                 rank: {
                     selected: 3,
                     options: [
@@ -130,6 +157,7 @@ new Vue({
                 costs: {},
                 show: false,
                 id: 5,
+                rankThreeModifier: 0.77, // basically at rank 3 you expect to get 1.3 * what you put in
                 rank: {
                     selected: 3,
                     options: [
@@ -149,6 +177,7 @@ new Vue({
                 costs: {},
                 show: false,
                 id: 6,
+                rankThreeModifier: 0.77, // basically at rank 3 you expect to get 1.3 * what you put in
                 rank: {
                     selected: 3,
                     options: [
@@ -179,6 +208,9 @@ new Vue({
                     item.buyoutData = buyoutData(item.auctions);
                 });
             });
+        },
+        rankChange: function() {
+
         }
     },
     created: function() {
