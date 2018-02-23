@@ -19,9 +19,14 @@ Vue.component("f-template", {
             });
 
             if (mInfo.rank.selected === 3) {
-                cost = cost * mInfo.rankThreeModifier;
+                cost = cost / 10;
+            } else if (mInfo.rank.selected === 2) {
+                cost = cost / 7;
+            } else {
+                cost = cost / 5;
             }
-            return cost;
+
+            return cost.toFixed(2);
         },
         minCost: function(mInfo, mItems) {
             let cost = 0.0;
@@ -37,10 +42,14 @@ Vue.component("f-template", {
             });
 
             if (mInfo.rank.selected === 3) {
-                cost = cost * mInfo.rankThreeModifier;
+                cost = cost / 10;
+            } else if (mInfo.rank.selected === 2) {
+                cost = cost / 7;
+            } else {
+                cost = cost / 5;
             }
 
-            return cost;
+            return cost.toFixed(2);
         }
     }
 });
