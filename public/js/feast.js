@@ -246,8 +246,6 @@ new Vue({
                 cost += this.suramar.items[13].buyoutData.average * amount;
             }
 
-            console.log("suramarBuyFood costs: " + cost);
-
             this.suramar.costs.buyFood = cost;
         },
         // Works out the cost of buying the premade food to combine in to a hearty feast
@@ -280,8 +278,6 @@ new Vue({
             if (this.hearty.items[11].buyoutData.average !== undefined) {
                 cost += this.hearty.items[11].buyoutData.average * amount;
             }
-
-            console.log("heartyBuyFood costs: " + cost);
 
             this.hearty.costs.buyFood = cost;
         },
@@ -385,8 +381,6 @@ new Vue({
                 cost += this.suramar.items[13].buyoutData.average * amount;
             }
 
-            console.log("suramarBuyIngredients Cost: " + cost);
-
             this.suramar.costs.buyIngredients = cost;
         },
         /**
@@ -476,7 +470,6 @@ new Vue({
                 cost += this.hearty.items[11].buyoutData.average * amount;
             }
 
-            console.log("heartyBuyIngredients Cost: " + cost);
             this.hearty.costs.buyIngredients = cost;
         },
         rankChange: function() {

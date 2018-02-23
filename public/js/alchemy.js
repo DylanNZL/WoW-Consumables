@@ -7,13 +7,9 @@ Vue.component('alch-template', {
         },
         cost: function(mInfo, mItems) {
             let cost = 0.0;
-            console.log(mInfo);
-            console.log(mItems);
             if (mItems.length === 0) return 0.0;
 
             mInfo.recipe.forEach(function(data) {
-                console.log(mItems[data.id]);
-
                 if (mItems[data.id].buyoutData === undefined) return 0.0;
                 cost += mItems[data.id].buyoutData.average * data.amount;
             });
@@ -25,13 +21,9 @@ Vue.component('alch-template', {
         },
         minCost: function(mInfo, mItems) {
             let cost = 0.0;
-            console.log(mInfo);
-            console.log(mItems);
             if (mItems.length === 0) return 0.0;
 
             mInfo.recipe.forEach(function(data) {
-                console.log(mItems[data.id]);
-
                 if (mItems[data.id].buyoutData === undefined) return 0.0;
                 cost += mItems[data.id].buyoutData.min * data.amount;
             });
@@ -39,7 +31,6 @@ Vue.component('alch-template', {
             if (mInfo.rank.selected === 3) {
                 cost = cost * mInfo.rankThreeModifier;
             }
-
             return cost;
         }
     }
@@ -195,14 +186,13 @@ new Vue({
     },
     methods: {
         loadAlchemyItems: function() {
-            console.log("loading");
             let url = "/api/alchemy";
             let vthis = this;
             $.ajax({
                 dataType: "jsonp",
                 url: url
             }).done(function (data) {
-                console.log(data);
+                // console.log(data);
                 vthis.items = data.items;
                 vthis.items.forEach(function(item) {
                     item.buyoutData = buyoutData(item.auctions);
