@@ -10,7 +10,8 @@ const api = require('./routes/api.js');
 
 let app = express();
 
-const blizzardApi = require('./blizzardApi');
+const blizzardApi = require('./blizzardApi.js');
+const database = require('./database.js');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

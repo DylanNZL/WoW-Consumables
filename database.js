@@ -28,8 +28,23 @@ async function newApiCall(length) {
 
 }
 
-async function retrieveItem(itemID, excludeQuantity) {
-    const query = "SELECT * FROM auctions WHERE item =" + itemID + " AND quantity > " + excludeQuantity;
+// Gets the highest history id to get the ah data out
+async function latestHistory() {
+    const query = "SELECT id FROM ah_history ORDER BY id DESC LIMIT 1";
+    console.log(query);
+    return new Promise((resolve, reject) => {
+        bookshelf.knex.raw(query).then(function (data) {
+            // console.log(data.rows[0].id);
+            resolve(data.rows[0].id);
+        }).catch(function (err) {
+            console.error(Date.now() + " latestHistory " + err);
+            resolve(0);
+        })
+    })
+}
+
+async function retrieveItem(itemID, excludeQuantity, historyID) {
+    const query = "SELECT * FROM auctions WHERE item = " + itemID + " AND quantity > " + excludeQuantity + " AND history = " + historyID;
     return new Promise ((resolve, reject) => {
         bookshelf.knex.raw(query).then(function (data) {
             //console.log(data.rows);
@@ -40,6 +55,8 @@ async function retrieveItem(itemID, excludeQuantity) {
         })
     })
 }
+
 exports.insertOrUpdateAuction = insertOrUpdateAuction;
 exports.newApiCall = newApiCall;
+exports.latestHistory = latestHistory;
 exports.retrieveItem = retrieveItem;

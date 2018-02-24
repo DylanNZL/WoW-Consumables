@@ -84,11 +84,11 @@ async function lavishSuramarFeast(req, res, next) {
         success: true,
         items: lavishSuramarFeastItems
     };
-
+    let historyID = await database.latestHistory();
     let promises = [];
 
     result.items.forEach(function(item) {
-        promises.push(result.items.auctions = database.retrieveItem(item.id, 5));
+        promises.push(result.items.auctions = database.retrieveItem(item.id, 5, historyID));
     });
 
     let data = await Promise.all(promises);
@@ -123,11 +123,11 @@ async function heartyFeast(req, res, next) {
         success: true,
         items: heartyFeastItems
     };
-
+    let historyID = await database.latestHistory();
     let promises = [];
 
     result.items.forEach(function(item) {
-        promises.push(result.items.auctions = database.retrieveItem(item.id, 5));
+        promises.push(result.items.auctions = database.retrieveItem(item.id, 5, historyID));
     });
 
     let data = await Promise.all(promises);
@@ -165,11 +165,11 @@ async function alchemy(req,res,next) {
         success: true,
         items: alchemyItems
     };
-
+    let historyID = await database.latestHistory();
     let promises = [];
 
     result.items.forEach(function(item) {
-        promises.push(result.items.auctions = database.retrieveItem(item.id, 5));
+        promises.push(result.items.auctions = database.retrieveItem(item.id, 5, historyID));
     });
 
     let data = await Promise.all(promises);
@@ -229,11 +229,11 @@ async function food(req,res,next) {
         success: true,
         items: foodItems
     };
-
+    let historyID = await database.latestHistory();
     let promises = [];
 
     result.items.forEach(function(item) {
-        promises.push(result.items.auctions = database.retrieveItem(item.id, 5));
+        promises.push(result.items.auctions = database.retrieveItem(item.id, 5, historyID));
     });
 
     let data = await Promise.all(promises);
