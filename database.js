@@ -1,5 +1,6 @@
 const bookshelf = require("./bookshelf.js");
 const mAuction = require('./models/auction.js');
+const mHistory = require('./models/history.js');
 
 function insertOrUpdateAuction(auction) {
     if (auction !== undefined) {
@@ -10,6 +11,21 @@ function insertOrUpdateAuction(auction) {
             console.error(err);
         });
     }
+}
+
+// Adds a new database entry that will be used to pick out the latest auction house data
+async function newApiCall(length) {
+    return new Promise((resolve, reject) => {
+        mHistory.forge({ 'auctions' : length }).save().then(function (results) {
+            console.log(results);
+            resolve(results.attributes.id);
+        }).catch(function(err) {
+            console.error(Date.now() + " Error adding new history row ");
+            console.error(err);
+            resolve(-1);
+        })
+    })
+
 }
 
 async function retrieveItem(itemID, excludeQuantity) {
@@ -24,6 +40,6 @@ async function retrieveItem(itemID, excludeQuantity) {
         })
     })
 }
-
 exports.insertOrUpdateAuction = insertOrUpdateAuction;
+exports.newApiCall = newApiCall;
 exports.retrieveItem = retrieveItem;
