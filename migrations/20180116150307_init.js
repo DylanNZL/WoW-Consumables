@@ -15,8 +15,9 @@ exports.up = function(knex, Promise) {
             table.timestamp('created_at').defaultTo(knex.fn.now());
             table.timestamp('updated_at').defaultTo(knex.fn.now());
         }),
-        knex.createTable('ah_history', function(table) {
-            table.increment('id');
+        knex.schema.createTable('ah_history', function(table) {
+            table.increments('id');
+            table.integer('auctions');
             table.timestamp('created_at').defaultTo(knex.fn.now());
             table.timestamp('updated_at').defaultTo(knex.fn.now());
         })
@@ -24,6 +25,8 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-  knex.schema.dropTable('auctions');
-  knex.schema.dropTable('items');
+    return Promise.all([
+      knex.schema.dropTable('auctions'),
+      knex.schema.dropTable('ah_history')
+  ])
 };
