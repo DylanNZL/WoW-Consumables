@@ -5,8 +5,11 @@ This web application tracks the WoW (World of Warcraft) auction house for a sele
 Using the data from there it will show you the cheapest way to make something
 
 **How to run the application**
+
 _Note: this was devoloped using Node.js 9.4.0 but should run on node.js 7.6.0 or higher_
-Install node.js (9.4.0)
+
+Install node.js (9.4.0+)
+
 Install docker
 
 Using terminal/command prompt/whatever navigate to where this folder was installed
