@@ -9,6 +9,9 @@ router.get('/', async (req, res, next) => {
         case "/api/item":
             await retrieveItem(req,res,next);
             break;
+        case "/api/dbUpdated":
+            await dbUpdated(req,res,next);
+            break;
         case "/api/lavishSuramarFeast": // Does a bunch of queries to reduce client <-> server communication overhead
             await lavishSuramarFeast(req,res,next);
             break;
@@ -59,6 +62,17 @@ async function retrieveItem(req, res, next) {
         }
     }
     res.status(200).jsonp(json);
+}
+
+// Sends back the latest timestamp
+async function dbUpdated(req, res, next) {
+    let result = {
+        timestamp: Date.now(),
+        success: true,
+        dbUpdated: await database.dbUpdated()
+    };
+
+    res.status(200).jsonp(result);
 }
 
 const lavishSuramarFeastItems = [

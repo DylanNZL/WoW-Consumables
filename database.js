@@ -31,11 +31,26 @@ async function newApiCall(length) {
 // Gets the highest history id to get the ah data out
 async function latestHistory() {
     const query = "SELECT id FROM ah_history ORDER BY id DESC LIMIT 1";
-    console.log(query);
+    // console.log(query);
     return new Promise((resolve, reject) => {
         bookshelf.knex.raw(query).then(function (data) {
             // console.log(data.rows[0].id);
             resolve(data.rows[0].id);
+        }).catch(function (err) {
+            console.error(Date.now() + " latestHistory " + err);
+            resolve(0);
+        })
+    })
+}
+
+// Gets the highest history id to get the last time the ah data was updated
+async function dbUpdated() {
+    const query = "SELECT created_at FROM ah_history ORDER BY id DESC LIMIT 1";
+    // console.log(query);
+    return new Promise((resolve, reject) => {
+        bookshelf.knex.raw(query).then(function (data) {
+            // console.log(data.rows[0].id);
+            resolve(data.rows[0].created_at);
         }).catch(function (err) {
             console.error(Date.now() + " latestHistory " + err);
             resolve(0);
@@ -59,4 +74,5 @@ async function retrieveItem(itemID, excludeQuantity, historyID) {
 exports.insertOrUpdateAuction = insertOrUpdateAuction;
 exports.newApiCall = newApiCall;
 exports.latestHistory = latestHistory;
+exports.dbUpdated = dbUpdated;
 exports.retrieveItem = retrieveItem;
