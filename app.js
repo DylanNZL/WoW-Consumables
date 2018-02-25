@@ -4,6 +4,7 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const cron = require('cron');
 
 const index = require('./routes/index.js');
 const api = require('./routes/api.js');
@@ -51,5 +52,18 @@ app.use(function(err, req, res, next) {
 });
 
 // blizzardApi.getAHData(); // uncomment to refresh auction house
+
+/**
+ * Runs once a day to grab the latest auction house data
+ * It is set to run at 3 PM UTC (3AM NZST) as that time suits me, can easily be changed by setting the 15 part of cronTime to a different hour
+ */
+let newDownload = new cron.CronJob({
+    cronTime : '0 0 15 * * *',
+    onTick   : function () {
+        blizzardApi.getAHData();
+    },
+    start    : true,
+    timeZone : 'UTC'
+});
 
 module.exports = app;
