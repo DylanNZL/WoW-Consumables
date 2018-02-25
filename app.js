@@ -6,13 +6,11 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cron = require('cron');
 
-const index = require('./routes/index.js');
 const api = require('./routes/api.js');
 
 let app = express();
 
 const blizzardApi = require('./blizzardApi.js');
-const database = require('./database.js');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -26,11 +24,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/api*', api);
+app.use('/', (req, res) => { res.sendFile(path.join(__dirname + '/public/index.html')) });
 app.use('/feast', (req, res) => { res.sendFile(path.join(__dirname + '/public/feast.html')) });
 app.use('/alchemy', (req, res) => { res.sendFile(path.join(__dirname + '/public/alchemy.html')) });
 app.use('/food', (req, res) => { res.sendFile(path.join(__dirname + '/public/food.html')) });
+app.use('/api*', api);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
