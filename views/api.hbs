@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Raid Consumable Prices</title>
+
+    <meta charset="UTF-8">
+    <meta name="description" content="WoW Auction House Food Prices">
+    <meta name="keywords" content="WoW, Auction House, Raid Cosumables, Raid Consumable Prices, DylanNZ">
+    <meta name="author" content="DylanNZ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="consumables.dylannz.com" target="_blank">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<div style="margin-left: 25%; margin-right: 25%">
+    <h1>Simple WoW Auction House API</h1>
+    <p>Used for my raid consumables web app - <a href="https://github.com/DylanNZL/WowFood">https://github.com/DylanNZL/WowFood</a></p>
+
+    <!-- /api/item -->
+    <div class="card">
+            <h5 class="card-title text-center">Retrieve a single item</h5>
+            <h6 class="card-subtitle mb-2 text-muted text-center"><a href="/api/item?itemID=133579&excludeQuanitity=5">/api/item?itemID=x&excludeQuantity=x</a></h6>
+            <p class="card-body">Returns the requested items auction house data.<br>
+                <strong>"itemID"</strong> is the id of the item you are looking for (example 133579 is the item id of Lavish Suramar Feasts) <br>
+                <strong>"excludeQuantity"</strong> restricts the amount of auctions returned by only returning auctions with higher quanitities than this number, it can be left off to recieve data about all auctions
+            </p>
+
+        <div class="card-footer json">
+            <h5>Example:</h5>
+            <p> { <br>
+                "timestamp":1519525547048, <br>
+                "success":true, <br>
+                "item":"133578",<br>
+                "length":9, <br>
+                "auctions": [ <br>
+                {"history":6,"auc":"1607259231","item":133578,"owner":"CHARACTER_NAME","ownerRealm":"Frostmourne","bid":4751870,"buyout":4780000,"quantity":1,"timeLeft":"VERY_LONG","created_at":"2018-02-24T07:33:15.783Z","updated_at":"2018-02-24T07:33:15.783Z"},
+                {"history":6,"auc":"1607146611","item":133578,"owner":"CHARACTER_NAME","ownerRealm":"Frostmourne","bid":22788100,"buyout":23987500,"quantity":5,"timeLeft":"VERY_LONG","created_at":"2018-02-24T07:35:58.497Z","updated_at":"2018-02-24T07:35:58.497Z"}<br>
+                ]<br>
+                }
+            </p>
+        </div>
+    </div>
+    <br>
+
+    <!-- /api/dbUpdated -->
+    <div class="card">
+        <h5 class="card-title text-center">Check when the database was last updated</h5>
+        <h6 class="card-subtitle mb-2 text-muted text-center"><a href="/api/dbUpdated">/api/dbUpdated</a></h6>
+        <p class="card-body">Returns a timestamp of the last time the auction house data was updated</p>
+
+        <div class="card-footer json">
+            <h5>Example:</h5>
+            <p> { <br>
+                "timestamp":1519525547048, <br>
+                "success":true, <br>
+                "dbUpdated":"2018-02-24T07:33:02.681Z"<br>
+                }
+            </p>
+        </div>
+    </div>
+    <br>
+
+    <!-- /api/lavishSuramarFeast -->
+    <div class="card">
+        <h5 class="card-title text-center">Get all the data related to making the Lavish Suramar Feast</h5>
+        <h6 class="card-subtitle mb-2 text-muted text-center"><a href="/api/lavishSuramarFeast">/api/lavishSuramarFeast</a></h6>
+        <p class="card-body">This query basically does the same this as /api/item but on all of the items related to making a Lavish Suramar Feast. This query auto excludes any auction that has less than 5 items in it.</p>
+
+        <div class="card-footer json">
+            <h5>Example:</h5>
+            <p> {<br>
+                "timestamp": 1519526481294,<br>
+                "success": true,<br>
+                "items": [<br>
+                (14 different /item results)<br>
+                ]<br>
+                }
+            </p>
+        </div>
+    </div>
+    <br>
+
+    <!-- /api/heartyFeast -->
+    <div class="card">
+        <h5 class="card-title text-center">Get all the data related to making the Hearty Feast</h5>
+        <h6 class="card-subtitle mb-2 text-muted text-center"><a href="/api/heartyFeast">/api/heartyFeast</a></h6>
+        <p class="card-body">This query basically does the same this as /api/item but on all of the items related to making a Hearty Feast. This query auto excludes any auction that has less than 5 items in it.</p>
+
+        <div class="card-footer json">
+            <h5>Example:</h5>
+            <p> {<br>
+                "timestamp": 1519526481294,<br>
+                "success": true,<br>
+                "items": [<br>
+                (12 different /item results)<br>
+                ]<br>
+                }
+            </p>
+        </div>
+    </div>
+    <br>
+
+    <!-- /api/alchemy -->
+    <div class="card card-default">
+        <h5 class="card-title text-center">Get all the data related to legion alchemy</h5>
+        <h6 class="card-subtitle mb-2 text-muted text-center"><a href="/api/lavishSuramarFeast">/api/lavishSuramarFeast</a></h6>
+        <p class="card-body">This query basically does the same this as /api/item but on all of the items related to making the four different flasks, the cauldron and the mana potions. This query auto excludes any auction that has less than 5 items in it.</p>
+
+        <div class="card-footer json">
+            <h5>Example:</h5>
+            <p> {<br>
+                "timestamp": 1519526481294,<br>
+                "success": true,<br>
+                "items": [<br>
+                (13 different /item results)<br>
+                ]<br>
+                }
+            </p>
+        </div>
+    </div>
+    <br>
+
+    <!-- /api/food -->
+    <div class="card card-default">
+        <h5 class="card-title text-center">Get all the data related to making the 4 different stat foods</h5>
+        <h6 class="card-subtitle mb-2 text-muted text-center"><a href="/api/food">/api/food</a></h6>
+        <p class="card-body">This query basically does the same this as /api/item but on all of the items related to making the 3 different tiers (225, 300, 375) of secondary stat food in legion. This query auto excludes any auction that has less than 5 items in it.</p>
+
+        <div class="card-footer json">
+            <h5>Example:</h5>
+            <p> {<br>
+                "timestamp": 1519526481294,<br>
+                "success": true,<br>
+                "items": [<br>
+                (31 different /item results)<br>
+                ]<br>
+                }
+            </p>
+        </div>
+    </div>
+    <br>
+</div>
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
+<script src="https://unpkg.com/vue-select@latest"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/index.js"></script>
+</body>
+</html>

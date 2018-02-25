@@ -1,5 +1,6 @@
 let express = require('express');
 let router = express.Router();
+const path = require('path');
 
 const database = require("../database.js");
 
@@ -25,7 +26,7 @@ router.get('/', async (req, res, next) => {
             await food(req,res,next);
             break;
         default:
-            res.render()
+            res.render('api', {});
     }
     // res.render('index', { title: 'Express' });
 });
@@ -41,7 +42,9 @@ async function retrieveItem(req, res, next) {
     if (req.query.excludeQuantity > 0) {
         excludeQuantity = req.query.excludeQuantity;
     }
-    let data = await database.retrieveItem(itemID, excludeQuantity);
+    let historyID = await database.latestHistory();
+
+    let data = await database.retrieveItem(itemID, excludeQuantity, historyID);
 
     let json = {};
     if (data === 0) {

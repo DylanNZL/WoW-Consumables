@@ -11,3 +11,7 @@ a {
   text-align: center;
   padding:10px;
 }
+
+.json {
+  font: 12px Consolas;
+}
