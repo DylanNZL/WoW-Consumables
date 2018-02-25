@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
-    <title>WoW Feast Prices</title>
+    <title>Raid Consumable Prices</title>
 
     <meta charset="UTF-8">
     <meta name="description" content="WoW Auction House Food Prices">
     <meta name="keywords" content="WoW, Auction House, Food, Food Price, DylanNZ">
     <meta name="author" content="DylanNZ">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="bsno.dylannz.com" target="_blank">
+    <base href="consumables.dylannz.com" target="_blank">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
-    <div>
+    <div id="app" >
         <section class="jumbotron text-center">
             <div class="container">
-                <h1 class="jumbotron-heading">Some "tools" to calculate the cheapest way to get your raid consumables</h1>
+                <h1 class="jumbotron-heading">Calculate the cheapest way to get your raid consumables</h1>
                 <p class="lead text-muted">Database last updated: </p>
 
             </div>
@@ -26,43 +26,28 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" src="/lavishSuramarFeast.jpg" alt="Card image cap">
+                    <!-- Image found here: https://wow.curseforge.com/projects/feasthog -->
+                    <a href="/feast"><img class="card-img-top" src="/images/feast.png" alt="Picture of a Lavish Suramar Feast" height="500"></a>
                     <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                        </div>
+                        <p class="card-text">Shows the costs of Lavish Suramar Feasts and Hearty Feasts</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" data-src="" alt="Card image cap">
+                    <!-- Image found here: http://www.wowhead.com/item=127851/spirit-cauldron#screenshots:id=584429 -->
+                    <a href="/alchemy"><img class="card-img-top" src="/images/cauldron.jpg" alt="Picture of a Spirit Cauldron" height="500"></a>
                     <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                        </div>
+                        <p class="card-text">Shows the costs of flasks and certain potions</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="card mb-4 box-shadow">
-                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail" alt="Card image cap">
+                    <!-- Image found here: http://www.wowhead.com/npc=101846/nomi#screenshots:id=564962 -->
+                    <a href="/food"><img class="card-img-top" src="/images/nomi.jpg" alt="Picture of Nomi"height="500"></a>
                     <div class="card-body">
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                            </div>
-                        </div>
+                        <p class="card-text">Shows the costs of the 3 types of stat increasing foods</p>
                     </div>
                 </div>
             </div>
