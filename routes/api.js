@@ -25,6 +25,9 @@ router.get('/', async (req, res, next) => {
         case "/api/food": // Does a bunch of queries to reduce client <-> server communication overhead
             await food(req,res,next);
             break;
+        case "/api/allReagents": // Does a bunch of queries to reduce client <-> server communication overhead
+            await allReagents(req,res,next);
+            break;
         default:
             res.render('api', {});
     }
@@ -237,7 +240,7 @@ const foodItems = [
     { "id" : 124121, "name" : "Wildfowl Egg" },
     { "id" : 128304, "name" : "Yseralline Seed" },
     { "id" : 129100, "name" : "Gem Chips" },
-    { "id" : 133607, "name" : "Silver Mackaeral" },
+    { "id" : 133607, "name" : "Silver Mackaeral" }
 ];
 
 async function food(req,res,next) {
@@ -261,6 +264,55 @@ async function food(req,res,next) {
         i++;
     });
 
+    res.status(200).jsonp(result);
+}
+
+const reagents = {
+    124101 : { "id" : 124101, "name" : "Aethril" },
+    124102: { "id" : 124102, "name" : "Dreamleaf" },
+    124103: { "id" : 124103, "name" : "FoxFlower" },
+    124104: { "id" : 124104, "name" : "Fjarnskaggl" },
+    124105: { "id" : 124105, "name" : "Starlight Rose" },
+    124107: { "id" : 124107, "name" : "Cursed Queenfish" },
+    124108: { "id" : 124108, "name" : "Mossgill Perch" },
+    124109: { "id" : 124109, "name" : "Highmountain Salmon" },
+    124110: { "id" : 124110, "name" : "Stormray" },
+    124111: { "id" : 124111, "name" : "Runescale Koi" },
+    124112: { "id" : 124112, "name" : "Black Barracuda" },
+    124117: { "id" : 124117, "name" : "Lean Shank" },
+    124118: { "id" : 124118, "name" : "Fatty Bearsteak" },
+    124119: { "id" : 124119, "name" : "Big Gamy Ribs" },
+    124120: { "id" : 124120, "name" : "Leyblood" },
+    124121: { "id" : 124121, "name" : "Wildfowl Egg" },
+    128304: { "id" : 128304, "name" : "Yseralline Seed" },
+    129100: { "id" : 129100, "name" : "Gem Chips" },
+    133607: { "id" : 133607, "name" : "Silver Mackaeral" },
+    133680: { "id" : 133680, "name" : "Slice of Bacon" }
+};
+async function allReagents(req,res,next) {
+    let result = {
+        timestamp: Date.now(),
+        success: true,
+        items: reagents
+    };
+    let historyID = await database.latestHistory();
+    let promises = [];
+
+    for (let property in result.items) {
+
+        promises.push(result.items[property] = database.retrieveItem(result.items[property].id, 5, historyID))
+    }
+
+    let data = await Promise.all(promises);
+
+    data.forEach(function (dat) {
+        console.log(dat);
+        if (dat !== undefined && dat.length !== 0) {
+            result.items[dat[0].item].auctions = dat
+            //     result.items[i].auctions = dat;
+        }
+    });
+    console.log(result);
     res.status(200).jsonp(result);
 }
 
