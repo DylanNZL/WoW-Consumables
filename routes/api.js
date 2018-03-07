@@ -1,6 +1,5 @@
 let express = require('express');
 let router = express.Router();
-const path = require('path');
 
 const database = require("../database.js");
 
@@ -412,7 +411,7 @@ async function allCraftables(req, res, next) {
 }
 
 async function shopReagents(req, res, next) {
-    let result = {
+    res.status(200).jsonp({
         timestamp: Date.now(),
         success: true,
         items: {
@@ -423,8 +422,7 @@ async function shopReagents(req, res, next) {
             9133592 : { id : 133592, name : "Stonedark Snail", cost : 0.5 },
             9133593 : { id : 133593, name : "Royal Olive", cost : 0.5 }
         }
-    };
-
-    res.status(200).jsonp(result);
+    });
 }
+
 module.exports = router;
