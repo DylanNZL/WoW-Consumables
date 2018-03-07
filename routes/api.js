@@ -316,4 +316,41 @@ async function allReagents(req,res,next) {
     res.status(200).jsonp(result);
 }
 
+const craftables = {
+    // Flasks
+    127851: { "id" : 127851, "name" : "Spirit Cauldron", category : "feast", recipe: [{ id : 127847, quantity : 5 },
+            { id : 127848, quantity : 5 },{ id : 127849, quantity : 5 },{ id : 127850, quantity : 5 },]},
+    127847: { "id" : 127847, "name" : "Flask of the Whispered Pact", category : "feast", recipe: [
+            { id: 124104, quantity: 5 },
+        ]}, // Fjarnskaggl, Dreamleaf
+    127848: { "id" : 127848, "name" : "Flask of the Seventh Demon" }, // Fjarnskaggl, Foxflower
+    127849: { "id" : 127849, "name" : "Flask of the Countless Armies" }, // Aethril, Foxflower
+    127850: { "id" : 127850, "name" : "Flask of Ten Thousand Scars" }, // Aethril, Dreamleaf
+    // Potions // TODO: add more pots
+    127846: { "id" : 127846, "name" : "Leytorrent Potion" }, // Aethril, Dreamleaf
+    127835: { "id" : 127835, "name" : "Ancient Mana Potion" },
+    // Crit
+    133557: { "id" : 133557, "name" : "Salt and Pepper Shank" }, // 225
+    133565: { "id" : 133565, "name" : "Leybeque Ribs" }, // 300
+    133565: { "id" : 133565, "name" : "The Hungry Magister" }, // 375
+    // Haste
+    133561: { "id" : 133561, "name" : "Deep-Fried Mossgill" }, // 225
+    133566: { "id" : 133566, "name" : "Suramar Surf and Turf" }, // 300
+    133571: { "id" : 133571, "name" : "Azshari Salad" }, // 375
+    // Vers
+    133563: { "id" : 133563, "name" : "Faronaar Fizz" }, // 225
+    133568: { "id" : 133568, "name" : "Koi-Scented Stormray" }, // 300
+    133568: { "id" : 133568, "name" : "Seed-Battered Fish Plate" }, // 375
+    // Mastery
+    133562: { "id" : 133562, "name" : "Pickled Stormray" }, // 225
+    133567: { "id" : 133567, "name" : "Barracude Mrglgagh" }, // 300
+    133567: { "id" : 133567, "name" : "Nightborne Delicacy Platter" }, // 375
+    // Misc food // TODO: More misc food?
+    133564: { "id" : 133564, "name" : "Spiced Rib Roast" },
+    133569: { "id" : 133569, "name" : "Drogbar Style Salmon" },
+    // Feasts
+    133578: { "id" : 133578, "name" : "Hearty Feast" },
+    133579: { "id" : 133579, "name" : "Lavish Suramar Feast" },
+};
+
 module.exports = router;
