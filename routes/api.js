@@ -300,13 +300,13 @@ async function allReagents(req,res,next) {
 
     for (let property in result.items) {
 
-        promises.push(result.items[property] = database.retrieveItem(result.items[property].id, 5, historyID))
+        promises.push(result.items[property].auctions = database.retrieveItem(result.items[property].id, 5, historyID))
     }
 
     let data = await Promise.all(promises);
 
     data.forEach(function (dat) {
-        console.log(dat);
+        // console.log(dat);
         if (dat !== undefined && dat.length !== 0) {
             result.items[dat[0].item].auctions = dat
             //     result.items[i].auctions = dat;
