@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Raid Consumable Prices</title>
+
+    <meta charset="UTF-8">
+    <meta name="description" content="WoW Auction House Food Prices">
+    <meta name="keywords" content="WoW, Auction House, Raid Cosumables, Raid Consumable Prices, DylanNZ">
+    <meta name="author" content="DylanNZ">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="consumables.dylannz.com" target="_blank">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+<div id="app" >
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Calculate the cheapest way to get your raid consumables</h1>
+            <p class="lead text-muted">Database last updated: {{ dbUpdated }}</p>
+
+        </div>
+    </section>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card box-shadow mb-4">
+                <div class="card-top">
+                    <h3 class="card-title text-center" style="margin-top: 5%">
+                        <img class="item-icon" src="http://wow.zamimg.com/images/wow/icons/large/inv_alchemy_70_flask03purple.jpg">
+                        Flask of the Whispered Pact
+                    </h3>
+                    <h5 class="card-subtitle text-center">Average AH Price: $450.13  |  Average Crafted Price: $403.20</h5>
+                </div>
+                <div class="card-body "> <!-- Here -->
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                    <thead>
+                    <th>Item</th>
+                    <th>Cost</th>
+                    <th>Min Buyout</th>
+                    <th>Max Buyout</th>
+                    <th>Quantity Avail</th>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{{ items[info.id].name }}</td>
+                        <td>{{ items[info.id].buyoutData.average }}</td>
+                        <td>{{ items[info.id].buyoutData.min }}</td>
+                        <td>{{ items[info.id].buyoutData.max }}</td>
+                        <td>{{ items[info.id].buyoutData.count }}</td>
+                    </tr>
+                    <tr v-for="item of info.recipe">
+                        <td>{{ items[item.id].name }}</td>
+                        <td>{{ items[item.id].buyoutData.average }}</td>
+                        <td>{{ items[item.id].buyoutData.min }}</td>
+                        <td>{{ items[item.id].buyoutData.max }}</td>
+                        <td>{{ items[item.id].buyoutData.count }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br>
+                <p class="text-muted">Crafted using the min prices: ${{ minCost(info, items)}}</p>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card box-shadow mb-4">
+                <div class="card-top">
+                    <h3 class="card-title text-center" style="margin-top: 5%">
+                        <img class="item-icon" src="http://wow.zamimg.com/images/wow/icons/large/inv_alchemy_70_flask03red.jpg">
+                        Flask of the Whispered Pact
+                    </h3>
+                    <h5 class="card-subtitle text-center">Average AH Price: $450.13  |  Average Crafted Price: $403.20</h5>
+                </div>
+                <div class="card-body "> <!-- Here -->
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <th>Item</th>
+                            <th>Cost</th>
+                            <th>Min Buyout</th>
+                            <th>Max Buyout</th>
+                            <th>Quantity Avail</th>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{{ items[info.id].name }}</td>
+                                <td>{{ items[info.id].buyoutData.average }}</td>
+                                <td>{{ items[info.id].buyoutData.min }}</td>
+                                <td>{{ items[info.id].buyoutData.max }}</td>
+                                <td>{{ items[info.id].buyoutData.count }}</td>
+                            </tr>
+                            <tr v-for="item of info.recipe">
+                                <td>{{ items[item.id].name }}</td>
+                                <td>{{ items[item.id].buyoutData.average }}</td>
+                                <td>{{ items[item.id].buyoutData.min }}</td>
+                                <td>{{ items[item.id].buyoutData.max }}</td>
+                                <td>{{ items[item.id].buyoutData.count }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <p>Crafted using the min prices: ${{ minCost(info, items)}}</p>
+                        <br>
+                        <p>If an item doesn't show a cost, there are none being sold on the Auction House</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card box-shadow mb-4">
+                <div class="card-top">
+                    <h3 class="card-title text-center" style="margin-top: 5%">
+                        <img class="item-icon" src="http://wow.zamimg.com/images/wow/icons/large/inv_alchemy_70_flask03purple.jpg">
+                        Flask of the Whispered Pact
+                    </h3>
+                    <h5 class="card-subtitle text-center">Average AH Price: $450.13  |  Average Crafted Price: $403.20</h5>
+                </div>
+                <div class="card-body "> <!-- Here -->
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <th>Item</th>
+                            <th>Cost</th>
+                            <th>Min Buyout</th>
+                            <th>Max Buyout</th>
+                            <th>Quantity Avail</th>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{{ items[info.id].name }}</td>
+                                <td>{{ items[info.id].buyoutData.average }}</td>
+                                <td>{{ items[info.id].buyoutData.min }}</td>
+                                <td>{{ items[info.id].buyoutData.max }}</td>
+                                <td>{{ items[info.id].buyoutData.count }}</td>
+                            </tr>
+                            <tr v-for="item of info.recipe">
+                                <td>{{ items[item.id].name }}</td>
+                                <td>{{ items[item.id].buyoutData.average }}</td>
+                                <td>{{ items[item.id].buyoutData.min }}</td>
+                                <td>{{ items[item.id].buyoutData.max }}</td>
+                                <td>{{ items[item.id].buyoutData.count }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <p>Crafted using the min prices: ${{ minCost(info, items)}}</p>
+                        <br>
+                        <p>If an item doesn't show a cost, there are none being sold on the Auction House</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card box-shadow mb-4">
+                <div class="card-top">
+                    <h3 class="card-title text-center" style="margin-top: 5%">
+                        <img class="item-icon" src="http://wow.zamimg.com/images/wow/icons/large/inv_alchemy_70_flask03red.jpg">
+                        Flask of the Whispered Pact
+                    </h3>
+                    <h5 class="card-subtitle text-center">Average AH Price: $450.13  |  Average Crafted Price: $403.20</h5>
+                </div>
+                <div class="card-body "> <!-- Here -->
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <th>Item</th>
+                            <th>Cost</th>
+                            <th>Min Buyout</th>
+                            <th>Max Buyout</th>
+                            <th>Quantity Avail</th>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{{ items[info.id].name }}</td>
+                                <td>{{ items[info.id].buyoutData.average }}</td>
+                                <td>{{ items[info.id].buyoutData.min }}</td>
+                                <td>{{ items[info.id].buyoutData.max }}</td>
+                                <td>{{ items[info.id].buyoutData.count }}</td>
+                            </tr>
+                            <tr v-for="item of info.recipe">
+                                <td>{{ items[item.id].name }}</td>
+                                <td>{{ items[item.id].buyoutData.average }}</td>
+                                <td>{{ items[item.id].buyoutData.min }}</td>
+                                <td>{{ items[item.id].buyoutData.max }}</td>
+                                <td>{{ items[item.id].buyoutData.count }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <p>Crafted using the min prices: ${{ minCost(info, items)}}</p>
+                        <br>
+                        <p>If an item doesn't show a cost, there are none being sold on the Auction House</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/test.js"></script>
+</body>
+</html>

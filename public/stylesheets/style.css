@@ -15,3 +15,8 @@ a {
 .json {
   font: 12px Consolas;
 }
+
+.item-icon {
+  margin: auto;
+  padding-right: 5%;
+}
