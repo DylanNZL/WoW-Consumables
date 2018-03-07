@@ -34,7 +34,7 @@ async function latestHistory() {
     // console.log(query);
     return new Promise((resolve, reject) => {
         bookshelf.knex.raw(query).then(function (data) {
-            resolve(data[0].id);
+            resolve(data.rows[0].id);
         }).catch(function (err) {
             console.error(Date.now() + " latestHistory " + err);
             resolve(0);
@@ -49,7 +49,7 @@ async function dbUpdated() {
     return new Promise((resolve, reject) => {
         bookshelf.knex.raw(query).then(function (data) {
             // console.log(data);
-            resolve(data[0].created_at);
+            resolve(data.rows[0].created_at);
         }).catch(function (err) {
             console.error(Date.now() + " dbUpdated " + err);
             resolve(0);
