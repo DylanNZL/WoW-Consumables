@@ -34,35 +34,46 @@
                     <h5 class="card-subtitle text-center">Average AH Price: $450.13  |  Average Crafted Price: $403.20</h5>
                 </div>
                 <div class="card-body "> <!-- Here -->
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                    <thead>
-                    <th>Item</th>
-                    <th>Cost</th>
-                    <th>Min Buyout</th>
-                    <th>Max Buyout</th>
-                    <th>Quantity Avail</th>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>{{ items[info.id].name }}</td>
-                        <td>{{ items[info.id].buyoutData.average }}</td>
-                        <td>{{ items[info.id].buyoutData.min }}</td>
-                        <td>{{ items[info.id].buyoutData.max }}</td>
-                        <td>{{ items[info.id].buyoutData.count }}</td>
-                    </tr>
-                    <tr v-for="item of info.recipe">
-                        <td>{{ items[item.id].name }}</td>
-                        <td>{{ items[item.id].buyoutData.average }}</td>
-                        <td>{{ items[item.id].buyoutData.min }}</td>
-                        <td>{{ items[item.id].buyoutData.max }}</td>
-                        <td>{{ items[item.id].buyoutData.count }}</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <br>
-                <p class="text-muted">Crafted using the min prices: ${{ minCost(info, items)}}</p>
-                </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <th>Item</th>
+                            <th>Cost</th>
+                            <th>Min Buyout</th>
+                            <th>Max Buyout</th>
+                            <th>Quantity Avail</th>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{{ items[info.id].name }}</td>
+                                <td>{{ items[info.id].buyoutData.average }}</td>
+                                <td>{{ items[info.id].buyoutData.min }}</td>
+                                <td>{{ items[info.id].buyoutData.max }}</td>
+                                <td>{{ items[info.id].buyoutData.count }}</td>
+                            </tr>
+                            <tr v-for="item of info.recipe">
+                                <td>{{ items[item.id].name }}</td>
+                                <td>{{ items[item.id].buyoutData.average }}</td>
+                                <td>{{ items[item.id].buyoutData.min }}</td>
+                                <td>{{ items[item.id].buyoutData.max }}</td>
+                                <td>{{ items[item.id].buyoutData.count }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <div style="float:right;">
+                            <!-- Recipe Rank -->
+                            <label>{{ info.rank.label }}:</label>
+                            <select v-model="info.rank.selected" class="form-control-inline" v-on:change="rankChanged">
+                                <option v-for="option in info.rank.options" :value="option.value">
+                                    {{ option.text }}
+                                </option>
+                            </select>
+                        </div>
+                        <div style="float:left;">
+                            <p class="text-muted" style="text-align:right;">Crafted using the min prices: ${{ minCost(info, items)}}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -104,9 +115,18 @@
                             </tbody>
                         </table>
                         <br>
-                        <p>Crafted using the min prices: ${{ minCost(info, items)}}</p>
-                        <br>
-                        <p>If an item doesn't show a cost, there are none being sold on the Auction House</p>
+                        <div style="float:right;">
+                            <!-- Recipe Rank -->
+                            <label>{{ info.rank.label }}:</label>
+                            <select v-model="info.rank.selected" class="form-control-inline" v-on:change="rankChanged">
+                                <option v-for="option in info.rank.options" :value="option.value">
+                                    {{ option.text }}
+                                </option>
+                            </select>
+                        </div>
+                        <div style="float:left;">
+                            <p class="text-muted" style="text-align:right;">Crafted using the min prices: ${{ minCost(info, items)}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -149,9 +169,18 @@
                             </tbody>
                         </table>
                         <br>
-                        <p>Crafted using the min prices: ${{ minCost(info, items)}}</p>
-                        <br>
-                        <p>If an item doesn't show a cost, there are none being sold on the Auction House</p>
+                        <div style="float:right;">
+                            <!-- Recipe Rank -->
+                            <label>{{ info.rank.label }}:</label>
+                            <select v-model="info.rank.selected" class="form-control-inline" v-on:change="rankChanged">
+                                <option v-for="option in info.rank.options" :value="option.value">
+                                    {{ option.text }}
+                                </option>
+                            </select>
+                        </div>
+                        <div style="float:left;">
+                            <p class="text-muted" style="text-align:right;">Crafted using the min prices: ${{ minCost(info, items)}}</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -194,9 +223,18 @@
                             </tbody>
                         </table>
                         <br>
-                        <p>Crafted using the min prices: ${{ minCost(info, items)}}</p>
-                        <br>
-                        <p>If an item doesn't show a cost, there are none being sold on the Auction House</p>
+                        <div style="float:right;">
+                            <!-- Recipe Rank -->
+                            <label>{{ info.rank.label }}:</label>
+                            <select v-model="info.rank.selected" class="form-control-inline" v-on:change="rankChanged">
+                                <option v-for="option in info.rank.options" :value="option.value">
+                                    {{ option.text }}
+                                </option>
+                            </select>
+                        </div>
+                        <div style="float:left;">
+                            <p class="text-muted" style="text-align:right;">Crafted using the min prices: ${{ minCost(info, items)}}</p>
+                        </div>
                     </div>
                 </div>
             </div>

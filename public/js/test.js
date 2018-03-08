@@ -1,7 +1,12 @@
 new Vue({
     el: '#app',
     data: {
-        dbUpdated: "Error"
+        dbUpdated: "Error",
+        items: {
+            reagents: {},
+            craftables: {},
+            shopReagents: {}
+        }
     },
     methods: {
         checkDbUpdated: function () {
