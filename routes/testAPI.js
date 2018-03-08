@@ -158,6 +158,14 @@ function allCraftables(req, res, next) {
                 id: 127851,
                 name: "Spirit Cauldron",
                 category: "flask",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 recipe: [{id: 8127847, quantity: 5}, {id: 8127848, quantity: 5}, {id: 8127849, quantity: 5}, {id: 8127850, quantity: 5}],
                 auctions: [{quantity: 15, buyout: 2950200}]
             },
@@ -165,6 +173,14 @@ function allCraftables(req, res, next) {
                 id: 127847,
                 name: "Flask of the Whispered Pact",
                 category: "flask",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 recipe: [{id: 124104, quantity: 10}, {id: 124102, quantity: 10}, {id: 124105, quantity: 7}],
                 auctions: [{quantity: 15, buyout: 2950200}]
             }, // Fjarnskaggl, Dreamleaf
@@ -172,6 +188,14 @@ function allCraftables(req, res, next) {
                 id: 127848,
                 name: "Flask of the Seventh Demon",
                 category: "flask",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 recipe: [{id: 124104, quantity: 10}, {id: 124103, quantity: 10}, {id: 124105, quantity: 7}],
                 auctions: [{quantity: 15, buyout: 2950200}]
             }, // Fjarnskaggl, Foxflower
@@ -179,6 +203,14 @@ function allCraftables(req, res, next) {
                 id: 127849,
                 name: "Flask of the Countless Armies",
                 category: "flask",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 recipe: [{id: 124101, quantity: 10}, {id: 124103, quantity: 10}, {id: 124105, quantity: 7}],
                 auctions: [{quantity: 15, buyout: 2950200}]
             }, // Aethril, Foxflower
@@ -186,6 +218,14 @@ function allCraftables(req, res, next) {
                 id: 127850,
                 name: "Flask of Ten Thousand Scars",
                 category: "flask",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 recipe: [{id: 124101, quantity: 10}, {id: 124102, quantity: 10}, {id: 124105, quantity: 7}],
                 auctions: [{quantity: 15, buyout: 2950200}]
             }, // Aethril, Dreamleaf
@@ -194,6 +234,14 @@ function allCraftables(req, res, next) {
                 id: 127846,
                 name: "Leytorrent Potion",
                 category: "potion",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 recipe: [{id: 124105, quantity: 1}, {id: 124101, quantity: 2}, {id: 124102, quantity: 2}],
                 auctions: [{quantity: 15, buyout: 2950200}]
             }, // Aethril, Dreamleaf
@@ -201,6 +249,14 @@ function allCraftables(req, res, next) {
                 id: 127835,
                 name: "Ancient Mana Potion",
                 category: "potion",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 recipe: [{id: 128304, quantity: 5}],
                 auctions: [{quantity: 15, buyout: 2950200}]},
             // Crit
@@ -208,6 +264,14 @@ function allCraftables(req, res, next) {
                 id: 133557,
                 name: "Salt and Pepper Shank",
                 category: "Critical Strike",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 stat: 225,
                 recipe: [{id: 124117, quantity: 5}, {id: 9133588, quantity: 2}, {id: 9133589, quantity: 2}],
                 auctions: [{quantity: 15, buyout: 2950200}]
@@ -216,6 +280,14 @@ function allCraftables(req, res, next) {
                 id: 133565,
                 name: "Leybeque Ribs",
                 category: "Critical Strike",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 stat: 300,
                 recipe: [{id: 124120, quantity: 5}, {id: 124119, quantity: 5}, {id: 9133589, quantity: 5}],
                 auctions: [{quantity: 15, buyout: 2950200}]
@@ -224,6 +296,14 @@ function allCraftables(req, res, next) {
                 id: 133570,
                 name: "The Hungry Magister",
                 category: "Critical Strike",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 stat: 375,
                 recipe: [{id: 8133565, quantity: 1}, {id: 124109, quantity: 5}, {id: 124118, quantity: 5},
                     {id: 9133588, quantity: 3}, { id: 9133589, quantity: 2 }],
@@ -234,6 +314,14 @@ function allCraftables(req, res, next) {
                 id: 133561,
                 name: "Deep-Fried Mossgill",
                 category: "Haste",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 stat: 225,
                 recipe: [{id: 124108, quantity: 5}, {id: 9133590, quantity: 5}],
                 auctions: [{quantity: 15, buyout: 2950200}]
@@ -242,13 +330,33 @@ function allCraftables(req, res, next) {
                 id: 133566,
                 name: "Suramar Surf and Turf",
                 category: "Haste",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 stat: 300,
                 recipe: [{id: 124111, quantity: 5}, {id: 124117, quantity: 2}, {id: 9133588, quantity: 2}, {id: 9133593, quantity: 4}],
                 auctions: [{quantity: 15, buyout: 2950200}]
             },
             133571: {
-                id: 133571, name: "Azshari Salad", category: "Haste", stat: 375, recipe: [{id: 8133571, quantity: 1},
-                    {id: 124101, quantity: 5}, {id: 124102, quantity: 5}, {id: 124103, quantity: 5}, {id: 124104, quantity: 5}],
+                id: 133571,
+                name: "Azshari Salad",
+                category: "Haste",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
+                stat: 375,
+                recipe: [{id: 8133571, quantity: 1}, {id: 124101, quantity: 5}, {id: 124102, quantity: 5},
+                    {id: 124103, quantity: 5}, {id: 124104, quantity: 5}],
                 auctions: [{quantity: 15, buyout: 2950200}]
             },
             // Vers
@@ -256,6 +364,14 @@ function allCraftables(req, res, next) {
                 id: 133563,
                 name: "Faronaar Fizz",
                 category: "Versatility",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 stat: 225,
                 recipe: [{id: 124121, quantity: 5}, {id: 9133591, quantity: 2}, {id: 9133593, quantity: 3}],
                 auctions: [{quantity: 15, buyout: 2950200}]
@@ -264,6 +380,14 @@ function allCraftables(req, res, next) {
                 id: 133568,
                 name: "Koi-Scented Stormray",
                 category: "Versatility",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 stat: 300,
                 recipe: [{id: 124111, quantity: 5}, {id: 124110, quantity: 5}, {id: 9133588, quantity: 2}, {id: 9133590, quantity: 2}],
                 auctions: [{quantity: 15, buyout: 2950200}]
@@ -272,6 +396,14 @@ function allCraftables(req, res, next) {
                 id: 133573,
                 name: "Seed-Battered Fish Plate",
                 category: "Versatility",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 stat: 375,
                 recipe: [{id: 8133568, quantity: 1}, {id: 133607, quantity: 5}, {id: 128304, quantity: 20},
                     {id: 9133590, quantity: 3}, {id: 9133589, quantity: 2}],
@@ -282,6 +414,14 @@ function allCraftables(req, res, next) {
                 id: 133562,
                 name: "Pickled Stormray",
                 category: "Mastery",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 stat: 275,
                 recipe: [{id: 124110, quantity: 5}, {id: 9133588, quantity: 3}],
                 auctions: [{quantity: 15, buyout: 2950200}]
@@ -290,6 +430,14 @@ function allCraftables(req, res, next) {
                 id: 133567,
                 name: "Barracuda Mrglgagh",
                 category: "Mastery",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 stat: 300,
                 recipe: [{id: 124120, quantity: 5}, {id: 124112, quantity: 5}, {id: 9133590, quantity: 4}, {id: 9133591, quantity: 1}],
                 auctions: [{quantity: 15, buyout: 2950200}]
@@ -298,6 +446,14 @@ function allCraftables(req, res, next) {
                 id: 133572,
                 name: "Nightborne Delicacy Platter",
                 category: "Mastery",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 stat: 375,
                 recipe: [{id: 8133567, quantity: 1}, {id: 129100, quantity: 20}, {id: 124105, quantity: 1},
                     {id: 124121, quantity: 5}, {id: 9133592, quantity: 10}],
@@ -308,6 +464,14 @@ function allCraftables(req, res, next) {
                 id: 133564,
                 name: "Spiced Rib Roast",
                 category: "MISC",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 stat: 0,
                 recipe: [{id: 124119, quantity: 5}, {id: 9133589, quantity: 5}],
                 auctions: [{quantity: 15, buyout: 2950200}]
@@ -316,6 +480,14 @@ function allCraftables(req, res, next) {
                 id: 133569,
                 name: "Drogbar Style Salmon",
                 category: "MISC",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 stat: 0,
                 recipe: [{id: 124109, quantity: 5}, {id: 9133592, quantity: 10}, {id: 9133589, quantity: 4}, {id: 9133593, quantity: 10}],
                 auctions: [{quantity: 15, buyout: 2950200}]
@@ -325,6 +497,14 @@ function allCraftables(req, res, next) {
                 id: 133578,
                 name: "Hearty Feast",
                 category: "Feast",
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 stat: 400,
                 recipe: [{id: 8133557, quantity: 6}, {id: 8133561, quantity: 6}, {id: 8133563, quantity: 6},
                     {id: 8133562, quantity: 6}, {id: 133564, quantity: 6}, {id: 133680, quantity: 6}],
@@ -335,6 +515,14 @@ function allCraftables(req, res, next) {
                 name: "Lavish Suramar Feast",
                 category: "Feast",
                 stat: 500,
+                rank: {
+                    selected: 3,
+                    options: [
+                        {text: 1, value: 1},
+                        {text: 2, value: 2},
+                        {text: 3, value: 3}
+                    ]
+                },
                 recipe: [{id: 8133565, quantity: 6}, {id: 8133566, quantity: 6}, {id: 8133568, quantity: 6},
                     {id: 8133567, quantity: 6}, {id: 8133569, quantity: 6}, {id: 133680, quantity: 6}],
                 auctions: [{quantity: 15, buyout: 2950200}]
