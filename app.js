@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const cron = require('cron');
 
 const api = require('./routes/api.js');
+const testAPI = require('./routes/testAPI.js');
 const index = require('./routes/index.js');
 
 let app = express();
@@ -31,6 +32,7 @@ app.use('/alchemy', (req, res) => { res.sendFile(path.join(__dirname + '/public/
 app.use('/food', (req, res) => { res.sendFile(path.join(__dirname + '/public/food.html')) });
 app.use('/test', (req, res) => { res.sendFile(path.join(__dirname + '/public/test.html')) });
 app.use('/api*', api);
+app.use('/test*', testAPI);
 app.use('/', index);
 
 // catch 404 and forward to error handler
