@@ -8,13 +8,28 @@
     <meta name="keywords" content="WoW, Auction House, Raid Cosumables, Raid Consumable Prices, DylanNZ">
     <meta name="author" content="DylanNZ">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <base href="consumables.dylannz.com" target="_blank">
+    <!-- Uncomment this for the live version of the site -->
+    <!--<base href="consumables.dylannz.com" target="_blank">-->
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
 <body>
 <div id="app" >
+    <!-- TODO: When clicked on show the corresponding page without reloading -->
+    <nav class="site-header  py-1">
+        <div class="container d-flex flex-column flex-md-row justify-content-between">
+            <a class="py-2" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+            </a>
+            <a class="py-2 d-none d-md-inline-block" href="#">Home</a>
+            <a class="py-2 d-none d-md-inline-block" href="#">Feast</a>
+            <a class="py-2 d-none d-md-inline-block" href="#">Flasks</a>
+            <a class="py-2 d-none d-md-inline-block" href="#">Potions</a>
+            <a class="py-2 d-none d-md-inline-block" href="#">Food</a>
+        </div>
+    </nav>
+
     <section class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading">Calculate the cheapest way to get your raid consumables</h1>
@@ -241,6 +256,63 @@
         </div>
     </div>
 </div>
+
+<!-- Vue.js Templates -->
+<template id="">
+    <div class="col-md-6">
+        <div class="card box-shadow mb-4">
+            <div class="card-top">
+                <h3 class="card-title text-center" style="margin-top: 5%">
+                    <img class="item-icon" src="http://wow.zamimg.com/images/wow/icons/large/inv_alchemy_70_flask03purple.jpg">
+                    Flask of the Whispered Pact
+                </h3>
+                <h5 class="card-subtitle text-center">Average AH Price: $450.13  |  Average Crafted Price: $403.20</h5>
+            </div>
+            <div class="card-body "> <!-- Here -->
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <th>Item</th>
+                        <th>Cost</th>
+                        <th>Min Buyout</th>
+                        <th>Max Buyout</th>
+                        <th>Quantity Avail</th>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td> items[info.id].name </td>
+                            <td> items[info.id].buyoutData.average </td>
+                            <td> items[info.id].buyoutData.min </td>
+                            <td> items[info.id].buyoutData.max </td>
+                            <td> items[info.id].buyoutData.count </td>
+                        </tr>
+                        <!--<tr v-for="item of info.recipe">-->
+                        <!--<td> items[item.id].name </td>-->
+                        <!--<td> items[item.id].buyoutData.average </td>-->
+                        <!--<td> items[item.id].buyoutData.min </td>-->
+                        <!--<td> items[item.id].buyoutData.max </td>-->
+                        <!--<td> items[item.id].buyoutData.count </td>-->
+                        <!--</tr>-->
+                        </tbody>
+                    </table>
+                    <br>
+                    <div style="float:right;">
+                        <!-- Recipe Rank -->
+                        <!--<label> info.rank.label :</label>-->
+                        <!--<select v-model="info.rank.selected" class="form-control-inline" v-on:change="rankChanged">-->
+                        <!--<option v-for="option in info.rank.options" :value="option.value">-->
+                        <!--option.text -->
+                        <!--</option>-->
+                        <!--</select>-->
+                    </div>
+                    <div style="float:left;">
+                        <p class="text-muted" style="text-align:right;">Crafted using the min prices: $ minCost(info, items)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
