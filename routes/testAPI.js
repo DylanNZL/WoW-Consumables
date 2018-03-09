@@ -22,7 +22,6 @@ router.get('/', async (req, res, next) => {
         default:
             res.render('api', {});
     }
-    // res.render('index', { title: 'Express' });
 });
 
 function allReagents(req, res, next) {
