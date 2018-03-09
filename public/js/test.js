@@ -2,6 +2,8 @@ new Vue({
     el: '#app',
     data: {
         dbUpdated: "Error",
+        category: "None",
+        home: true,
         items: {
             allReagents: {},
             craftables: {},
