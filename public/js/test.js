@@ -92,22 +92,13 @@ Vue.component('tr-template', {
                 return mItems.shopReagents[mItem.id % 9000000].cost;
             }
         },
-        min: function (mItem, mItems) {
+        priceRange: function (mItem, mItems) {
             if (mItem.id < 8000000) {
-                return mItems.allReagents[mItem.id].buyoutData.min;
+                return "$" + mItems.allReagents[mItem.id].buyoutData.min + " - $" + mItems.allReagents[mItem.id].buyoutData.min;
             } else if (mItem.id < 9000000) {
-                return mItems.craftables[mItem.id % 8000000].buyoutData.min;
+                return "$" + mItems.craftables[mItem.id % 8000000].buyoutData.min + " - $" + mItems.craftables[mItem.id % 8000000].buyoutData.max;
             } else {
-                return mItems.shopReagents[mItem.id % 9000000].cost;
-            }
-        },
-        max: function (mItem, mItems) {
-            if (mItem.id < 8000000) {
-                return mItems.allReagents[mItem.id].buyoutData.max;
-            } else if (mItem.id < 9000000) {
-                return mItems.craftables[mItem.id % 8000000].buyoutData.max;
-            } else {
-                return mItems.shopReagents[mItem.id % 9000000].cost;
+                return "$" + mItems.shopReagents[mItem.id % 9000000].cost;
             }
         },
         count: function (mItem, mItems) {

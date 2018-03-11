@@ -187,17 +187,15 @@
                     <table class="table table-hover">
                         <thead>
                             <th>Item</th>
-                            <th>Cost</th>
-                            <th>Min Buyout</th>
-                            <th>Max Buyout</th>
+                            <th>Average Buyout</th>
+                            <th>Price Range</th>
                             <th>Quantity Avail</th>
                         </thead>
                         <tbody>
                             <tr>
                                 <td> {{ info.name }}</td>
-                                <td> {{ info.buyoutData.average }}</td>
-                                <td> {{ info.buyoutData.min }}</td>
-                                <td> {{ info.buyoutData.max }}</td>
+                                <td> ${{ info.buyoutData.average }}</td>
+                                <td> ${{ info.buyoutData.min }} - ${{ info.buyoutData.max }}</td>
                                 <td> {{ info.buyoutData.count }}</td>
                             </tr>
                             <tr
@@ -229,9 +227,8 @@
 <template id="tableRow-template">
     <tr>
         <td> {{ name(item, items) }}</td>
-        <td> {{ average(item, items) }}</td>
-        <td> {{ min(item, items) }}</td>
-        <td> {{ max(item, items) }}</td>
+        <td> ${{ average(item, items) }}</td>
+        <td> {{ priceRange(item, items) }}</td>
         <td> {{ count(item, items) }}</td>
     </tr>
 </template>
