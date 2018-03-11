@@ -84,11 +84,17 @@
         </div>
 
         <div class="col-md-12 row" v-if="category === 'Flask'">
-            <h3>Flask</h3>
+            <c-template :info="items.craftables[127847]" :items="items"></c-template>
+            <c-template :info="items.craftables[127848]" :items="items"></c-template>
+            <c-template :info="items.craftables[127849]" :items="items"></c-template>
+            <c-template :info="items.craftables[127850]" :items="items"></c-template>
+            <c-template :info="items.craftables[127851]" :items="items"></c-template>
+
         </div>
 
         <div class="col-md-12 row" v-if="category === 'Potion'">
-            <h3>Potion</h3>
+            <c-template :info="items.craftables[127835]" :items="items"></c-template>
+            <c-template :info="items.craftables[127846]" :items="items"></c-template>
         </div>
 
         <div class="col-md-12 row" v-if="category === 'Food'">
@@ -152,15 +158,15 @@
 </div>
 
 <!-- Vue.js Templates -->
-<template id="">
+<template id="card-template">
     <div class="col-md-6">
         <div class="card box-shadow mb-4">
             <div class="card-top">
                 <h3 class="card-title text-center" style="margin-top: 5%">
                     <img class="item-icon" src="http://wow.zamimg.com/images/wow/icons/large/inv_alchemy_70_flask03purple.jpg">
-                    Flask of the Whispered Pact
+                    {{ info.name }}
                 </h3>
-                <h5 class="card-subtitle text-center">Average AH Price: {{}}  |  Average Crafted Price: $403.20</h5>
+                <h5 class="card-subtitle text-center">Average AH Price: ${{ info.buyoutData.average }}  |  Average Crafted Price: ${{ cost(info, items) }} </h5>
             </div>
             <div class="card-body ">
                 <div class="table-responsive">
@@ -173,39 +179,47 @@
                             <th>Quantity Avail</th>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td> items[info.id].name </td>
-                            <td> items[info.id].buyoutData.average </td>
-                            <td> items[info.id].buyoutData.min </td>
-                            <td> items[info.id].buyoutData.max </td>
-                            <td> items[info.id].buyoutData.count </td>
-                        </tr>
-                        <tr v-for="item of info.recipe">
-                            <td> items[item.id].name </td>
-                            <td> items[item.id].buyoutData.average </td>
-                            <td> items[item.id].buyoutData.min </td>
-                            <td> items[item.id].buyoutData.max </td>
-                            <td> items[item.id].buyoutData.count </td>
-                        </tr>
+                            <tr>
+                                <td> {{ info.name }}</td>
+                                <td> {{ info.buyoutData.average }}</td>
+                                <td> {{ info.buyoutData.min }}</td>
+                                <td> {{ info.buyoutData.max }}</td>
+                                <td> {{ info.buyoutData.count }}</td>
+                            </tr>
+                            <tr
+                                    is="tr-template"
+                                    v-for="item of info.recipe"
+                                    v-bind:key="item.id"
+                                    v-bind:item="item"
+                                    v-bind:items="items"></tr>
                         </tbody>
                     </table>
                     <br>
                     <div style="float:right;">
-                         Recipe Rank
-                        <label> info.rank.label :</label>
+                        <label> {{ info.name }} Recipe Rank :</label>
                         <select v-model="info.rank.selected" class="form-control-inline" v-on:change="rankChanged">
                             <option v-for="option in info.rank.options" :value="option.value">
-                            option.text
+                            {{ option.text }}
                             </option>
                         </select>
                     </div>
                     <div style="float:left;">
-                        <p class="text-muted" style="text-align:right;">Crafted using the min prices: $ minCost(info, items)</p>
+                        <p class="text-muted" style="text-align:right;">Crafted using the min prices: $ {{ minCost(info, items) }}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</template>
+
+<template id="tableRow-template">
+    <tr>
+        <td> {{ name(item, items) }}</td>
+        <td> {{ average(item, items) }}</td>
+        <td> {{ min(item, items) }}</td>
+        <td> {{ max(item, items) }}</td>
+        <td> {{ count(item, items) }}</td>
+    </tr>
 </template>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
