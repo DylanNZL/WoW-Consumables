@@ -2,8 +2,7 @@ new Vue({
     el: '#app',
     data: {
         dbUpdated: "Error",
-        category: "None",
-        home: true,
+        category: "Home",
         items: {
             allReagents: {},
             craftables: {},
@@ -63,6 +62,21 @@ new Vue({
                 // console.log(data);
                 vthis.items.shopReagents = data.items;
             });
+        },
+        viewFeast: function() {
+            this.category = "Feast";
+        },
+        viewFlask: function() {
+            this.category = "Flask";
+        },
+        viewPotion: function() {
+            this.category = "Potion";
+        },
+        viewFood: function() {
+            this.category = "Food";
+        },
+        viewHome: function() {
+            this.category = "Home";
         }
     },
     created: function() {

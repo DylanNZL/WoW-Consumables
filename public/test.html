@@ -19,14 +19,14 @@
     <!-- TODO: When clicked on show the corresponding page without reloading -->
     <nav class="site-header  py-1">
         <div class="container d-flex flex-column flex-md-row justify-content-between">
-            <a class="py-2" href="#">
+            <a class="py-2" v-on:click.stop="viewHome" href="#">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mx-auto"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
             </a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Home</a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Feast</a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Flasks</a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Potions</a>
-            <a class="py-2 d-none d-md-inline-block" href="#">Food</a>
+            <a class="py-2 d-none d-md-inline-block" v-on:click.stop="viewHome" href="#">Home</a>
+            <a class="py-2 d-none d-md-inline-block" v-on:click.stop="viewFeast" href="#">Feast</a>
+            <a class="py-2 d-none d-md-inline-block" v-on:click.stop="viewFlask" href="#">Flasks</a>
+            <a class="py-2 d-none d-md-inline-block" v-on:click.stop="viewPotion" href="#">Potions</a>
+            <a class="py-2 d-none d-md-inline-block" v-on:click.stop="viewFood" href="#">Food</a>
         </div>
     </nav>
 
@@ -40,11 +40,11 @@
 
     <div class="row">
 
-        <div class="col-md-12 row" v-if="home === true">
+        <div class="col-md-12 row" v-if="category === 'Home'">
             <div class="col-md-3">
                 <div class="card mb-4 box-shadow">
                     <!-- Image found here: https://wow.curseforge.com/projects/feasthog -->
-                    <a href="/feast"><img class="card-img-top" src="/images/feast.png" alt="Picture of a Lavish Suramar Feast" height="500"></a>
+                    <a v-on:click.stop="viewFeast"><img class="card-img-top" src="/images/feast.png" alt="Picture of a Lavish Suramar Feast" height="500"></a>
                     <div class="card-body">
                         <p class="card-text">Shows the costs of Feasts</p>
                     </div>
@@ -53,7 +53,7 @@
             <div class="col-md-3">
                 <div class="card mb-4 box-shadow">
                     <!-- Image found here: http://www.wowhead.com/item=127851/spirit-cauldron#screenshots:id=584429 -->
-                    <a href="/alchemy"><img class="card-img-top" src="/images/cauldron.jpg" alt="Picture of a Spirit Cauldron" height="500"></a>
+                    <a v-on:click.stop="viewFlask"><img class="card-img-top" src="/images/cauldron.jpg" alt="Picture of a Spirit Cauldron" height="500"></a>
                     <div class="card-body">
                         <p class="card-text">Shows the costs of Flasks</p>
                     </div>
@@ -62,7 +62,7 @@
             <div class="col-md-3">
                 <div class="card mb-4 box-shadow">
                     <!-- Image found here: http://www.wowhead.com/item=127851/spirit-cauldron#screenshots:id=584429 -->
-                    <a href="/alchemy"><img class="card-img-top" src="/images/cauldron.jpg" alt="Picture of a Spirit Cauldron" height="500"></a>
+                    <a v-on:click.stop="viewPotion"><img class="card-img-top" src="/images/cauldron.jpg" alt="Picture of a Spirit Cauldron" height="500"></a>
                     <div class="card-body">
                         <p class="card-text">Shows the costs of certain potions</p>
                     </div>
@@ -71,13 +71,30 @@
             <div class="col-md-3">
                 <div class="card mb-4 box-shadow">
                     <!-- Image found here: http://www.wowhead.com/npc=101846/nomi#screenshots:id=564962 -->
-                    <a href="/food"><img class="card-img-top" src="/images/nomi.jpg" alt="Picture of Nomi"height="500"></a>
+                    <a v-on:click.stop="viewFood"><img class="card-img-top" src="/images/nomi.jpg" alt="Picture of Nomi"height="500"></a>
                     <div class="card-body">
                         <p class="card-text">Shows the costs of certain foods</p>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="col-md-12 row" v-if="category === 'Feast'">
+            <h3>Feast</h3>
+        </div>
+
+        <div class="col-md-12 row" v-if="category === 'Flask'">
+            <h3>Flask</h3>
+        </div>
+
+        <div class="col-md-12 row" v-if="category === 'Potion'">
+            <h3>Potion</h3>
+        </div>
+
+        <div class="col-md-12 row" v-if="category === 'Food'">
+            <h3>Food</h3>
+        </div>
+
         <!--<div class="col-md-6">-->
             <!--<div class="card box-shadow mb-4">-->
                 <!--<div class="card-top">-->
