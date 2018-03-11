@@ -80,7 +80,7 @@ Vue.component('tr-template', {
             } else if (mItem.id < 9000000) {
                 return mItems.craftables[mItem.id % 8000000].name;
             } else {
-                return mItems.craftables[mItem.id % 9000000].name;
+                return mItems.shopReagents[mItem.id % 9000000].name;
             }
         },
         average: function (mItem, mItems) {
@@ -89,7 +89,7 @@ Vue.component('tr-template', {
             } else if (mItem.id < 9000000) {
                 return mItems.craftables[mItem.id % 8000000].buyoutData.average;
             } else {
-                return mItems.craftables[mItem.id % 9000000].buyoutData.average;
+                return mItems.shopReagents[mItem.id % 9000000].cost;
             }
         },
         min: function (mItem, mItems) {
@@ -98,7 +98,7 @@ Vue.component('tr-template', {
             } else if (mItem.id < 9000000) {
                 return mItems.craftables[mItem.id % 8000000].buyoutData.min;
             } else {
-                return mItems.craftables[mItem.id % 9000000].buyoutData.min;
+                return mItems.shopReagents[mItem.id % 9000000].cost;
             }
         },
         max: function (mItem, mItems) {
@@ -107,10 +107,17 @@ Vue.component('tr-template', {
             } else if (mItem.id < 9000000) {
                 return mItems.craftables[mItem.id % 8000000].buyoutData.max;
             } else {
-                return mItems.craftables[mItem.id % 9000000].buyoutData.max;
+                return mItems.shopReagents[mItem.id % 9000000].cost;
             }
         },
-        count: function (item) {
+        count: function (mItem, mItems) {
+            if (mItem.id < 8000000) {
+                return mItems.allReagents[mItem.id].buyoutData.count;
+            } else if (mItem.id < 9000000) {
+                return mItems.craftables[mItem.id % 8000000].buyoutData.count;
+            } else {
+                return "Infinite";
+            }
         },
     }
 });
