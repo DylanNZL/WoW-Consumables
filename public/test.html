@@ -124,7 +124,7 @@
         <div class="card box-shadow mb-4">
             <div class="card-top">
                 <h3 class="card-title text-center" style="margin-top: 5%">
-                    <img class="item-icon" src="http://wow.zamimg.com/images/wow/icons/large/inv_alchemy_70_flask03purple.jpg">
+                    <img class="item-icon" :src="info.image">
                     {{ info.name }}
                 </h3>
                 <h5 class="card-subtitle text-center">Average AH Price: ${{ info.buyoutData.average }}  |  Average Crafted Price: ${{ cost(info, items) }} </h5>
@@ -176,7 +176,7 @@
         <div class="card box-shadow mb-4">
             <div class="card-top">
                 <h3 class="card-title text-center" style="margin-top: 5%">
-                    <img class="item-icon" src="http://wow.zamimg.com/images/wow/icons/large/inv_alchemy_70_flask03purple.jpg">
+                    <img class="item-icon" :src="info.image">
                     {{ info.name }}
                 </h3>
                 <h5 class="card-subtitle text-center">Average AH Price: ${{ info.buyoutData.average }}<br>

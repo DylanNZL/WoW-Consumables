@@ -238,7 +238,7 @@ function allCraftables(req, res, next) {
             127846: {
                 id: 127846,
                 name: "Leytorrent Potion",
-                image: "/icons/flask/inv_alchemy_70_flask01.jpg",
+                image: "/icons/potion/inv_alchemy_70_flask01.jpg",
                 category: "potion",
                 rank: {
                     selected: 3,
@@ -254,7 +254,7 @@ function allCraftables(req, res, next) {
             127835: {
                 id: 127835,
                 name: "Ancient Mana Potion",
-                image: "/icons/flask/inv_alchemy_70_blue.jpg",
+                image: "/icons/potion/inv_alchemy_70_blue.jpg",
                 category: "potion",
                 rank: {
                     selected: 3,
@@ -519,7 +519,7 @@ function allCraftables(req, res, next) {
                 id: 133578,
                 name: "Hearty Feast",
                 category: "Feast",
-                image: "/icons/food/inv_misc_food_legion_heartyfeast.jpg",
+                image: "/icons/feast/inv_misc_food_legion_heartyfeast.jpg",
                 rank: {
                     selected: 3,
                     options: [
@@ -536,7 +536,7 @@ function allCraftables(req, res, next) {
             133579: {
                 id: 133579,
                 name: "Lavish Suramar Feast",
-                image: "/icons/food/inv_misc_food_legion_lavishsuramarfeast.jpg",
+                image: "/icons/feast/inv_misc_food_legion_lavishsuramarfeast.jpg",
                 category: "Feast",
                 stat: 500,
                 rank: {
