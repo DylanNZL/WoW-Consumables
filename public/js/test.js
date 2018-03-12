@@ -1,5 +1,3 @@
-
-
 // Works for Food, Flasks and Potions, however feast require a bit more detail so have their own template
 Vue.component('c-template', {
     template: "#card-template",
@@ -72,12 +70,11 @@ Vue.component('c-template', {
 
 Vue.component('f-template', {
     template: "#feast-template",
-    props: ["info", "items"],
+    props: ["info", "items", "viewHearty", "viewLavish"],
     methods: {
         rankChanged: function() {
         },
         rankModify: function (cost, rank, quantity) {
-            console.log(rank);
             if (rank === 3) { //  recipe makes 10 items
                 cost = cost / 10;
                 return cost * quantity;
@@ -98,17 +95,19 @@ Vue.component('f-template', {
                if (mItems.craftables[id] === undefined) return 0.0;
                mItems.craftables[id].recipe.forEach(function (dat) {
                    if (dat.id < 9000000) {
-                       console.log(mItems.allReagents[dat.id]);
                        let subCost = mItems.allReagents[dat.id].buyoutData.average * 5;
                        cost += vthis.rankModify(subCost, mItems.craftables[id].rank.selected, dat.quantity);
                    } else {
                        let mId = dat.id % 9000000;
-                       console.log(mItems.shopReagents[mId]);
                        let subCost = mItems.shopReagents[mId].cost;
                        cost += vthis.rankModify(subCost, mItems.craftables[id].rank.selected, dat.quantity)
                    }
                })
             });
+            // add Bacon
+            if (mItems.allReagents[133680].buyoutData !== undefined) {
+                cost += parseInt(mItems.allReagents[133680].buyoutData.average);
+            }
 
             cost = cost * (6 - mInfo.rank.selected); // each rank requires one less to be made
             return cost.toFixed(2);
@@ -127,32 +126,42 @@ Vue.component('f-template', {
                     cost += mItems.allReagents[data.id].buyoutData.average * (data.quantity - mInfo.rank.selected);
                 }
             });
-
+            // add Bacon
+            if (mItems.allReagents[133680] !== undefined && mItems.allReagents[133680].buyoutData !== undefined) {
+                cost += parseInt(mItems.allReagents[133680].buyoutData.average);
+            }
             return cost.toFixed(2);
         },
-        minCost: function(mInfo, mItems) {
+        minCostScratch: function(mInfo, mItems) {
             let cost = 0.0;
             if (mItems.allReagents[124101] === undefined) return 0.0;
-
-            mInfo.recipe.forEach(function(data) {
-                if (data.id < 8000000) {
-                    if (mItems.allReagents[data.id].buyoutData === undefined) return 0.0;
-                    cost += mItems.allReagents[data.id].buyoutData.min * data.quantity;
-                } else if (data.id < 9000000) {
-                    let id = data.id % 8000000;
-                    if (mItems.craftables[id].buyoutData === undefined) return 0.0;
-                    cost += mItems.craftables[id].buyoutData.average * data.quantity;
-                } else {
-                    let id = data.id % 9000000;
-                    if (mItems.shopReagents[id].buyoutData === undefined) return 0.0;
-                    cost += mItems.shopReagents[id].buyoutData.average * data.quantity;
-                }
-
+            let vthis = this;
+            mInfo.recipe.forEach(function (data) {
+                let id = data.id % 8000000;
+                if (mItems.craftables[id] === undefined) return 0.0;
+                mItems.craftables[id].recipe.forEach(function (dat) {
+                    if (dat.id < 9000000) {
+                        let subCost = mItems.allReagents[dat.id].buyoutData.min * 5;
+                        cost += vthis.rankModify(subCost, mItems.craftables[id].rank.selected, dat.quantity);
+                    } else {
+                        let mId = dat.id % 9000000;
+                        let subCost = mItems.shopReagents[mId].cost;
+                        cost += vthis.rankModify(subCost, mItems.craftables[id].rank.selected, dat.quantity)
+                    }
+                })
             });
+            // add Bacon
+            if (mItems.allReagents[133680].buyoutData !== undefined) {
+                cost += parseInt(mItems.allReagents[133680].buyoutData.min);
+            }
 
-            cost = this.rankModify(cost, mInfo);
+            cost = cost * (6 - mInfo.rank.selected); // each rank requires one less to be made
             return cost.toFixed(2);
         },
+        showRank: function(info) {
+            // info.showRanks = !info.showRanks;
+            eventHub.$emit('showRank', info.name);
+        }
     }
 });
 
@@ -199,7 +208,19 @@ Vue.component('tr-template', {
     }
 });
 
-new Vue({
+Vue.component('recipe-rank', {
+    template: "#rrank-template",
+    props: ["data"],
+    methods: {
+        rankChanged: function() {
+            eventHub.$emit('rankChanged');
+        }
+    }
+});
+
+let eventHub = new Vue();
+
+let vm = new Vue({
     el: '#app',
     data: {
         dbUpdated: "Error",
@@ -208,7 +229,9 @@ new Vue({
             allReagents: {},
             craftables: {},
             shopReagents: {}
-        }
+        },
+        viewHearty: true,
+        viewLavish: false
     },
     methods: {
         checkDbUpdated: function () {
@@ -278,6 +301,16 @@ new Vue({
         },
         viewHome: function() {
             this.category = "Home";
+        },
+        showRank: function(value) {
+            console.log(value);
+            console.log(this.viewHearty + " " + this.viewLavish);
+            if (value === "Hearty Feast") {
+                this.viewHearty = !this.viewHearty;
+            } else if (value === "Lavish Suramar Feast") {
+                this.viewLavish = !this.viewLavish;
+            }
+            console.log(this.viewHearty + " " + this.viewLavish);
         }
     },
     created: function() {
@@ -285,6 +318,8 @@ new Vue({
         this.getAllReagents();
         this.getCraftables();
         this.getShopReagents();
+
+        eventHub.$on('showRank', this.showRank);
     }
 });
 
