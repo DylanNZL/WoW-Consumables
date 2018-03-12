@@ -98,12 +98,14 @@ Vue.component('f-template', {
                if (mItems.craftables[id] === undefined) return 0.0;
                mItems.craftables[id].recipe.forEach(function (dat) {
                    if (dat.id < 9000000) {
+                       console.log(mItems.allReagents[dat.id]);
                        let subCost = mItems.allReagents[dat.id].buyoutData.average * 5;
-                       cost += vthis.rankModify(subCost, mItems.allReagents[dat.id].rank.selected, dat.quantity);
+                       cost += vthis.rankModify(subCost, mItems.craftables[id].rank.selected, dat.quantity);
                    } else {
-                       let id = dat.id % 9000000;
-                       let subCost = mItems.shopReagents[id].buyoutData.average;
-                       cost += vthis.rankModify(subCost, mItems.shopReagents[id].rank.selected, dat.quantity)
+                       let mId = dat.id % 9000000;
+                       console.log(mItems.shopReagents[mId]);
+                       let subCost = mItems.shopReagents[mId].cost;
+                       cost += vthis.rankModify(subCost, mItems.craftables[id].rank.selected, dat.quantity)
                    }
                })
             });
