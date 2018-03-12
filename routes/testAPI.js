@@ -156,6 +156,7 @@ function allCraftables(req, res, next) {
             127851: {
                 id: 127851,
                 name: "Spirit Cauldron",
+                image: "/icons/flask/inv_alchemy_70_cauldron.jpg",
                 category: "flask",
                 rank: {
                     selected: 3,
@@ -171,6 +172,7 @@ function allCraftables(req, res, next) {
             127847: {
                 id: 127847,
                 name: "Flask of the Whispered Pact",
+                image: "/icons/flask/inv_alchemy_70_flask03purple.jpg",
                 category: "flask",
                 rank: {
                     selected: 3,
@@ -186,6 +188,7 @@ function allCraftables(req, res, next) {
             127848: {
                 id: 127848,
                 name: "Flask of the Seventh Demon",
+                image: "/icons/flask/inv_alchemy_70_flask03orange.jpg",
                 category: "flask",
                 rank: {
                     selected: 3,
@@ -201,6 +204,7 @@ function allCraftables(req, res, next) {
             127849: {
                 id: 127849,
                 name: "Flask of the Countless Armies",
+                image: "/icons/flask/inv_alchemy_70_flask03red.jpg",
                 category: "flask",
                 rank: {
                     selected: 3,
@@ -216,6 +220,7 @@ function allCraftables(req, res, next) {
             127850: {
                 id: 127850,
                 name: "Flask of Ten Thousand Scars",
+                image: "/icons/flask/inv_alchemy_70_flask03green.jpg",
                 category: "flask",
                 rank: {
                     selected: 3,
@@ -233,6 +238,7 @@ function allCraftables(req, res, next) {
             127846: {
                 id: 127846,
                 name: "Leytorrent Potion",
+                image: "/icons/flask/inv_alchemy_70_flask01.jpg",
                 category: "potion",
                 rank: {
                     selected: 3,
@@ -248,6 +254,7 @@ function allCraftables(req, res, next) {
             127835: {
                 id: 127835,
                 name: "Ancient Mana Potion",
+                image: "/icons/flask/inv_alchemy_70_blue.jpg",
                 category: "potion",
                 rank: {
                     selected: 3,
@@ -264,6 +271,7 @@ function allCraftables(req, res, next) {
                 id: 133557,
                 name: "Salt and Pepper Shank",
                 category: "Critical Strike",
+                image: "/icons/food/inv_misc_food_legion_saltpeppershank.jpg",
                 rank: {
                     selected: 3,
                     options: [
@@ -280,6 +288,7 @@ function allCraftables(req, res, next) {
                 id: 133565,
                 name: "Leybeque Ribs",
                 category: "Critical Strike",
+                image: "/icons/food/inv_misc_food_legion_leybequeribs.jpg",
                 rank: {
                     selected: 3,
                     options: [
@@ -296,6 +305,7 @@ function allCraftables(req, res, next) {
                 id: 133570,
                 name: "The Hungry Magister",
                 category: "Critical Strike",
+                image: "/icons/food/inv_misc_food_legion_thehungrymagistar.jpg",
                 rank: {
                     selected: 3,
                     options: [
@@ -309,10 +319,12 @@ function allCraftables(req, res, next) {
                     {id: 9133588, quantity: 3}, { id: 9133589, quantity: 2 }],
                 auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
             },
+
             // Haste
             133561: {
                 id: 133561,
                 name: "Deep-Fried Mossgill",
+                image: "/icons/food/inv_misc_food_legion_deepfriedmossgill.jpg",
                 category: "Haste",
                 rank: {
                     selected: 3,
@@ -329,6 +341,7 @@ function allCraftables(req, res, next) {
             133566: {
                 id: 133566,
                 name: "Suramar Surf and Turf",
+                image: "/icons/food/inv_misc_food_legion_suramarsurfandturf.jpg",
                 category: "Haste",
                 rank: {
                     selected: 3,
@@ -345,6 +358,7 @@ function allCraftables(req, res, next) {
             133571: {
                 id: 133571,
                 name: "Azshari Salad",
+                image: "/icons/food/inv_misc_food_legion_azsharisalad.jpg",
                 category: "Haste",
                 rank: {
                     selected: 3,
@@ -359,11 +373,13 @@ function allCraftables(req, res, next) {
                     {id: 124103, quantity: 5}, {id: 124104, quantity: 5}],
                 auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
             },
+
             // Vers
             133563: {
                 id: 133563,
                 name: "Faronaar Fizz",
                 category: "Versatility",
+                image: "/icons/food/inv_misc_food_legion_faronaarfizz.jpg",
                 rank: {
                     selected: 3,
                     options: [
@@ -379,6 +395,7 @@ function allCraftables(req, res, next) {
             133568: {
                 id: 133568,
                 name: "Koi-Scented Stormray",
+                image: "/icons/food/inv_misc_food_legion_koiscentedstormray.jpg",
                 category: "Versatility",
                 rank: {
                     selected: 3,
@@ -395,6 +412,7 @@ function allCraftables(req, res, next) {
             133573: {
                 id: 133573,
                 name: "Seed-Battered Fish Plate",
+                image: "/icons/food/inv_misc_food_legion_seedbatteredfishplate.jpg",
                 category: "Versatility",
                 rank: {
                     selected: 3,
@@ -409,10 +427,12 @@ function allCraftables(req, res, next) {
                     {id: 9133590, quantity: 3}, {id: 9133589, quantity: 2}],
                 auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
             },
+
             // Mastery
             133562: {
                 id: 133562,
                 name: "Pickled Stormray",
+                image: "/icons/food/inv_misc_food_legion_pickledstormray.jpg",
                 category: "Mastery",
                 rank: {
                     selected: 3,
@@ -429,6 +449,7 @@ function allCraftables(req, res, next) {
             133567: {
                 id: 133567,
                 name: "Barracuda Mrglgagh",
+                image: "/icons/food/inv_misc_food_legion_barracudamrglgagh.jpg",
                 category: "Mastery",
                 rank: {
                     selected: 3,
@@ -445,6 +466,7 @@ function allCraftables(req, res, next) {
             133572: {
                 id: 133572,
                 name: "Nightborne Delicacy Platter",
+                image: "/icons/food/inv_misc_food_legion_nightbornedelicacyplatter.jpg",
                 category: "Mastery",
                 rank: {
                     selected: 3,
@@ -497,6 +519,7 @@ function allCraftables(req, res, next) {
                 id: 133578,
                 name: "Hearty Feast",
                 category: "Feast",
+                image: "/icons/food/inv_misc_food_legion_heartyfeast.jpg",
                 rank: {
                     selected: 3,
                     options: [
@@ -513,6 +536,7 @@ function allCraftables(req, res, next) {
             133579: {
                 id: 133579,
                 name: "Lavish Suramar Feast",
+                image: "/icons/food/inv_misc_food_legion_lavishsuramarfeast.jpg",
                 category: "Feast",
                 stat: 500,
                 rank: {
