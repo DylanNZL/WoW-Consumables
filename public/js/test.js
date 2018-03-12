@@ -229,7 +229,7 @@ let vm = new Vue({
             craftables: {},
             shopReagents: {}
         },
-        viewHearty: true,
+        viewHearty: false,
         viewLavish: false
     },
     methods: {
@@ -302,14 +302,11 @@ let vm = new Vue({
             this.category = "Home";
         },
         showRank: function(value) {
-            console.log(value);
-            console.log("Start: " + this.viewHearty + " " + this.viewLavish);
             if (value === "Hearty Feast") {
                 this.viewHearty = !this.viewHearty;
             } else if (value === "Lavish Suramar Feast") {
                 this.viewLavish = !this.viewLavish;
             }
-            console.log("End: " + this.viewHearty + " " + this.viewLavish);
         }
     },
     created: function() {
