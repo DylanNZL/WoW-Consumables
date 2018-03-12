@@ -486,6 +486,7 @@ function allCraftables(req, res, next) {
                 id: 133564,
                 name: "Spiced Rib Roast",
                 category: "MISC",
+                image: "/icons/food/inv_misc_food_legion_spicedribroast.jpg",
                 rank: {
                     selected: 3,
                     options: [
@@ -501,6 +502,7 @@ function allCraftables(req, res, next) {
             133569: {
                 id: 133569,
                 name: "Drogbar Style Salmon",
+                image: "/icons/food/inv_misc_food_legion_drogbarstylesalmon.jpg",
                 category: "MISC",
                 rank: {
                     selected: 3,
