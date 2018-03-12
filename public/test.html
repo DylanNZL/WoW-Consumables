@@ -80,7 +80,8 @@
         </div>
 
         <div class="col-md-12 row" v-if="category === 'Feast'">
-            <h3>Feast</h3>
+            <f-template :info="items.craftables[133578]" :items="items"></f-template>
+            <f-template :info="items.craftables[133579]" :items="items"></f-template>
         </div>
 
         <div class="col-md-12 row" v-if="category === 'Flask'">
@@ -217,6 +218,63 @@
                     </div>
                     <div style="float:left;">
                         <p class="text-muted" style="text-align:right;">Crafted using the min prices: $ {{ minCost(info, items) }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="feast-template">
+    <div class="col-md-6">
+        <div class="card box-shadow mb-4">
+            <div class="card-top">
+                <h3 class="card-title text-center" style="margin-top: 5%">
+                    <img class="item-icon" src="http://wow.zamimg.com/images/wow/icons/large/inv_alchemy_70_flask03purple.jpg">
+                    {{ info.name }}
+                </h3>
+                <h5 class="card-subtitle text-center">Average AH Price: ${{ info.buyoutData.average }} <br>
+                    Average Price Crafted From Bought Materials: ${{ costFood(info, items) }} Average Price Crafted From Scratch ${{ costScratch(info, items) }}  </h5>
+            </div>
+            <div class="card-body ">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <th>Item</th>
+                        <th>Average Buyout</th>
+                        <th>Price Range</th>
+                        <th>Quantity Avail</th>
+                        <th>Rank</th>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td> {{ info.name }}</td>
+                            <td> ${{ info.buyoutData.average }}</td>
+                            <td> ${{ info.buyoutData.min }} - ${{ info.buyoutData.max }}</td>
+                            <td> {{ info.buyoutData.count }}</td>
+                            <td>
+                                <label> {{ info.name }} Recipe Rank :</label>
+                                <select v-model="info.rank.selected" class="form-control-inline" v-on:change="rankChanged">
+                                    <option v-for="option in info.rank.options" :value="option.value">
+                                        {{ option.text }}
+                                    </option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                    <br>
+                    <div style="float:right;">
+                        <label> {{ info.name }} Recipe Rank :</label>
+                        <select v-model="info.rank.selected" class="form-control-inline" v-on:change="rankChanged">
+                            <option v-for="option in info.rank.options" :value="option.value">
+                                {{ option.text }}
+                            </option>
+                        </select>
+                    </div>
+                    <div style="float:left;">
+                        <!--<p class="text-muted" style="text-align:right;">Crafted using the min prices: $ {{ minCostScratch(info, items) }}</p>-->
                     </div>
                 </div>
             </div>

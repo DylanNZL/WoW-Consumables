@@ -70,6 +70,90 @@ Vue.component('c-template', {
     }
 });
 
+Vue.component('f-template', {
+    template: "#feast-template",
+    props: ["info", "items"],
+    methods: {
+        rankChanged: function() {
+        },
+        rankModify: function (cost, rank, quantity) {
+            console.log(rank);
+            if (rank === 3) { //  recipe makes 10 items
+                cost = cost / 10;
+                return cost * quantity;
+            } else if (rank === 2) { // recipe makes 7 items
+                cost = cost / 7;
+                return cost * quantity;
+            } else { // recipe makes 5 items
+                cost = cost / 5;
+                return cost * quantity;
+            }
+        },
+        costScratch: function(mInfo, mItems) {
+            let cost = 0.0;
+            if (mItems.allReagents[124101] === undefined) return 0.0;
+            let vthis = this;
+            mInfo.recipe.forEach(function (data) {
+               let id = data.id % 8000000;
+               if (mItems.craftables[id] === undefined) return 0.0;
+               mItems.craftables[id].recipe.forEach(function (dat) {
+                   if (dat.id < 9000000) {
+                       let subCost = mItems.allReagents[dat.id].buyoutData.average * 5;
+                       cost += vthis.rankModify(subCost, mItems.allReagents[dat.id].rank.selected, dat.quantity);
+                   } else {
+                       let id = dat.id % 9000000;
+                       let subCost = mItems.shopReagents[id].buyoutData.average;
+                       cost += vthis.rankModify(subCost, mItems.shopReagents[id].rank.selected, dat.quantity)
+                   }
+               })
+            });
+
+            cost = cost * (6 - mInfo.rank.selected); // each rank requires one less to be made
+            return cost.toFixed(2);
+        },
+        costFood: function(mInfo, mItems) {
+            let cost = 0.0;
+            if (mItems.allReagents[124101] === undefined) return 0.0;
+
+            mInfo.recipe.forEach(function (data) {
+                if (data.id > 8000000) {
+                    let id = data.id % 8000000;
+                    if (mItems.craftables[id].buyoutData === undefined) return 0.0;
+                    cost += mItems.craftables[id].buyoutData.average * (data.quantity - mInfo.rank.selected);
+                } else {
+                    if (mItems.allReagents[data.id].buyoutData === undefined) return 0.0;
+                    cost += mItems.allReagents[data.id].buyoutData.average * (data.quantity - mInfo.rank.selected);
+                }
+            });
+
+            return cost.toFixed(2);
+        },
+        minCost: function(mInfo, mItems) {
+            let cost = 0.0;
+            if (mItems.allReagents[124101] === undefined) return 0.0;
+
+            mInfo.recipe.forEach(function(data) {
+                if (data.id < 8000000) {
+                    if (mItems.allReagents[data.id].buyoutData === undefined) return 0.0;
+                    cost += mItems.allReagents[data.id].buyoutData.min * data.quantity;
+                } else if (data.id < 9000000) {
+                    let id = data.id % 8000000;
+                    if (mItems.craftables[id].buyoutData === undefined) return 0.0;
+                    cost += mItems.craftables[id].buyoutData.average * data.quantity;
+                } else {
+                    let id = data.id % 9000000;
+                    if (mItems.shopReagents[id].buyoutData === undefined) return 0.0;
+                    cost += mItems.shopReagents[id].buyoutData.average * data.quantity;
+                }
+
+            });
+
+            cost = this.rankModify(cost, mInfo);
+            return cost.toFixed(2);
+        },
+    }
+});
+
 Vue.component('tr-template', {
     template: "#tableRow-template",
     props: ["item", "items"],

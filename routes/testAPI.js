@@ -507,7 +507,7 @@ function allCraftables(req, res, next) {
                 },
                 stat: 400,
                 recipe: [{id: 8133557, quantity: 6}, {id: 8133561, quantity: 6}, {id: 8133563, quantity: 6},
-                    {id: 8133562, quantity: 6}, {id: 133564, quantity: 6}, {id: 133680, quantity: 6}],
+                    {id: 8133562, quantity: 6}, {id: 8133564, quantity: 6}, {id: 133680, quantity: 6}],
                 auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
             }, // NOTE: Using 6 so you can minus the current rank to get the actual quantity
             133579: {
