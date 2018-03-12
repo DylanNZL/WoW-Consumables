@@ -70,7 +70,7 @@ Vue.component('c-template', {
 
 Vue.component('f-template', {
     template: "#feast-template",
-    props: ["info", "items", "viewHearty", "viewLavish"],
+    props: ["info", "items", "view"],
     methods: {
         rankChanged: function() {
         },
@@ -159,7 +159,6 @@ Vue.component('f-template', {
             return cost.toFixed(2);
         },
         showRank: function(info) {
-            // info.showRanks = !info.showRanks;
             eventHub.$emit('showRank', info.name);
         }
     }
@@ -304,13 +303,13 @@ let vm = new Vue({
         },
         showRank: function(value) {
             console.log(value);
-            console.log(this.viewHearty + " " + this.viewLavish);
+            console.log("Start: " + this.viewHearty + " " + this.viewLavish);
             if (value === "Hearty Feast") {
                 this.viewHearty = !this.viewHearty;
             } else if (value === "Lavish Suramar Feast") {
                 this.viewLavish = !this.viewLavish;
             }
-            console.log(this.viewHearty + " " + this.viewLavish);
+            console.log("End: " + this.viewHearty + " " + this.viewLavish);
         }
     },
     created: function() {

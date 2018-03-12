@@ -80,8 +80,8 @@
         </div>
 
         <div class="col-md-12 row" v-if="category === 'Feast'">
-            <f-template :info="items.craftables[133578]" :items="items"></f-template>
-            <f-template :info="items.craftables[133579]" :items="items"></f-template>
+            <f-template :info="items.craftables[133578]" :items="items" :view="viewHearty"></f-template>
+            <f-template :info="items.craftables[133579]" :items="items" :view="viewLavish"></f-template>
         </div>
 
         <div class="col-md-12 row" v-if="category === 'Flask'">
@@ -224,11 +224,10 @@
                     <button type="button" class="btn btn-secondary" style="text-align:right;" v-on:click.stop="showRank(info)">Recipe Ranks</button>
                 </div>
                 <br>
-                <p>{{ viewHearty }}</p>
-                <div v-if="viewHearty === true">
+                <div v-if="view">
                     <div>
                         <div v-if="info.id === 133578">
-                            <h5>Recipe Ranks</h5>
+                            <br>
                             <recipe-rank :data="info"></recipe-rank>
                             <recipe-rank :data="items.craftables[133557]"></recipe-rank>
                             <recipe-rank :data="items.craftables[133561]"></recipe-rank>
@@ -239,7 +238,7 @@
                         </div>
 
                         <div v-if="info.id === 133579">
-                            <h5>Recipe Ranks</h5>
+                            <br>
                             <recipe-rank :data="info"></recipe-rank>
                             <recipe-rank :data="items.craftables[133565]"></recipe-rank>
                             <recipe-rank :data="items.craftables[133566]"></recipe-rank>
