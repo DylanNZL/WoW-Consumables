@@ -1,8 +1,8 @@
 let express = require('express');
 let router = express.Router();
-const path = require('path');
 
 const database = require("../database.js");
+const staticJSON = require("./staticJSON.js");
 
 router.get('/', async (req, res, next) => {
     const url = req.baseUrl;
@@ -24,6 +24,15 @@ router.get('/', async (req, res, next) => {
             break;
         case "/api/food": // Does a bunch of queries to reduce client <-> server communication overhead
             await food(req,res,next);
+            break;
+        case "/api/allReagents": // Does a bunch of queries to reduce client <-> server communication overhead
+            await allReagents(req,res,next);
+            break;
+        case "/api/allCraftables": // Does a bunch of queries to reduce client <-> server communication overhead
+            await allCraftables(req,res,next);
+            break;
+        case "/api/shopReagents": // Does a bunch of queries to reduce client <-> server communication overhead
+            await shopReagents(req,res,next);
             break;
         default:
             res.render('api', {});
@@ -78,28 +87,11 @@ async function dbUpdated(req, res, next) {
     res.status(200).jsonp(result);
 }
 
-const lavishSuramarFeastItems = [
-    { "id" : 133579, "name" : "Lavish Suramar Feast" },
-    { "id" : 133565, "name" : "Leybeque Ribs" },
-    { "id" : 124119, "name" : "Big Gamy Ribs" },
-    { "id" : 124120, "name" : "Leyblood" },
-    { "id" : 133566, "name" : "Suramar Surf and Turf" },
-    { "id" : 124117, "name" : "Lean Shank" },
-    { "id" : 124111, "name" : "Runescale Koi" },
-    { "id" : 133567, "name" : "Barracuda Mrglgagh" },
-    { "id" : 124112, "name" : "Black Barracuda" },
-    { "id" : 133568, "name" : "Koi-Scented Stormray" },
-    { "id" : 124110, "name" : "Stormray" },
-    { "id" : 133569, "name" : "Drogbar Style Salmon" },
-    { "id" : 124109, "name" : "Highmountain Salmon" },
-    { "id" : 133680, "name" : "Slice of Bacon" }
-];
-
 async function lavishSuramarFeast(req, res, next) {
     let result = {
         timestamp: Date.now(),
         success: true,
-        items: lavishSuramarFeastItems
+        items: staticJSON.lavishSuramarFeastItems
     };
     let historyID = await database.latestHistory();
     let promises = [];
@@ -118,27 +110,12 @@ async function lavishSuramarFeast(req, res, next) {
 
     res.status(200).jsonp(result);
 }
-
-const heartyFeastItems = [
-    { "id" : 133578, "name" : "Hearty Feast" },
-    { "id" : 133557, "name" : "Salt and Pepper Shank" },
-    { "id" : 124117, "name" : "Lean Shank" },
-    { "id" : 133561, "name" : "Deep-Fried Mossgill" },
-    { "id" : 124108, "name" : "Mossgill Perch" },
-    { "id" : 133562, "name" : "Pickled Stormray" },
-    { "id" : 124110, "name" : "Stormray" },
-    { "id" : 133563, "name" : "Faronaar Fizz" },
-    { "id" : 124121, "name" : "Wildfowl Egg" },
-    { "id" : 133564, "name" : "Spiced Rib Roast" },
-    { "id" : 124119, "name" : "Big Gamy Ribs" },
-    { "id" : 133680, "name" : "Slice of Bacon" }
-];
 
 async function heartyFeast(req, res, next) {
     let result = {
         timestamp: Date.now(),
         success: true,
-        items: heartyFeastItems
+        items: staticJSON.heartyFeastItems
     };
     let historyID = await database.latestHistory();
     let promises = [];
@@ -157,30 +134,12 @@ async function heartyFeast(req, res, next) {
 
     res.status(200).jsonp(result);
 }
-
-const alchemyItems = [
-    // Flasks/Potions
-    { "id" : 127851, "name" : "Spirit Cauldron" }, // 5 of each flask
-    { "id" : 127847, "name" : "Flask of the Whispered Pact" }, // Fjarnskaggl, Dreamleaf
-    { "id" : 127848, "name" : "Flask of the Seventh Demon" }, // Fjarnskaggl, Foxflower
-    { "id" : 127849, "name" : "Flask of the Countless Armies" }, // Aethril, Foxflower
-    { "id" : 127850, "name" : "Flask of Ten Thousand Scars" }, // Aethril, Dreamleaf
-    { "id" : 127846, "name" : "Leytorrent Potion" }, // Aethril, Dreamleaf
-    { "id" : 127835, "name" : "Ancient Mana Potion" },
-    // Reagents
-    { "id" : 124105, "name" : "Starlight Rose" },
-    { "id" : 124101, "name" : "Aethril" },
-    { "id" : 124102, "name" : "Dreamleaf" },
-    { "id" : 124103, "name" : "FoxFlower" },
-    { "id" : 124104, "name" : "Fjarnskaggl" },
-    { "id" : 128304, "name" : "Yseralline Seed" }
-];
 
 async function alchemy(req,res,next) {
     let result = {
         timestamp: Date.now(),
         success: true,
-        items: alchemyItems
+        items: staticJSON.alchemyItems
     };
     let historyID = await database.latestHistory();
     let promises = [];
@@ -200,51 +159,11 @@ async function alchemy(req,res,next) {
     res.status(200).jsonp(result);
 }
 
-const foodItems = [
-    // Crit
-    { "id" : 133557, "name" : "Salt and Pepper Shank" }, // 225
-    { "id" : 133565, "name" : "Leybeque Ribs" }, // 300
-    { "id" : 133565, "name" : "The Hungry Magister" }, // 375
-    // Haste
-    { "id" : 133561, "name" : "Deep-Fried Mossgill" }, // 225
-    { "id" : 133566, "name" : "Suramar Surf and Turf" }, // 300
-    { "id" : 133571, "name" : "Azshari Salad" }, // 375
-    // Vers
-    { "id" : 133563, "name" : "Faronaar Fizz" }, // 225
-    { "id" : 133568, "name" : "Koi-Scented Stormray" }, // 300
-    { "id" : 133568, "name" : "Seed-Battered Fish Plate" }, // 375
-    // Mastery
-    { "id" : 133562, "name" : "Pickled Stormray" }, // 225
-    { "id" : 133567, "name" : "Barracude Mrglgagh" }, // 300
-    { "id" : 133567, "name" : "Nightborne Delicacy Platter" }, // 375
-
-    // Reagents
-    { "id" : 124101, "name" : "Aethril" },
-    { "id" : 124102, "name" : "Dreamleaf" },
-    { "id" : 124103, "name" : "FoxFlower" },
-    { "id" : 124104, "name" : "Fjarnskaggl" },
-    { "id" : 124105, "name" : "Starlight Rose" },
-    { "id" : 124107, "name" : "Cursed Queenfish" },
-    { "id" : 124108, "name" : "Mossgill Perch" },
-    { "id" : 124109, "name" : "Highmountain Salmon" },
-    { "id" : 124110, "name" : "Stormray" },
-    { "id" : 124111, "name" : "Runescale Koi" },
-    { "id" : 124112, "name" : "Black Barracuda" },
-    { "id" : 124117, "name" : "Lean Shank" },
-    { "id" : 124118, "name" : "Fatty Bearsteak" },
-    { "id" : 124119, "name" : "Big Gamy Ribs" },
-    { "id" : 124120, "name" : "Leyblood" },
-    { "id" : 124121, "name" : "Wildfowl Egg" },
-    { "id" : 128304, "name" : "Yseralline Seed" },
-    { "id" : 129100, "name" : "Gem Chips" },
-    { "id" : 133607, "name" : "Silver Mackaeral" },
-];
-
 async function food(req,res,next) {
     let result = {
         timestamp: Date.now(),
         success: true,
-        items: foodItems
+        items: staticJSON.foodItems
     };
     let historyID = await database.latestHistory();
     let promises = [];
@@ -262,6 +181,68 @@ async function food(req,res,next) {
     });
 
     res.status(200).jsonp(result);
+}
+
+async function allReagents(req,res,next) {
+    let result = {
+        timestamp: Date.now(),
+        success: true,
+        items: staticJSON.ahReagents
+    };
+    let historyID = await database.latestHistory();
+    let promises = [];
+
+    for (let property in result.items) {
+
+        promises.push(result.items[property].auctions = database.retrieveItem(result.items[property].id, 5, historyID))
+    }
+
+    let data = await Promise.all(promises);
+
+    data.forEach(function (dat) {
+        // console.log(dat);
+        if (dat !== undefined && dat.length !== 0) {
+            result.items[dat[0].item].auctions = dat
+            //     result.items[i].auctions = dat;
+        }
+    });
+    // console.log(result);
+    res.status(200).jsonp(result);
+}
+
+async function allCraftables(req, res, next) {
+    let result = {
+        timestamp: Date.now(),
+        success: true,
+        items: staticJSON.craftables
+    };
+    let historyID = await database.latestHistory();
+    let promises = [];
+
+    for (let property in result.items) {
+
+        promises.push(result.items[property].auctions = database.retrieveItem(result.items[property].id, 5, historyID))
+    }
+
+    let data = await Promise.all(promises);
+
+    data.forEach(function (dat) {
+        // console.log(dat);
+        if (dat !== undefined && dat.length !== 0) {
+            result.items[dat[0].item].auctions = dat
+            //     result.items[i].auctions = dat;
+        }
+    });
+    // console.log(result);
+    res.status(200).jsonp(result);
+}
+
+async function shopReagents(req, res, next) {
+    res.status(200).jsonp({
+        timestamp: Date.now(),
+        success: true,
+        items: staticJSON.shopReagents
+    });
 }
 
 module.exports = router;

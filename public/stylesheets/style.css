@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -14,4 +14,14 @@ a {
 
 .json {
   font: 12px Consolas;
+}
+
+.item-icon {
+  margin: auto;
+  padding-right: 5%;
+}
+
+.row {
+  padding-left: 2.5%;
+  padding-right: 2.5%;
 }
