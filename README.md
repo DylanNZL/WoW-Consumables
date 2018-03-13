@@ -1,4 +1,4 @@
-WowFood - Raid Consumables Price Calculator
+Raid Consumables Price Calculator
 =
 
 This web application tracks the WoW (World of Warcraft) auction house for a selected server.
