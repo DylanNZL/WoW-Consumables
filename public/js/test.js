@@ -71,6 +71,18 @@ Vue.component('f-template', {
     methods: {
         rankChanged: function() {
         },
+        rankModify: function (cost, rank, quantity) {
+            if (rank === 3) { //  recipe makes 10 items
+                cost = cost / 10;
+                return cost * quantity;
+            } else if (rank === 2) { // recipe makes 7 items
+                cost = cost / 7;
+                return cost * quantity;
+            } else { // recipe makes 5 items
+                cost = cost / 5;
+                return cost * quantity;
+            }
+        },
         costScratch: function(mInfo, mItems) {
             let cost = 0.0;
             if (mItems.allReagents[124101] === undefined) return 0.0;
@@ -91,7 +103,7 @@ Vue.component('f-template', {
             });
             // add Bacon
             if (mItems.allReagents[133680].buyoutData !== undefined) {
-                cost += parseInt(mItems.allReagents[133680].buyoutData.average);
+                cost += parseFloat(mItems.allReagents[133680].buyoutData.average) * 6;
             }
 
             cost = cost * (6 - mInfo.rank.selected); // each rank requires one less to be made
@@ -102,6 +114,7 @@ Vue.component('f-template', {
             if (mItems.allReagents[124101] === undefined) return 0.0;
 
             mInfo.recipe.forEach(function (data) {
+                console.log("Current Cost " + cost + " adding " + data.id);
                 if (data.id > 8000000) {
                     let id = data.id % 8000000;
                     if (mItems.craftables[id].buyoutData === undefined) return 0.0;
@@ -110,10 +123,11 @@ Vue.component('f-template', {
                     if (mItems.allReagents[data.id].buyoutData === undefined) return 0.0;
                     cost += mItems.allReagents[data.id].buyoutData.average * (data.quantity - mInfo.rank.selected);
                 }
+                console.log("New Cost " + cost);
             });
             // add Bacon
             if (mItems.allReagents[133680] !== undefined && mItems.allReagents[133680].buyoutData !== undefined) {
-                cost += parseInt(mItems.allReagents[133680].buyoutData.average);
+                cost += parseFloat(mItems.allReagents[133680].buyoutData.average) * (6 - mInfo.rank.selected);
             }
             return cost.toFixed(2);
         },
