@@ -147,6 +147,7 @@ function shopReagents(req, res, next) {
         }
     });
 }
+
 function allCraftables(req, res, next) {
     res.status(200).jsonp({
         timestamp: Date.now(),
