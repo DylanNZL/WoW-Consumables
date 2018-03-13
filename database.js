@@ -58,11 +58,11 @@ async function dbUpdated() {
 }
 
 async function retrieveItem(itemID, excludeQuantity, historyID) {
-    const query = "SELECT * FROM auctions WHERE item = " + itemID + " AND quantity > " + excludeQuantity + " AND history = " + historyID;
+    const query = "SELECT buyout, quantity, item FROM auctions WHERE item = " + itemID + " AND quantity > " + excludeQuantity + " AND history = " + historyID;
     console.log(query);
     return new Promise ((resolve, reject) => {
         bookshelf.knex.raw(query).then(function (data) {
-            console.log(data.rows);
+            // console.log(data.rows);
             resolve(data.rows);
         }).catch(function (err) {
             console.error(Date.now() + " retrieveItem " + err);
