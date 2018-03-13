@@ -26,10 +26,14 @@ router.get('/', async (req, res, next) => {
 });
 
 function allReagents(req, res, next) {
+    let items = staticJSON.ahReagents;
+    for (let data in items) {
+        items[data].auctions = [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}];
+    };
     res.status(200).jsonp({
         timestamp: Date.now(),
         success: true,
-        items: staticJSON.ahReagents
+        items: items
     });
 }
 
@@ -42,10 +46,14 @@ function shopReagents(req, res, next) {
 }
 
 function allCraftables(req, res, next) {
+    let items = staticJSON.craftables;
+    for (let data in items) {
+        items[data].auctions = [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}];
+    };
     res.status(200).jsonp({
         timestamp: Date.now(),
         success: true,
-        items: staticJSON.craftables
+        items: items
     });
 }
 

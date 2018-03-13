@@ -35,102 +35,102 @@ exports.ahReagents = {
     124101: {
         id: 124101,
         name: "Aethril",
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     124102: {
         id: 124102,
         name: "Dreamleaf",
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     124103: {
         id: 124103,
         name: "FoxFlower",
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     124104: {
         id: 124104,
         name: "Fjarnskaggl",
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     124105: {
         id: 124105,
         name: "Starlight Rose",
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     124107: {
         id: 124107,
         name: "Cursed Queenfish",
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     124108: {
         id: 124108,
         name: "Mossgill Perch",
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     124109: {
         id: 124109,
         name: "Highmountain Salmon",
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     124110: {
         id: 124110,
         name: "Stormray",
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     124111: {
         id: 124111,
         name: "Runescale Koi",
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     124112: {
         id: 124112,
         name: "Black Barracuda",
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     124117: {
         id: 124117,
         name: "Lean Shank",
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     124118: {
         id: 124118,
         name: "Fatty Bearsteak",
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     124119: {
         id: 124119,
         name: "Big Gamy Ribs",
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     124120: {
         id: 124120,
         name: "Leyblood",
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     124121: {
         id: 124121,
         name: "Wildfowl Egg",
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     128304: {
         id: 128304,
         name: "Yseralline Seed",
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     129100: {
         id: 129100,
         name: "Gem Chips",
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     133607: {
         id: 133607,
         name: "Silver Mackaeral",
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     133680: {
         id: 133680,
         name: "Slice of Bacon",
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     }
 };
 
@@ -156,7 +156,7 @@ exports.craftables = {
             ]
         },
         recipe: [{id: 8127847, quantity: 5}, {id: 8127848, quantity: 5}, {id: 8127849, quantity: 5}, {id: 8127850, quantity: 5}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     127847: {
         id: 127847,
@@ -172,7 +172,7 @@ exports.craftables = {
             ]
         },
         recipe: [{id: 124104, quantity: 10}, {id: 124102, quantity: 10}, {id: 124105, quantity: 7}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     }, // Fjarnskaggl, Dreamleaf
     127848: {
         id: 127848,
@@ -188,7 +188,7 @@ exports.craftables = {
             ]
         },
         recipe: [{id: 124104, quantity: 10}, {id: 124103, quantity: 10}, {id: 124105, quantity: 7}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     }, // Fjarnskaggl, Foxflower
     127849: {
         id: 127849,
@@ -204,7 +204,7 @@ exports.craftables = {
             ]
         },
         recipe: [{id: 124101, quantity: 10}, {id: 124103, quantity: 10}, {id: 124105, quantity: 7}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     }, // Aethril, Foxflower
     127850: {
         id: 127850,
@@ -220,7 +220,7 @@ exports.craftables = {
             ]
         },
         recipe: [{id: 124101, quantity: 10}, {id: 124102, quantity: 10}, {id: 124105, quantity: 7}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
 
     }, // Aethril, Dreamleaf
     // Potions // TODO: add more pots
@@ -238,7 +238,7 @@ exports.craftables = {
             ]
         },
         recipe: [{id: 124105, quantity: 1}, {id: 124101, quantity: 2}, {id: 124102, quantity: 2}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     }, // Aethril, Dreamleaf
     127835: {
         id: 127835,
@@ -254,7 +254,7 @@ exports.craftables = {
             ]
         },
         recipe: [{id: 128304, quantity: 5}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]},
+        auctions: undefined},
     // Crit
     133557: {
         id: 133557,
@@ -271,7 +271,7 @@ exports.craftables = {
         },
         stat: 225,
         recipe: [{id: 124117, quantity: 5}, {id: 9133588, quantity: 2}, {id: 9133589, quantity: 2}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     133565: {
         id: 133565,
@@ -288,7 +288,7 @@ exports.craftables = {
         },
         stat: 300,
         recipe: [{id: 124120, quantity: 5}, {id: 124119, quantity: 5}, {id: 9133589, quantity: 5}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     133570: {
         id: 133570,
@@ -306,7 +306,7 @@ exports.craftables = {
         stat: 375,
         recipe: [{id: 8133565, quantity: 1}, {id: 124109, quantity: 5}, {id: 124118, quantity: 5},
             {id: 9133588, quantity: 3}, { id: 9133589, quantity: 2 }],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
 
     // Haste
@@ -325,7 +325,7 @@ exports.craftables = {
         },
         stat: 225,
         recipe: [{id: 124108, quantity: 5}, {id: 9133590, quantity: 5}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     133566: {
         id: 133566,
@@ -342,7 +342,7 @@ exports.craftables = {
         },
         stat: 300,
         recipe: [{id: 124111, quantity: 5}, {id: 124117, quantity: 2}, {id: 9133588, quantity: 2}, {id: 9133593, quantity: 4}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     133571: {
         id: 133571,
@@ -360,7 +360,7 @@ exports.craftables = {
         stat: 375,
         recipe: [{id: 8133571, quantity: 1}, {id: 124101, quantity: 5}, {id: 124102, quantity: 5},
             {id: 124103, quantity: 5}, {id: 124104, quantity: 5}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
 
     // Vers
@@ -379,7 +379,7 @@ exports.craftables = {
         },
         stat: 225,
         recipe: [{id: 124121, quantity: 5}, {id: 9133591, quantity: 2}, {id: 9133593, quantity: 3}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     133568: {
         id: 133568,
@@ -396,7 +396,7 @@ exports.craftables = {
         },
         stat: 300,
         recipe: [{id: 124111, quantity: 5}, {id: 124110, quantity: 5}, {id: 9133588, quantity: 2}, {id: 9133590, quantity: 2}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     133573: {
         id: 133573,
@@ -414,7 +414,7 @@ exports.craftables = {
         stat: 375,
         recipe: [{id: 8133568, quantity: 1}, {id: 133607, quantity: 5}, {id: 128304, quantity: 20},
             {id: 9133590, quantity: 3}, {id: 9133589, quantity: 2}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
 
     // Mastery
@@ -433,7 +433,7 @@ exports.craftables = {
         },
         stat: 275,
         recipe: [{id: 124110, quantity: 5}, {id: 9133588, quantity: 3}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     133567: {
         id: 133567,
@@ -450,7 +450,7 @@ exports.craftables = {
         },
         stat: 300,
         recipe: [{id: 124120, quantity: 5}, {id: 124112, quantity: 5}, {id: 9133590, quantity: 4}, {id: 9133591, quantity: 1}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     133572: {
         id: 133572,
@@ -468,7 +468,7 @@ exports.craftables = {
         stat: 375,
         recipe: [{id: 8133567, quantity: 1}, {id: 129100, quantity: 20}, {id: 124105, quantity: 1},
             {id: 124121, quantity: 5}, {id: 9133592, quantity: 10}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     // Misc food // TODO: More misc food?
     133564: {
@@ -486,7 +486,7 @@ exports.craftables = {
         },
         stat: 0,
         recipe: [{id: 124119, quantity: 5}, {id: 9133589, quantity: 5}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     133569: {
         id: 133569,
@@ -503,7 +503,7 @@ exports.craftables = {
         },
         stat: 0,
         recipe: [{id: 124109, quantity: 5}, {id: 9133592, quantity: 10}, {id: 9133589, quantity: 4}, {id: 9133593, quantity: 10}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     },
     // Feasts
     133578: {
@@ -522,7 +522,7 @@ exports.craftables = {
         stat: 400,
         recipe: [{id: 8133557, quantity: 6}, {id: 8133561, quantity: 6}, {id: 8133563, quantity: 6},
             {id: 8133562, quantity: 6}, {id: 8133564, quantity: 6}, {id: 133680, quantity: 6}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     }, // NOTE: Using 6 so you can minus the current rank to get the actual quantity
     133579: {
         id: 133579,
@@ -540,7 +540,7 @@ exports.craftables = {
         },
         recipe: [{id: 8133565, quantity: 6}, {id: 8133566, quantity: 6}, {id: 8133568, quantity: 6},
             {id: 8133567, quantity: 6}, {id: 8133569, quantity: 6}, {id: 133680, quantity: 6}],
-        auctions: [{quantity: 20, buyout: 2950200},{quantity: 20, buyout: 2950200}]
+        auctions: undefined
     }, // NOTE: Using 6 so you can minus the current rank to get the actual quantity
 };
 
