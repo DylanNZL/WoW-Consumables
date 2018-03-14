@@ -194,7 +194,7 @@ async function allReagents(req,res,next) {
 
     for (let property in result.items) {
 
-        promises.push(result.items[property].auctions = database.retrieveItem(result.items[property].id, 5, historyID))
+        promises.push(result.items[property].auctions = database.retrieveItem(result.items[property].id, 0, historyID))
     }
 
     let data = await Promise.all(promises);
@@ -221,7 +221,7 @@ async function allCraftables(req, res, next) {
 
     for (let property in result.items) {
 
-        promises.push(result.items[property].auctions = database.retrieveItem(result.items[property].id, 5, historyID))
+        promises.push(result.items[property].auctions = database.retrieveItem(result.items[property].id, 0, historyID))
     }
 
     let data = await Promise.all(promises);
