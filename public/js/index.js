@@ -286,19 +286,29 @@ let vm = new Vue({
             });
         },
         viewFeast: function() {
-            this.category = "Feast";
+            if (this.items.craftables[127835] !== undefined && this.items.allReagents[124101] !== undefined) {
+                this.category = "Feast";
+            }
         },
         viewFlask: function() {
-            this.category = "Flask";
+            if (this.items.craftables[127835] !== undefined && this.items.allReagents[124101] !== undefined) {
+                this.category = "Flask";
+            }
         },
         viewPotion: function() {
-            this.category = "Potion";
+            if (this.items.craftables[127835] !== undefined && this.items.allReagents[124101] !== undefined) {
+                this.category = "Potion";
+            }
         },
         viewFood: function() {
-            this.category = "Food";
+            if (this.items.craftables[127835] !== undefined && this.items.allReagents[124101] !== undefined) {
+                this.category = "Food";
+            }
         },
         viewHome: function() {
-            this.category = "Home";
+            if (this.items.craftables[127835] !== undefined && this.items.allReagents[124101] !== undefined) {
+                this.category = "Home";
+            }
         },
         showRank: function(value) {
             if (value === "Hearty Feast") {
@@ -308,7 +318,7 @@ let vm = new Vue({
             }
         }
     },
-    created: function() {
+    beforeCreate: function() {
         this.checkDbUpdated();
         this.getAllReagents();
         this.getCraftables();
