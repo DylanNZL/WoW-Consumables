@@ -285,7 +285,7 @@ exports.craftables = {
                 {text: 3, value: 3}
             ]
         },
-        recipe: [{id: 127834, quantity: 1},{id: 127835, quantity: 1}],
+        recipe: [{id: 8127834, quantity: 1}, {id: 8127835, quantity: 1}],
         auctions: undefined
     },
     127841: {
