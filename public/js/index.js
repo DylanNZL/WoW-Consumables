@@ -114,7 +114,7 @@ Vue.component('f-template', {
             if (mItems.allReagents[124101] === undefined) return 0.0;
 
             mInfo.recipe.forEach(function (data) {
-                console.log("Current Cost " + cost + " adding " + data.id);
+                // console.log("Current Cost " + cost + " adding " + data.id);
                 if (data.id > 8000000) {
                     let id = data.id % 8000000;
                     if (mItems.craftables[id].buyoutData === undefined) return 0.0;
@@ -123,7 +123,7 @@ Vue.component('f-template', {
                     if (mItems.allReagents[data.id].buyoutData === undefined) return 0.0;
                     cost += mItems.allReagents[data.id].buyoutData.average * (data.quantity - mInfo.rank.selected);
                 }
-                console.log("New Cost " + cost);
+                // console.log("New Cost " + cost);
             });
             // add Bacon
             if (mItems.allReagents[133680] !== undefined && mItems.allReagents[133680].buyoutData !== undefined) {
@@ -333,21 +333,17 @@ function buyoutData(auctions) {
         }
     }
     let count = 0;
-    let trueCount = 0;
     let average = 0.0;
     let min = Number.MAX_SAFE_INTEGER; // Set high so any price will be lower
     let max = 0.0;
 
-    console.log(auctions);
+    // console.log(auctions);
     auctions.forEach(function (auction) {
-        if (auction.quantity > 19) {
-            count += auction.quantity;
-            average += auction.buyout;
-            let buyout = auction.buyout / auction.quantity;
-            if (min > buyout) { min = buyout; }
-            if (max < buyout) { max = buyout; }
-        }
-        trueCount += auction.quantity;
+        count += auction.quantity;
+        average += auction.buyout;
+        let buyout = auction.buyout / auction.quantity;
+        if (min > buyout) { min = buyout; }
+        if (max < buyout) { max = buyout; }
     });
 
     if (count === 0) {
@@ -368,6 +364,6 @@ function buyoutData(auctions) {
         average : average.toFixed(2),
         min : min.toFixed(2),
         max : max.toFixed(2),
-        count: trueCount
+        count: count
     }
 }
