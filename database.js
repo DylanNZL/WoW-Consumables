@@ -71,8 +71,25 @@ async function retrieveItem(itemID, excludeQuantity, historyID) {
     })
 }
 
+// returns the min, max, average and total number of auctions for a specific item
+async function retrieveItemAHStats(itemID, excludeQuantity, historyID) {
+    const query = "Select MIN(buyout / quantity) AS min, MAX(buyout / quantity) as max, (SUM(buyout) / SUM(quantity)) as average, SUM(quantity), item " +
+        "from auctions where item = " + itemID + " AND quantity > " + excludeQuantity + " AND history = " + historyID + " GROUP BY item";
+    // console.log(query);
+    return new Promise ((resolve, reject) => {
+        bookshelf.knex.raw(query).then(function (data) {
+            // console.log(data.rows);
+            resolve(data.rows);
+        }).catch(function (err) {
+            console.error(Date.now() + " retrieveItemAHStats " + err);
+            resolve(0);
+        })
+    })
+}
+
 exports.insertOrUpdateAuction = insertOrUpdateAuction;
 exports.newApiCall = newApiCall;
 exports.latestHistory = latestHistory;
 exports.dbUpdated = dbUpdated;
 exports.retrieveItem = retrieveItem;
+exports.retrieveItemAHStats = retrieveItemAHStats;

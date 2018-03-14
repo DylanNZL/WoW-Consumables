@@ -323,47 +323,22 @@ let vm = new Vue({
  * I only include auctions that include 20 or more items as smaller quantities will skew the price lower than what is correct for crafting large numbers
  */
 function buyoutData(auctions) {
-    // console.log(auctions);
-    if (auctions.length === undefined || auctions.length === 0) {
-        return {
-            average : undefined,
-            min : undefined,
-            max : undefined,
-            count: undefined
-        }
-    }
-    let count = 0;
-    let average = 0.0;
-    let min = Number.MAX_SAFE_INTEGER; // Set high so any price will be lower
-    let max = 0.0;
+    let buyoutData = {
+        average : parseFloat(auctions.average),
+        min : parseFloat(auctions.min),
+        max : parseFloat(auctions.max),
+    };
 
-    // console.log(auctions);
-    auctions.forEach(function (auction) {
-        count += auction.quantity;
-        average += auction.buyout;
-        let buyout = auction.buyout / auction.quantity;
-        if (min > buyout) { min = buyout; }
-        if (max < buyout) { max = buyout; }
-    });
-
-    if (count === 0) {
-        return {
-            average: undefined,
-            min: undefined,
-            max: undefined,
-            count: undefined
-        }
-    }
-
-    // Max, Min and average are divided by 10,000 to get the gold price, because blizzard store it as the copper price
-    // (100 copper = 1 silver, 100 silver = 1 gold)
-    average = (average / count) / 10000;
-    min = min / 10000;
-    max = max / 10000;
+    // divide by 10k to get the actual gold price
+    // gold = 100 silver
+    // silver = 100 copper
+    buyoutData.average  = buyoutData.average / 10000;
+    buyoutData.min      = buyoutData.min / 10000;
+    buyoutData.max      = buyoutData.max / 10000;
     return {
-        average : average.toFixed(2),
-        min : min.toFixed(2),
-        max : max.toFixed(2),
-        count: count
+        average : buyoutData.average.toFixed(2),
+        min : buyoutData.min.toFixed(2),
+        max : buyoutData.max.toFixed(2),
+        count: auctions.sum
     }
 }

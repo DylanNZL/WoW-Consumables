@@ -193,8 +193,7 @@ async function allReagents(req,res,next) {
     let promises = [];
 
     for (let property in result.items) {
-
-        promises.push(result.items[property].auctions = database.retrieveItem(result.items[property].id, 0, historyID))
+        promises.push(result.items[property].auctions = database.retrieveItemAHStats(result.items[property].id, 0, historyID))
     }
 
     let data = await Promise.all(promises);
@@ -202,7 +201,7 @@ async function allReagents(req,res,next) {
     data.forEach(function (dat) {
         // console.log(dat);
         if (dat !== undefined && dat.length !== 0) {
-            result.items[dat[0].item].auctions = dat
+            result.items[dat[0].item].auctions = dat[0]
             //     result.items[i].auctions = dat;
         }
     });
@@ -221,7 +220,7 @@ async function allCraftables(req, res, next) {
 
     for (let property in result.items) {
 
-        promises.push(result.items[property].auctions = database.retrieveItem(result.items[property].id, 0, historyID))
+        promises.push(result.items[property].auctions = database.retrieveItemAHStats(result.items[property].id, 0, historyID))
     }
 
     let data = await Promise.all(promises);
@@ -229,7 +228,7 @@ async function allCraftables(req, res, next) {
     data.forEach(function (dat) {
         // console.log(dat);
         if (dat !== undefined && dat.length !== 0) {
-            result.items[dat[0].item].auctions = dat
+            result.items[dat[0].item].auctions = dat[0]
             //     result.items[i].auctions = dat;
         }
     });
