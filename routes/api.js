@@ -13,18 +13,6 @@ router.get('/', async (req, res, next) => {
         case "/api/dbUpdated":
             await dbUpdated(req,res,next);
             break;
-        case "/api/lavishSuramarFeast": // Does a bunch of queries to reduce client <-> server communication overhead
-            await lavishSuramarFeast(req,res,next);
-            break;
-        case "/api/heartyFeast": // Does a bunch of queries to reduce client <-> server communication overhead
-            await heartyFeast(req,res,next);
-            break;
-        case "/api/alchemy": // Does a bunch of queries to reduce client <-> server communication overhead
-            await alchemy(req,res,next);
-            break;
-        case "/api/food": // Does a bunch of queries to reduce client <-> server communication overhead
-            await food(req,res,next);
-            break;
         case "/api/allReagents": // Does a bunch of queries to reduce client <-> server communication overhead
             await allReagents(req,res,next);
             break;
@@ -83,102 +71,6 @@ async function dbUpdated(req, res, next) {
         success: true,
         dbUpdated: await database.dbUpdated()
     };
-
-    res.status(200).jsonp(result);
-}
-
-async function lavishSuramarFeast(req, res, next) {
-    let result = {
-        timestamp: Date.now(),
-        success: true,
-        items: staticJSON.lavishSuramarFeastItems
-    };
-    let historyID = await database.latestHistory();
-    let promises = [];
-
-    result.items.forEach(function(item) {
-        promises.push(result.items.auctions = database.retrieveItem(item.id, 5, historyID));
-    });
-
-    let data = await Promise.all(promises);
-
-    let i = 0;
-    data.forEach(function (dat) {
-        result.items[i].auctions = dat;
-        i++;
-    });
-
-    res.status(200).jsonp(result);
-}
-
-async function heartyFeast(req, res, next) {
-    let result = {
-        timestamp: Date.now(),
-        success: true,
-        items: staticJSON.heartyFeastItems
-    };
-    let historyID = await database.latestHistory();
-    let promises = [];
-
-    result.items.forEach(function(item) {
-        promises.push(result.items.auctions = database.retrieveItem(item.id, 5, historyID));
-    });
-
-    let data = await Promise.all(promises);
-
-    let i = 0;
-    data.forEach(function (dat) {
-        result.items[i].auctions = dat;
-        i++;
-    });
-
-    res.status(200).jsonp(result);
-}
-
-async function alchemy(req,res,next) {
-    let result = {
-        timestamp: Date.now(),
-        success: true,
-        items: staticJSON.alchemyItems
-    };
-    let historyID = await database.latestHistory();
-    let promises = [];
-
-    result.items.forEach(function(item) {
-        promises.push(result.items.auctions = database.retrieveItem(item.id, 5, historyID));
-    });
-
-    let data = await Promise.all(promises);
-
-    let i = 0;
-    data.forEach(function (dat) {
-        result.items[i].auctions = dat;
-        i++;
-    });
-
-    res.status(200).jsonp(result);
-}
-
-async function food(req,res,next) {
-    let result = {
-        timestamp: Date.now(),
-        success: true,
-        items: staticJSON.foodItems
-    };
-    let historyID = await database.latestHistory();
-    let promises = [];
-
-    result.items.forEach(function(item) {
-        promises.push(result.items.auctions = database.retrieveItem(item.id, 5, historyID));
-    });
-
-    let data = await Promise.all(promises);
-
-    let i = 0;
-    data.forEach(function (dat) {
-        result.items[i].auctions = dat;
-        i++;
-    });
 
     res.status(200).jsonp(result);
 }

@@ -62,51 +62,11 @@
     </div>
     <br>
 
-    <!-- /api/lavishSuramarFeast -->
-    <div class="card">
-        <h5 class="card-title text-center">Get all the data related to making the Lavish Suramar Feast</h5>
-        <h6 class="card-subtitle mb-2 text-muted text-center"><a href="/api/lavishSuramarFeast">/api/lavishSuramarFeast</a></h6>
-        <p class="card-body">This query basically does the same this as /api/item but on all of the items related to making a Lavish Suramar Feast. This query auto excludes any auction that has less than 5 items in it.</p>
-
-        <div class="card-footer json">
-            <h5>Example:</h5>
-            <p> {<br>
-                "timestamp": 1519526481294,<br>
-                "success": true,<br>
-                "items": [<br>
-                (14 different /item results)<br>
-                ]<br>
-                }
-            </p>
-        </div>
-    </div>
-    <br>
-
-    <!-- /api/heartyFeast -->
-    <div class="card">
-        <h5 class="card-title text-center">Get all the data related to making the Hearty Feast</h5>
-        <h6 class="card-subtitle mb-2 text-muted text-center"><a href="/api/heartyFeast">/api/heartyFeast</a></h6>
-        <p class="card-body">This query basically does the same this as /api/item but on all of the items related to making a Hearty Feast. This query auto excludes any auction that has less than 5 items in it.</p>
-
-        <div class="card-footer json">
-            <h5>Example:</h5>
-            <p> {<br>
-                "timestamp": 1519526481294,<br>
-                "success": true,<br>
-                "items": [<br>
-                (12 different /item results)<br>
-                ]<br>
-                }
-            </p>
-        </div>
-    </div>
-    <br>
-
-    <!-- /api/alchemy -->
+    <!-- /api/allReagents -->
     <div class="card card-default">
-        <h5 class="card-title text-center">Get all the data related to legion alchemy</h5>
-        <h6 class="card-subtitle mb-2 text-muted text-center"><a href="/api/lavishSuramarFeast">/api/lavishSuramarFeast</a></h6>
-        <p class="card-body">This query basically does the same this as /api/item but on all of the items related to making the four different flasks, the cauldron and the mana potions. This query auto excludes any auction that has less than 5 items in it.</p>
+        <h5 class="card-title text-center">Reagents Query</h5>
+        <h6 class="card-subtitle mb-2 text-muted text-center"><a href="/api/allReagents">/api/allReagents</a></h6>
+        <p class="card-body">This query basically does the /item query but for the reagents you cant buy from an npc</p>
 
         <div class="card-footer json">
             <h5>Example:</h5>
@@ -114,7 +74,7 @@
                 "timestamp": 1519526481294,<br>
                 "success": true,<br>
                 "items": [<br>
-                (13 different /item results)<br>
+                (31 different /item results)<br>
                 ]<br>
                 }
             </p>
@@ -122,11 +82,31 @@
     </div>
     <br>
 
-    <!-- /api/food -->
+    <!-- /api/shopReagents -->
     <div class="card card-default">
-        <h5 class="card-title text-center">Get all the data related to making the 4 different stat foods</h5>
-        <h6 class="card-subtitle mb-2 text-muted text-center"><a href="/api/food">/api/food</a></h6>
-        <p class="card-body">This query basically does the same this as /api/item but on all of the items related to making the 3 different tiers (225, 300, 375) of secondary stat food in legion. This query auto excludes any auction that has less than 5 items in it.</p>
+        <h5 class="card-title text-center">Reagents Query (pt 2)</h5>
+        <h6 class="card-subtitle mb-2 text-muted text-center"><a href="/api/shopReagents">/api/shopReagents</a></h6>
+        <p class="card-body">This query basically does the /item query but for the reagents you can buy from an npc</p>
+
+        <div class="card-footer json">
+            <h5>Example:</h5>
+            <p> {<br>
+                "timestamp": 1519526481294,<br>
+                "success": true,<br>
+                "items": [<br>
+                (31 different /item results)<br>
+                ]<br>
+                }
+            </p>
+        </div>
+    </div>
+    <br>
+
+    <!-- /api/allReagents -->
+    <div class="card card-default">
+        <h5 class="card-title text-center">Basically all the consumables</h5>
+        <h6 class="card-subtitle mb-2 text-muted text-center"><a href="/api/allCraftables">/api/allCraftables</a></h6>
+        <p class="card-body">This query basically does the /item query but for feasts/flasks/food</p>
 
         <div class="card-footer json">
             <h5>Example:</h5>
@@ -142,9 +122,6 @@
     </div>
     <br>
 </div>
-
-
-
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.1.10/vue.js"></script>
