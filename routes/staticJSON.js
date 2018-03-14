@@ -239,7 +239,23 @@ exports.craftables = {
         },
         recipe: [{id: 124105, quantity: 1}, {id: 124101, quantity: 2}, {id: 124102, quantity: 2}],
         auctions: undefined
-    }, // Aethril, Dreamleaf
+    },
+    127834: {
+        id: 127834,
+        name: "Ancient Healing Potion",
+        image: "/icons/potion/inv_alchemy_70_red.jpg",
+        category: "potion",
+        rank: {
+            selected: 3,
+            options: [
+                {text: 1, value: 1},
+                {text: 2, value: 2},
+                {text: 3, value: 3}
+            ]
+        },
+        recipe: [{id: 128304, quantity: 5}],
+        auctions: undefined
+    },
     127835: {
         id: 127835,
         name: "Ancient Mana Potion",
@@ -254,7 +270,72 @@ exports.craftables = {
             ]
         },
         recipe: [{id: 128304, quantity: 5}],
-        auctions: undefined},
+        auctions: undefined
+    },
+    127836: {
+        id: 127836,
+        name: "Ancient Rejuvenation Potion",
+        image: "/icons/potion/inv_alchemy_70_purple.jpg",
+        category: "potion",
+        rank: {
+            selected: 3,
+            options: [
+                {text: 1, value: 1},
+                {text: 2, value: 2},
+                {text: 3, value: 3}
+            ]
+        },
+        recipe: [{id: 127834, quantity: 1},{id: 127835, quantity: 1}],
+        auctions: undefined
+    },
+    127841: {
+        id: 127841,
+        name: "Skystep Potion",
+        image: "/icons/potion/inv_alchemy_70_potion2_nightborne.jpg",
+        category: "potion",
+        rank: {
+            selected: 3,
+            options: [
+                {text: 1, value: 1},
+                {text: 2, value: 2},
+                {text: 3, value: 3}
+            ]
+        },
+        recipe: [{id: 124104, quantity: 5}, {id: 8127835, quantity: 1}],
+        auctions: undefined
+    },
+    127840: {
+        id: 127840,
+        name: "Skaggldrynk Potion",
+        image: "/icons/potion/inv_alchemy_70_potion2_vrykul.jpg",
+        category: "potion",
+        rank: {
+            selected: 3,
+            options: [
+                {text: 1, value: 1},
+                {text: 2, value: 2},
+                {text: 3, value: 3}
+            ]
+        },
+        recipe: [{id: 124105, quantity: 4}, {id: 8127836, quantity: 1}],
+        auctions: undefined
+    },
+    127839: {
+        id: 127839,
+        name: "Avalanche Elixer",
+        image: "/icons/potion/inv_alchemy_70_potion3_drogbar.jpg",
+        category: "potion",
+        rank: {
+            selected: 3,
+            options: [
+                {text: 1, value: 1},
+                {text: 2, value: 2},
+                {text: 3, value: 3}
+            ]
+        },
+        recipe: [{id: 124103, quantity: 5}, {id: 8127834, quantity: 1}],
+        auctions: undefined
+    },
     // Crit
     133557: {
         id: 133557,
