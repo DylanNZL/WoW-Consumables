@@ -223,7 +223,7 @@ exports.craftables = {
         auctions: undefined
 
     }, // Aethril, Dreamleaf
-    // Potions // TODO: add more pots
+    // Potions
     127846: {
         id: 127846,
         name: "Leytorrent Potion",
