@@ -318,7 +318,7 @@ let vm = new Vue({
             }
         }
     },
-    beforeCreate: function() {
+    created: function() {
         this.checkDbUpdated();
         this.getAllReagents();
         this.getCraftables();
