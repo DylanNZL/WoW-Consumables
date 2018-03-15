@@ -551,7 +551,7 @@ exports.craftables = {
             {id: 124121, quantity: 5}, {id: 9133592, quantity: 10}],
         auctions: undefined
     },
-    // Misc food // TODO: More misc food?
+    // Misc food
     133564: {
         id: 133564,
         name: "Spiced Rib Roast",
@@ -584,6 +584,58 @@ exports.craftables = {
         },
         stat: 0,
         recipe: [{id: 124109, quantity: 5}, {id: 9133592, quantity: 10}, {id: 9133589, quantity: 4}, {id: 9133593, quantity: 10}],
+        auctions: undefined
+    },
+    201511: {
+        id: 201511,
+        name: "Fishbrul Special",
+        image: "/icons/food/inv_misc_food_legion_fishbrulspecial.jpg",
+        category: "MISC",
+        rank: {
+            selected: 3,
+            options: [
+                {text: 1, value: 1},
+                {text: 2, value: 2},
+                {text: 3, value: 3}
+            ]
+        },
+        stat: 0,
+        recipe: [{id: 8133569, quantity: 1}, {id: 124107, quantity: 5}, {id: 124108, quantity: 5}, {id: 124112, quantity: 5},
+            {id: 9133592, quantity: 10}, {id: 9133589, quantity: 5}],
+        auctions: undefined
+    },
+    201514: {
+        id: 201514,
+        name: "Fighter Chow",
+        image: "/icons/food/inv_misc_food_legion_fighterchow.jpg",
+        category: "MISC",
+        rank: {
+            selected: 3,
+            options: [
+                {text: 1, value: 1},
+                {text: 2, value: 2},
+                {text: 3, value: 3}
+            ]
+        },
+        stat: 0,
+        recipe: [{id: 124107, quantity: 5}, {id: 9133593, quantity: 1}],
+        auctions: undefined
+    },
+    201513: {
+        id: 201513,
+        name: "Bear Tartare",
+        image: "/icons/food/inv_misc_food_legion_beartartare.jpg",
+        category: "MISC",
+        rank: {
+            selected: 3,
+            options: [
+                {text: 1, value: 1},
+                {text: 2, value: 2},
+                {text: 3, value: 3}
+            ]
+        },
+        stat: 0,
+        recipe: [{id: 124118, quantity: 5}, {id: 9133591, quantity: 1}],
         auctions: undefined
     },
     // Feasts
