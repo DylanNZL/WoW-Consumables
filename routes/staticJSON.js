@@ -586,8 +586,8 @@ exports.craftables = {
         recipe: [{id: 124109, quantity: 5}, {id: 9133592, quantity: 10}, {id: 9133589, quantity: 4}, {id: 9133593, quantity: 10}],
         auctions: undefined
     },
-    201511: {
-        id: 201511,
+    133574: {
+        id: 133574,
         name: "Fishbrul Special",
         image: "/icons/food/inv_misc_food_legion_fishbrulspecial.jpg",
         category: "MISC",
@@ -604,8 +604,8 @@ exports.craftables = {
             {id: 9133592, quantity: 10}, {id: 9133589, quantity: 5}],
         auctions: undefined
     },
-    201514: {
-        id: 201514,
+    133577: {
+        id: 133577,
         name: "Fighter Chow",
         image: "/icons/food/inv_misc_food_legion_fighterchow.jpg",
         category: "MISC",
@@ -621,8 +621,8 @@ exports.craftables = {
         recipe: [{id: 124107, quantity: 5}, {id: 9133593, quantity: 1}],
         auctions: undefined
     },
-    201513: {
-        id: 201513,
+    133576: {
+        id: 133576,
         name: "Bear Tartare",
         image: "/icons/food/inv_misc_food_legion_beartartare.jpg",
         category: "MISC",
